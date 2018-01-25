@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Train Scheduler</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="google_android_map_api_key"> AIzaSyDVKYbdTsZIlovcEBcMmbd6enu1BMe9YXc </string>
 </resources>
