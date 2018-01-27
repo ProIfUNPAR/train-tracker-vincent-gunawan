@@ -87,7 +87,7 @@ public class MapMenu extends FragmentActivity implements OnMapReadyCallback, Goo
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER, 5000, 1, locationListener);
+                LocationManager.GPS_PROVIDER, 100, 1, locationListener);
 
         loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 

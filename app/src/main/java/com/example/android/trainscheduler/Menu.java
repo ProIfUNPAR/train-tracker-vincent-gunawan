@@ -46,7 +46,7 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent);
             }
         };
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 1, ll);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
 
         changeActivity();
     }
