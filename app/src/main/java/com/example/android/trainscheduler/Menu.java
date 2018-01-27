@@ -46,6 +46,14 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent);
             }
         };
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(new String[]{
+                        android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.INTERNET
+                }, 10);
+                return;
+            }
+        }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
 
         changeActivity();
