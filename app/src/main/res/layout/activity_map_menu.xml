@@ -7,6 +7,21 @@
     tools:context="com.example.android.trainscheduler.MapMenu"
     tools:layout_editor_absoluteY="81dp">
 
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="47dp"
+        android:layout_marginTop="4dp"
+
+        android:apiKey="AIzaSyCufmvrgGgdU1lfCqW-_Pacr1sn4yrhuQQ"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/homeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <fragment
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
@@ -29,20 +44,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="47dp"
-        android:layout_marginTop="4dp"
-        android:apiKey="0u7AJChI1NV8vCpj21C0Cq8YnNMrB6YMgigu0GA"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/homeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/mapView"
+        android:layout_marginRight="17dp" />
 
     <TextView
         android:id="@+id/textView"

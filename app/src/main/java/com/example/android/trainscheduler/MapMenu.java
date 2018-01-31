@@ -30,9 +30,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapMenu extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-
-    private FusedLocationProviderClient mFusedLocationClient;
+public class MapMenu extends FragmentActivity
+        implements
+        OnMapReadyCallback,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
     private LocationManager locationManager;
@@ -84,7 +86,7 @@ public class MapMenu extends FragmentActivity implements OnMapReadyCallback, Goo
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
 
         locationManager.requestLocationUpdates(
                 LocationManager.GPS_PROVIDER, 100, 1, locationListener);
@@ -124,6 +126,15 @@ public class MapMenu extends FragmentActivity implements OnMapReadyCallback, Goo
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
+            @Override
+            public boolean onMyLocationButtonClick() {
+                Log.d("MapMenu","diClick");
+                LatLng loc = new LatLng(mMap.getMyLocation().getLatitude(),mMap.getMyLocation().getLongitude());
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                return true;
+            }
+        });;
         mMap.setMyLocationEnabled(true);
         loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (loc != null) {
