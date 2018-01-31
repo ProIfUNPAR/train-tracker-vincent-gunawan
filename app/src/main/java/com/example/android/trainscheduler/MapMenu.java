@@ -36,6 +36,7 @@ public class MapMenu extends FragmentActivity
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
+    //vg
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -44,6 +45,11 @@ public class MapMenu extends FragmentActivity
 
     private TextView label;
 
+    /**
+     * VG
+     * onCreate dipanggil 1x waktu activity dibuat
+     * mGoogleApiClient jangan di oprek
+     * */
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +73,7 @@ public class MapMenu extends FragmentActivity
         locationListener = new LocationListener() {
 
             @Override
+            //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
             }
 
@@ -76,10 +83,12 @@ public class MapMenu extends FragmentActivity
             }
 
             @Override
+            //ga kepake. waktu GPS on
             public void onProviderEnabled(String s) {
             }
 
             @Override
+            //waktu GPS off
             public void onProviderDisabled(String s) {
             }
         };
@@ -129,9 +138,14 @@ public class MapMenu extends FragmentActivity
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
-                Log.d("MapMenu","diClick");
-                LatLng loc = new LatLng(mMap.getMyLocation().getLatitude(),mMap.getMyLocation().getLongitude());
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(ll)      // Sets the center of the map to location user
+                        .zoom(17)                   // Sets the zoom
+                        .bearing(90)                // Sets the orientation of the camera to east
+                        .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                        .build();                   // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 return true;
             }
         });;
@@ -147,7 +161,7 @@ public class MapMenu extends FragmentActivity
                     .bearing(90)                // Sets the orientation of the camera to east
                     .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
-            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             mMap.addMarker(new MarkerOptions().position(ll).title("Current Location"));
         }
     }
