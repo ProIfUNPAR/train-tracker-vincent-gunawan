@@ -1,8 +1,12 @@
 package com.example.android.trainscheduler;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -12,16 +16,23 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class Menu extends AppCompatActivity {
     private LocationManager locationManager;
+    private static Context instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        instance = this;
+
+        dbWrite();
+        dbRead();
+
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         LocationListener ll = new LocationListener() {
@@ -83,5 +94,43 @@ public class Menu extends AppCompatActivity {
                     }
                 }
         }
+    }
+
+    public static Context getContext(){
+        return instance;
+    }
+    public DbHelper dbHelper = new DbHelper(this);
+    public void dbWrite(){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+//        values.put(DbHelper.DbEntry.COLUMN_ID,2);
+        values.put(DbHelper.DbEntry.COLUMN_NAME,"NAMA A");
+        values.put(DbHelper.DbEntry.COLUMN_LATITUDE,1.0);
+        values.put(DbHelper.DbEntry.COLUMN_LONGTITUDE,2.0);
+
+        db.insertOrThrow(DbHelper.DbEntry.TABLE_NAME, null, values);
+    }
+
+    public void dbRead(){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] projection = {
+                DbHelper.DbEntry.COLUMN_ID,
+                DbHelper.DbEntry.COLUMN_NAME,
+                DbHelper.DbEntry.COLUMN_LATITUDE,
+                DbHelper.DbEntry.COLUMN_LONGTITUDE
+        };
+        Cursor c = db.query(
+                DbHelper.DbEntry.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        c.moveToFirst();
+        String itemD = c.getString(c.getColumnIndex(DbHelper.DbEntry.COLUMN_NAME));
+        Log.d("dBReadTag",""+itemD);
+
     }
 }
