@@ -2,9 +2,9 @@ package com.example.android.trainscheduler;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
@@ -20,16 +20,38 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class Menu extends AppCompatActivity {
     private LocationManager locationManager;
-    private static Context instance;
+    private static Menu instance;
     public DistanceCalculation dc;
+    private ArrayList<Stasiun> stasiuns;
+    public DbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         instance = this;
+        this.dbHelper = new DbHelper(this);
+        this.stasiuns = new ArrayList<Stasiun>();
+
+        Resources resources = getResources();
+        String[] test = resources.getStringArray(R.array.stasiun);
+
+        for(int i=0;i<test.length;i++){
+            String[] split = test[i].split(" ");
+            String nama = "";
+            for(int j=0;j<split.length-2;j++){
+                nama = nama + split[j]+" ";
+            }
+            nama = nama.trim();
+            double latitude = Double.parseDouble(split[split.length-2]);
+            double longtitude = Double.parseDouble(split[split.length-1]);
+            Log.d("StasiunDB",nama+"|"+latitude+"|"+longtitude);
+            stasiuns.add(new Stasiun(nama,latitude,longtitude));
+        }
 
         dbWrite();
         dbRead();
@@ -100,19 +122,23 @@ public class Menu extends AppCompatActivity {
         }
     }
 
-    public static Context getContext(){
+    public static Menu getInstance(){
         return instance;
     }
-    public DbHelper dbHelper = new DbHelper(this);
+    public ArrayList<Stasiun> getStasiuns(){
+        return this.stasiuns;
+    }
+
     public void dbWrite(){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 //        values.put(DbHelper.DbEntry.COLUMN_ID,2);
-        values.put(DbHelper.DbEntry.COLUMN_NAME,"NAMA A");
-        values.put(DbHelper.DbEntry.COLUMN_LATITUDE,1.0);
-        values.put(DbHelper.DbEntry.COLUMN_LONGTITUDE,2.0);
-
-        db.insertOrThrow(DbHelper.DbEntry.TABLE_NAME, null, values);
+        for(int i=0;i<stasiuns.size();i++){
+            values.put(DbHelper.DbEntry.COLUMN_NAME,stasiuns.get(i).getNamaStasiun());
+            values.put(DbHelper.DbEntry.COLUMN_LATITUDE,stasiuns.get(i).getLatitude());
+            values.put(DbHelper.DbEntry.COLUMN_LONGTITUDE,stasiuns.get(i).getLongtitude());
+            db.insertOrThrow(DbHelper.DbEntry.TABLE_NAME, null, values);
+        }
     }
 
     public void dbRead(){
@@ -133,8 +159,14 @@ public class Menu extends AppCompatActivity {
                 null
         );
         c.moveToFirst();
-        String itemD = c.getString(c.getColumnIndex(DbHelper.DbEntry.COLUMN_NAME));
-        Log.d("dBReadTag",""+itemD);
+        while(!c.isAfterLast()){
+            int id = c.getInt(c.getColumnIndex(DbHelper.DbEntry.COLUMN_ID));
+            String name = c.getString(c.getColumnIndex(DbHelper.DbEntry.COLUMN_NAME));
+            Double latitude = c.getDouble(c.getColumnIndex(DbHelper.DbEntry.COLUMN_LATITUDE));
+            Double longtitude = c.getDouble(c.getColumnIndex(DbHelper.DbEntry.COLUMN_LONGTITUDE));
+            Log.d("dBReadTag",id+"|"+name+"|"+latitude+"|"+longtitude);
+            c.moveToNext();
+        }
 
     }
 }
