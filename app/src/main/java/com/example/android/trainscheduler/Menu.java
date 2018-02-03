@@ -23,6 +23,7 @@ import android.widget.Button;
 public class Menu extends AppCompatActivity {
     private LocationManager locationManager;
     private static Context instance;
+    public DistanceCalculation dc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,9 @@ public class Menu extends AppCompatActivity {
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
 
         changeActivity();
+
+        dc = new DistanceCalculation(-6.914430,-7.329102,107.602447,108.355991);
+        Log.d("test",dc.count()+"");
     }
 
     private void changeActivity(){
