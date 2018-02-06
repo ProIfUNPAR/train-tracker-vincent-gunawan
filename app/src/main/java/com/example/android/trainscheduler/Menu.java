@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
@@ -16,7 +15,6 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -34,28 +32,14 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         instance = this;
+
         this.dbHelper = new DbHelper(this);
         this.stasiuns = new ArrayList<Stasiun>();
 
-        Resources resources = getResources();
-        String[] test = resources.getStringArray(R.array.stasiun);
-
-        for(int i=0;i<test.length;i++){
-            String[] split = test[i].split(" ");
-            String nama = "";
-            for(int j=0;j<split.length-2;j++){
-                nama = nama + split[j]+" ";
-            }
-            nama = nama.trim();
-            double latitude = Double.parseDouble(split[split.length-2]);
-            double longtitude = Double.parseDouble(split[split.length-1]);
-            Log.d("StasiunDB",nama+"|"+latitude+"|"+longtitude);
-            stasiuns.add(new Stasiun(nama,latitude,longtitude));
-        }
-
+        dc = new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
+//        Log.d("rStasiun", dc.count() + "");
         dbWrite();
         dbRead();
-
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         LocationListener ll = new LocationListener() {
@@ -91,13 +75,10 @@ public class Menu extends AppCompatActivity {
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
 
         changeActivity();
-
-        dc = new DistanceCalculation(-6.914430,-7.329102,107.602447,108.355991);
-        Log.d("test",dc.count()+"");
     }
 
-    private void changeActivity(){
-        Button mapButton = (Button)findViewById(R.id.mapButton);
+    private void changeActivity() {
+        Button mapButton = (Button) findViewById(R.id.mapButton);
         mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,26 +103,47 @@ public class Menu extends AppCompatActivity {
         }
     }
 
-    public static Menu getInstance(){
+    public static Menu getInstance() {
         return instance;
     }
-    public ArrayList<Stasiun> getStasiuns(){
+
+    public ArrayList<Stasiun> getStasiuns() {
         return this.stasiuns;
     }
 
-    public void dbWrite(){
+    public void dbWrite() {
+        String[] rStasiun = getResources().getStringArray(R.array.stasiun);
+        for (int i = 0; i < rStasiun.length; i++) {
+            String[] split = rStasiun[i].split(" ");
+            String nama = "";
+            for (int j = 0; j < split.length - 2; j++) {
+                nama = nama + split[j] + " ";
+            }
+            nama = nama.trim();
+            double latitude = Double.parseDouble(split[split.length - 2]);
+            double longtitude = Double.parseDouble(split[split.length - 1]);
+//            Log.d("StasiunDB",nama+"|"+latitude+"|"+longtitude);
+            stasiuns.add(new Stasiun(nama, latitude, longtitude));
+        }
+
+        int size = stasiuns.size();
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-//        values.put(DbHelper.DbEntry.COLUMN_ID,2);
-        for(int i=0;i<stasiuns.size();i++){
-            values.put(DbHelper.DbEntry.COLUMN_NAME,stasiuns.get(i).getNamaStasiun());
-            values.put(DbHelper.DbEntry.COLUMN_LATITUDE,stasiuns.get(i).getLatitude());
-            values.put(DbHelper.DbEntry.COLUMN_LONGTITUDE,stasiuns.get(i).getLongtitude());
-            db.insertOrThrow(DbHelper.DbEntry.TABLE_NAME, null, values);
+        String query = "SELECT count(*) FROM " + DbHelper.DbEntry.TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        if (size > count) {
+            ContentValues values = new ContentValues();
+            for (int i = 0; i < stasiuns.size(); i++) {
+                values.put(DbHelper.DbEntry.COLUMN_NAME, stasiuns.get(i).getNamaStasiun());
+                values.put(DbHelper.DbEntry.COLUMN_LATITUDE, stasiuns.get(i).getLatitude());
+                values.put(DbHelper.DbEntry.COLUMN_LONGTITUDE, stasiuns.get(i).getLongtitude());
+                db.insertOrThrow(DbHelper.DbEntry.TABLE_NAME, null, values);
+            }
         }
     }
 
-    public void dbRead(){
+    public void dbRead() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String[] projection = {
                 DbHelper.DbEntry.COLUMN_ID,
@@ -159,14 +161,13 @@ public class Menu extends AppCompatActivity {
                 null
         );
         c.moveToFirst();
-        while(!c.isAfterLast()){
+        while (!c.isAfterLast()) {
             int id = c.getInt(c.getColumnIndex(DbHelper.DbEntry.COLUMN_ID));
             String name = c.getString(c.getColumnIndex(DbHelper.DbEntry.COLUMN_NAME));
             Double latitude = c.getDouble(c.getColumnIndex(DbHelper.DbEntry.COLUMN_LATITUDE));
             Double longtitude = c.getDouble(c.getColumnIndex(DbHelper.DbEntry.COLUMN_LONGTITUDE));
-            Log.d("dBReadTag",id+"|"+name+"|"+latitude+"|"+longtitude);
+//            Log.d("dBReadTag", id + "|" + name + "|" + latitude + "|" + longtitude);
             c.moveToNext();
         }
-
     }
 }

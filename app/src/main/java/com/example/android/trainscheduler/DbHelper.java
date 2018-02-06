@@ -31,19 +31,6 @@ public class DbHelper extends SQLiteOpenHelper{
         onCreate(sqLiteDatabase);
     }
 
-//    public void start(){
-//        DbHelper dbHelper = new DbHelper(Menu.getContext());
-//        SQLiteDatabase db = dbHelper.getWritableDatabase();
-//
-//        ContentValues values = new ContentValues();
-//        values.put(DbEntry.COLUMN_ID,1);
-//        values.put(DbEntry.COLUMN_NAME,"NAMA A");
-//        values.put(DbEntry.COLUMN_LATITUDE,1.0);
-//        values.put(DbEntry.COLUMN_LONGTITUDE,2.0);
-//
-//        long newRowId = db.insert(DbEntry.TABLE_NAME, null, values);
-//    }
-
     public void onDownGrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion){
         onUpgrade(sqLiteDatabase,oldVersion,newVersion);
     }
@@ -56,7 +43,7 @@ public class DbHelper extends SQLiteOpenHelper{
         public static final String COLUMN_LONGTITUDE = "longtitude";
     }
 
-    private static final String createTable =String.format(
+    public static final String createTable =String.format(
             "CREATE TABLE %s(%s Integer,%s varchar(255), %s Double, %s Double, PRIMARY KEY(%s));",
             DbEntry.TABLE_NAME,DbEntry.COLUMN_ID, DbEntry.COLUMN_NAME, DbEntry.COLUMN_LATITUDE, DbEntry.COLUMN_LONGTITUDE, DbEntry.COLUMN_ID
     );
