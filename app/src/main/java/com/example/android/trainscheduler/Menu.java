@@ -2,6 +2,7 @@ package com.example.android.trainscheduler;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -13,10 +14,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,8 @@ public class Menu extends AppCompatActivity {
     public DistanceCalculation dc;
     private ArrayList<Stasiun> stasiuns;
     public DbHelper dbHelper;
+    private Context ctx;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +41,23 @@ public class Menu extends AppCompatActivity {
 
         this.dbHelper = new DbHelper(this);
         this.stasiuns = new ArrayList<Stasiun>();
+        this.tv = this.findViewById(R.id.speed_text);
 
         dc = new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
 //        Log.d("rStasiun", dc.count() + "");
         dbWrite();
         dbRead();
 
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        locationManager = (LocationManager) this.getSystemService(ctx.LOCATION_SERVICE);
         LocationListener ll = new LocationListener() {
+
+
             @Override
             public void onLocationChanged(Location location) {
-
+                location.getLatitude();
+                tv.setText(String.format("%.0f", location.getSpeed() * 3.6));
+                Toast.makeText(getApplicationContext(),"Speed:" + location.getSpeed(),
+                        Toast.LENGTH_SHORT).show();
             }
 
             @Override

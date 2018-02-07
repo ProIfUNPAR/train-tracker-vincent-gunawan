@@ -20,6 +20,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,15 +38,14 @@ public class MapMenu extends FragmentActivity
         implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
-
+        GoogleApiClient.OnConnectionFailedListener
+{
     //vg
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private GoogleApiClient mGoogleApiClient;
     private Location loc;
-
     private TextView label;
 
     /**
@@ -72,11 +73,13 @@ public class MapMenu extends FragmentActivity
         }
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
         locationListener = new LocationListener() {
 
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
+
             }
 
             @Override
@@ -106,7 +109,6 @@ public class MapMenu extends FragmentActivity
 
         changeActivity();
     }
-
     @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

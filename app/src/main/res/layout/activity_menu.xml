@@ -20,6 +20,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/speed"
+        android:id="@+id/speed_text"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/textView"/>
+
     <Button
         android:id="@+id/mapButton"
         android:layout_width="wrap_content"
