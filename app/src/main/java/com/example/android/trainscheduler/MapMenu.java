@@ -45,7 +45,7 @@ public class MapMenu extends FragmentActivity
     private GoogleApiClient mGoogleApiClient;
     private Location loc;
 
-    private TextView label;
+    //private TextView label;
 
     /**
      * VG
@@ -58,7 +58,7 @@ public class MapMenu extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
 
-        label = (TextView) findViewById(R.id.textView);
+       // label = (TextView) findViewById(R.id.textView);
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -154,8 +154,8 @@ public class MapMenu extends FragmentActivity
         mMap.setMyLocationEnabled(true);
         loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (loc != null) {
-            label.setText("");
-            label.append("\n " + loc.getLatitude() + " " + loc.getLongitude());
+            //label.setText("");
+           // label.append("\n " + loc.getLatitude() + " " + loc.getLongitude());
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(ll)      // Sets the center of the map to location user

@@ -36,7 +36,8 @@ public class Menu extends AppCompatActivity {
         this.dbHelper = new DbHelper(this);
         this.stasiuns = new ArrayList<Stasiun>();
 
-        dc = new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
+        dc
+                = new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
 //        Log.d("rStasiun", dc.count() + "");
         dbWrite();
         dbRead();
