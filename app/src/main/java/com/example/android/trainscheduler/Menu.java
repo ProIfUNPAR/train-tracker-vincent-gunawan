@@ -43,7 +43,8 @@ public class Menu extends AppCompatActivity {
         this.stasiuns = new ArrayList<Stasiun>();
         this.tv = this.findViewById(R.id.speed_text);
 
-        dc = new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
+        dc
+                = new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
 //        Log.d("rStasiun", dc.count() + "");
         dbWrite();
         dbRead();
@@ -55,9 +56,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
                 location.getLatitude();
-                tv.setText(String.format("%.0f", location.getSpeed() * 3.6));
-                Toast.makeText(getApplicationContext(),"Speed:" + location.getSpeed(),
-                        Toast.LENGTH_SHORT).show();
+                tv.setText("Current Speed: " + (location.getSpeed()*3.6));
             }
 
             @Override
