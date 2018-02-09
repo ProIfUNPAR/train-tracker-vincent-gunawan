@@ -138,6 +138,16 @@ public class Menu extends AppCompatActivity {
             for(int j=1;j<array[i].length;j++){
                 String[] splits = array[i][j].split("#");
                 String namaStasiun = splits[0];
+                Log.d("namaStasiun",array[i][0]);
+                if(splits[1].length() == 10) {
+                    StringBuilder sb = new StringBuilder(splits[1]);
+                    sb = sb.deleteCharAt(splits[1].length()-4);
+                    splits[1] = sb.toString();
+
+                    sb = new StringBuilder(splits[2]);
+                    sb = sb.deleteCharAt(splits[2].length()-4);
+                    splits[2] = sb.toString();
+                }
                 double latitude = Double.parseDouble(splits[1]);
                 double longtitude = Double.parseDouble(splits[2]);
                 String jamDatang = splits[3];
@@ -149,9 +159,9 @@ public class Menu extends AppCompatActivity {
             }
             keretas.add(new Kereta(array[i][0],jadwals));
         }
-        for(int i=0;i<keretas.size();i++){
-            Log.d("namaKereta",""+keretas.get(i).getNamaKereta());
-        }
+//        for(int i=0;i<keretas.size();i++){
+//            Log.d("namaKereta",""+keretas.get(i).getNamaKereta());
+//        }
         test.recycle();
     }
 }

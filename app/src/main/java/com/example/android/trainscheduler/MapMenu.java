@@ -27,6 +27,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -162,6 +163,21 @@ public class MapMenu extends FragmentActivity
             String nama = stasiuns.get(i).getNamaStasiun();
             mMap.addMarker(new MarkerOptions().position(llStasiun).title(nama).icon(BitmapDescriptorFactory.fromBitmap(bIcon)));
         }
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                LatLng posisi = marker.getPosition();
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(posisi)      // Sets the center of the map to location user
+                        .zoom(17)                   // Sets the zoom
+                        .bearing(90)                // Sets the orientation of the camera to east
+                        .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                        .build();                   // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                return true;
+            }
+        });
     }
 
 
