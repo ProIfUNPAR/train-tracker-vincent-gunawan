@@ -1,12 +1,10 @@
 package com.example.android.trainscheduler;
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.res.TypedArray;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -14,49 +12,50 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Menu extends AppCompatActivity {
     private LocationManager locationManager;
     private static Menu instance;
-    public DistanceCalculation dc;
-    private ArrayList<Stasiun> stasiuns;
-    public DbHelper dbHelper;
+
+//    public DistanceCalculation dc;
+
+//    private ArrayList<Stasiun> stasiuns;
+//    private ArrayList<Jadwal> jadwals;
+
+    private ArrayList<Kereta> keretas;
+    private HashMap<String,Stasiun> stasiuns;
+
     private Context ctx;
-    private TextView tv;
+
+    private TextView tvSpeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        instance = this;
+        this.keretas = new ArrayList<>();
+        this.stasiuns = new HashMap<>();
+        this.tvSpeed = this.findViewById(R.id.speed_text);
+        this.instance = this;
 
-        this.dbHelper = new DbHelper(this);
-        this.stasiuns = new ArrayList<Stasiun>();
-        this.tv = this.findViewById(R.id.speed_text);
-
-        dc
-                = new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
+//        dc= new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
 //        Log.d("rStasiun", dc.count() + "");
-        dbWrite();
-        dbRead();
 
         locationManager = (LocationManager) this.getSystemService(ctx.LOCATION_SERVICE);
         LocationListener ll = new LocationListener() {
-
-
             @Override
             public void onLocationChanged(Location location) {
                 location.getLatitude();
-                tv.setText("Current Speed: " + (location.getSpeed()*3.6));
+                tvSpeed.setText("Current Speed: " + (location.getSpeed()*3.6));
             }
 
             @Override
@@ -86,6 +85,12 @@ public class Menu extends AppCompatActivity {
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
 
         changeActivity();
+        this.getAll();
+
+
+//        for(int i=0;i<keretas.size();i++){
+//            Log.d("keretasTesting",""+keretas.get(i).getNamaKereta());
+//        }
     }
 
     private void changeActivity() {
@@ -119,66 +124,34 @@ public class Menu extends AppCompatActivity {
     }
 
     public ArrayList<Stasiun> getStasiuns() {
-        return this.stasiuns;
+        ArrayList<Stasiun> result = new ArrayList<>();
+        result.addAll(stasiuns.values());
+        return result;
     }
-
-    public void dbWrite() {
-        String[] rStasiun = getResources().getStringArray(R.array.stasiun);
-        for (int i = 0; i < rStasiun.length; i++) {
-            String[] split = rStasiun[i].split(" ");
-            String nama = "";
-            for (int j = 0; j < split.length - 2; j++) {
-                nama = nama + split[j] + " ";
+    public void getAll(){
+        TypedArray test = getResources().obtainTypedArray(R.array.jadwal);
+        String[][] array = new String[test.length()][];
+        for(int i=0;i<test.length();i++){
+            int id= test.getResourceId(i,0);
+            array[i] = getResources().getStringArray(id);
+            ArrayList<Jadwal> jadwals = new ArrayList<>();
+            for(int j=1;j<array[i].length;j++){
+                String[] splits = array[i][j].split("#");
+                String namaStasiun = splits[0];
+                double latitude = Double.parseDouble(splits[1]);
+                double longtitude = Double.parseDouble(splits[2]);
+                String jamDatang = splits[3];
+                String jamPergi = splits[4];
+                if(!stasiuns.containsKey(namaStasiun)){
+                    stasiuns.put(namaStasiun,new Stasiun(namaStasiun,latitude,longtitude));
+                }
+                jadwals.add(new Jadwal(stasiuns.get(namaStasiun),jamDatang,jamPergi));
             }
-            nama = nama.trim();
-            double latitude = Double.parseDouble(split[split.length - 2]);
-            double longtitude = Double.parseDouble(split[split.length - 1]);
-//            Log.d("StasiunDB",nama+"|"+latitude+"|"+longtitude);
-            stasiuns.add(new Stasiun(nama, latitude, longtitude));
+            keretas.add(new Kereta(array[i][0],jadwals));
         }
-
-        int size = stasiuns.size();
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String query = "SELECT count(*) FROM " + DbHelper.DbEntry.TABLE_NAME;
-        Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
-        int count = cursor.getInt(0);
-        if (size > count) {
-            ContentValues values = new ContentValues();
-            for (int i = 0; i < stasiuns.size(); i++) {
-                values.put(DbHelper.DbEntry.COLUMN_NAME, stasiuns.get(i).getNamaStasiun());
-                values.put(DbHelper.DbEntry.COLUMN_LATITUDE, stasiuns.get(i).getLatitude());
-                values.put(DbHelper.DbEntry.COLUMN_LONGTITUDE, stasiuns.get(i).getLongtitude());
-                db.insertOrThrow(DbHelper.DbEntry.TABLE_NAME, null, values);
-            }
+        for(int i=0;i<keretas.size();i++){
+            Log.d("namaKereta",""+keretas.get(i).getNamaKereta());
         }
-    }
-
-    public void dbRead() {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String[] projection = {
-                DbHelper.DbEntry.COLUMN_ID,
-                DbHelper.DbEntry.COLUMN_NAME,
-                DbHelper.DbEntry.COLUMN_LATITUDE,
-                DbHelper.DbEntry.COLUMN_LONGTITUDE
-        };
-        Cursor c = db.query(
-                DbHelper.DbEntry.TABLE_NAME,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
-        c.moveToFirst();
-        while (!c.isAfterLast()) {
-            int id = c.getInt(c.getColumnIndex(DbHelper.DbEntry.COLUMN_ID));
-            String name = c.getString(c.getColumnIndex(DbHelper.DbEntry.COLUMN_NAME));
-            Double latitude = c.getDouble(c.getColumnIndex(DbHelper.DbEntry.COLUMN_LATITUDE));
-            Double longtitude = c.getDouble(c.getColumnIndex(DbHelper.DbEntry.COLUMN_LONGTITUDE));
-//            Log.d("dBReadTag", id + "|" + name + "|" + latitude + "|" + longtitude);
-            c.moveToNext();
-        }
+        test.recycle();
     }
 }

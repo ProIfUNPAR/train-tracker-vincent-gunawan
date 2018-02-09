@@ -16,12 +16,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -40,31 +37,17 @@ public class MapMenu extends FragmentActivity
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener
 {
-    //vg
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private GoogleApiClient mGoogleApiClient;
     private Location loc;
-<<<<<<< HEAD
-    private TextView label;
-=======
 
-    //private TextView label;
->>>>>>> 37ae44cec8d0439c086ab7863f6b10bf565db17f
-
-    /**
-     * VG
-     * onCreate dipanggil 1x waktu activity dibuat
-     * mGoogleApiClient jangan di oprek
-     * */
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
-
-       // label = (TextView) findViewById(R.id.textView);
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -105,11 +88,7 @@ public class MapMenu extends FragmentActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
-
-        locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER, 100, 1, locationListener);
-
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
         loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         changeActivity();
@@ -176,7 +155,7 @@ public class MapMenu extends FragmentActivity
         ArrayList<Stasiun> stasiuns = Menu.getInstance().getStasiuns();
 
         Bitmap bIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon)).getBitmap();
-        bIcon = Bitmap.createScaledBitmap(bIcon, 100, 100, false);
+        bIcon = Bitmap.createScaledBitmap(bIcon, 60, 60, false);
 
         for(int i=0;i<stasiuns.size();i++){
             LatLng llStasiun = new LatLng(stasiuns.get(i).getLatitude(),stasiuns.get(i).getLongtitude());
