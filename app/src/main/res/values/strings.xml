@@ -6,12 +6,12 @@
 
     <string-array name="KA01">
         <item>Kereta Api Argo Sindoro</item>
-        <item>Sm.Tawang#-6.964446#110.427923#–#6</item>
+        <item>Sm.Tawang#-6.964446#110.427923#X#6</item>
         <item>Pekalongan#-6.889697#109.66437#7.1#7.13</item>
         <item>Tegal#-6.867314#109.14269#7.58#8.04</item>
         <item>Cirebon#-6.705297#108.555402#9#9.07</item>
         <item>Jatinegara#-6.215287#106.870162#11.43#11.45</item>
-        <item>Gambir#-6.176768#106.830637#12#–</item>
+        <item>Gambir#-6.176768#106.830637#12#X</item>
     </string-array>
     <string-array name="KA02">
         <item>Kereta Api Argo Muria</item>
@@ -20,7 +20,7 @@
         <item>Cirebon#-6.705297#108.555402#19.01#19.09</item>
         <item>Bekasi#-6.236138#106.999422#21.31#21.33</item>
         <item>Jatinegara#-6.215287#106.870162#21.49#21.51</item>
-        <item>Gambir#-6.176768#106.830637#22.08#–</item>
+        <item>Gambir#-6.176768#106.830637#22.08#X</item>
     </string-array>
     <string-array name="KA03">
         <item>Kereta Api Menoreh</item>
@@ -32,7 +32,7 @@
         <item>Cirebon Prujakan#-6.719322#108.558796#11.25#11.33</item>
         <item>JATIBARANG#-6.473083#108.306334#12.06#12.08</item>
         <item>Jatinegara#-6.215287#106.870162#14.18#14.2</item>
-        <item>Pasarsenen#-6.17471#106.844362#14.3#–</item>
+        <item>Pasarsenen#-6.17471#106.844362#14.3#X</item>
     </string-array>
     <string-array name="KA04">
         <item>Kereta Api Bangunkarta</item>
@@ -48,7 +48,7 @@
         <item>Tegal#-6.867314#109.14269#0.49#0.55</item>
         <item>Cirebon#-6.705297#108.555402#1.52#1.59</item>
         <item>Jatinegara#-6.215287#106.870162#4.33#4.35</item>
-        <item>Gambir#-6.176768#106.830637#4.51#–</item>
+        <item>Gambir#-6.176768#106.830637#4.51#X</item>
     </string-array>
     <string-array name="KA05">
         <item>Kereta Api Purwojaya</item>
@@ -58,7 +58,7 @@
         <item>Cirebon#-6.705297#108.555402#18.05#18.15</item>
         <item>Bekasi#-6.236138#106.999422#20.41#20.43</item>
         <item>Jatinegara#-6.215287#106.870162#21#21.02</item>
-        <item>Gambir#-6.176768#106.830637#21.18#–</item>
+        <item>Gambir#-6.176768#106.830637#21.18#X</item>
     </string-array>
     <string-array name="KA06">
         <item>Kereta Api Tegal Bahari</item>
@@ -70,28 +70,28 @@
         <item>Arjawinangun#-6.64463#108.414547#7.4#7.42</item>
         <item>Bekasi#-6.236138#106.999422#9.53#9.55</item>
         <item>Jatinegara#-6.215287#106.870162#10.11#10.13</item>
-        <item>Gambir#-6.176768#106.830637#10.29#–</item>
+        <item>Gambir#-6.176768#106.830637#10.29#X</item>
     </string-array>
     <string-array name="KA07">
         <item>Kereta Api Argo Bromo</item>
         <item>Cirebon#-6.705297#108.555402#12.09#12.15</item>
         <item>Pekalongan#-6.889697#109.66437#13.49#13.52</item>
         <item>Sm.Tawang#-6.964446#110.427923#14.59#15.09</item>
-        <item>Sb.Pasarturi#-7.248174#112.731132#18.3#–</item>
+        <item>Sb.Pasarturi#-7.248174#112.731132#18.3#X</item>
     </string-array>
     <string-array name="KA08">
         <item>Kereta Api Argo Sindoro</item>
         <item>Cirebon#-6.705297#108.555402#19.05#19.12</item>
         <item>Tegal#-6.867314#109.14269#20.09#20.14</item>
         <item>Pekalongan#-6.889697#109.66437#20.57#21.01</item>
-        <item>Sm.Tawang#-6.964446#110.427923#22.15#–</item>
+        <item>Sm.Tawang#-6.964446#110.427923#22.15#X</item>
     </string-array>
     <string-array name="KA09">
         <item>Kereta Api Argo Muria</item>
         <item>Cirebon#-6.705297#108.555402#9.51#9.58</item>
         <item>Tegal#-6.867314#109.14269#10.54#10.59</item>
         <item>Pekalongan#-6.889697#109.66437#11.43#11.47</item>
-        <item>Sm.Tawang#-6.964446#110.427923#13#–</item>
+        <item>Sm.Tawang#-6.964446#110.427923#13#X</item>
     </string-array>
     <string-array name="KA10">
         <item>Kereta Api Sembrani</item>
@@ -102,13 +102,13 @@
         <item>Cepu#-7.141683#111.59724#3.34#3.4</item>
         <item>Bojonegoro#-7.164248#111.886684#4.11#4.14</item>
         <item>Lamongan#-7.112458#112.420288#5.04#5.07</item>
-        <item>Sb.Pasarturi#-7.248174#112.731132#5.43#–</item>
+        <item>Sb.Pasarturi#-7.248174#112.731132#5.43#X</item>
     </string-array>
     <string-array name="KA11">
         <item>Kereta Api Argo Jati</item>
         <item>Bekasi#-6.236138#106.999422#9.32#9.34</item>
         <item>JATIBARANG#-6.473083#108.306334#11.24#11.26</item>
-        <item>Cirebon#-6.705297#108.555402#11.56#–</item>
+        <item>Cirebon#-6.705297#108.555402#11.56#X</item>
     </string-array>
     <string-array name="KA12">
         <item>Kereta Api Cirebon Ekspres</item>
@@ -116,7 +116,7 @@
         <item>Haurgeulis#-6.458454#107.940943#14.08#14.1</item>
         <item>JATIBARANG#-6.473083#108.306334#14.41#14.43</item>
         <item>Arjawinangun#-6.64463#108.414547#15.01#15.03</item>
-        <item>Cirebon#-6.705297#108.555402#15.18#–</item>
+        <item>Cirebon#-6.705297#108.555402#15.18#X</item>
     </string-array>
     <string-array name="KA13">
         <item>Kereta Api Tegal Bahari</item>
@@ -128,7 +128,7 @@
         <item>Losari#-6.846247#108.798287#13.27#13.29</item>
         <item>TANJUNG#-6.876793#108.860447#13.37#13.39</item>
         <item>Brebes#-6.874456#109.043894#13.56#13.58</item>
-        <item>Tegal#-6.867314#109.14269#14.1#–</item>
+        <item>Tegal#-6.867314#109.14269#14.1#X</item>
     </string-array>
     <string-array name="KA14">
         <item>Kereta Api Bangunkarta</item>
@@ -144,7 +144,7 @@
         <item>Kertosono#-7.592019#112.10062#2.07#2.1</item>
         <item>JOMBANG#-7.558013#112.233607#2.25#2.28</item>
         <item>Mojokerto#-7.472139#112.434932#2.5#2.54</item>
-        <item>Surabaya Gubeng#-7.265663#112.752033#3.3#–</item>
+        <item>Surabaya Gubeng#-7.265663#112.752033#3.3#X</item>
     </string-array>
     <string-array name="KA15">
         <item>Kereta Api Argo Lawu</item>
@@ -153,7 +153,7 @@
         <item>Kutoarjo#-7.726036#109.907187#2.52#2.56</item>
         <item>Yogyakarta#-7.789159#110.363491#3.48#3.53</item>
         <item>KLATEN#-7.71234#110.603024#4.17#4.19</item>
-        <item>Solo Balapan#-7.556974#110.821455#4.45#–</item>
+        <item>Solo Balapan#-7.556974#110.821455#4.45#X</item>
     </string-array>
     <string-array name="KA16">
         <item>Kereta Api Argo Dwipangga</item>
@@ -162,7 +162,7 @@
         <item>Kutoarjo#-7.726036#109.907187#14.43#14.47</item>
         <item>Yogyakarta#-7.789159#110.363491#15.39#15.44</item>
         <item>KLATEN#-7.71234#110.603024#16.08#16.1</item>
-        <item>Solo Balapan#-7.556974#110.821455#16.35#–</item>
+        <item>Solo Balapan#-7.556974#110.821455#16.35#X</item>
     </string-array>
     <string-array name="KA17">
         <item>Kereta Api Taksaka Siang</item>
@@ -170,14 +170,14 @@
         <item>Purwokerto#-7.419205#109.221934#13.37#13.5</item>
         <item>KEBUMEN#-7.681834#109.662139#15#15.04</item>
         <item>Kutoarjo#-7.726036#109.907187#15.28#15.32</item>
-        <item>Yogyakarta#-7.789159#110.363491#16.25#–</item>
+        <item>Yogyakarta#-7.789159#110.363491#16.25#X</item>
     </string-array>
     <string-array name="KA18">
         <item>Kereta Api Taksaka Malam</item>
         <item>Cirebon#-6.705297#108.555402#23.41#23.48</item>
         <item>Purwokerto#-7.419205#109.221934#1.43#1.51</item>
         <item>Kutoarjo#-7.726036#109.907187#3.2#3.24</item>
-        <item>Yogyakarta#-7.789159#110.363491#4.15#–</item>
+        <item>Yogyakarta#-7.789159#110.363491#4.15#X</item>
     </string-array>
     <string-array name="KA19">
         <item>Kereta Api Bima</item>
@@ -193,7 +193,7 @@
         <item>Surabaya Gubeng#-7.265663#112.752033#5.38#6.2</item>
         <item>Sidoarjo#-7.457406#112.713952#6.44#6.46</item>
         <item>Lawang#-7.836702#112.697635#7.47#7.51</item>
-        <item>Malang#-7.97754#112.637101#8.15#–</item>
+        <item>Malang#-7.97754#112.637101#8.15#X</item>
     </string-array>
     <string-array name="KA20">
         <item>Kereta Api Gajayana</item>
@@ -211,7 +211,7 @@
         <item>Wlingi#-8.0883#112.320067#7.46#7.49</item>
         <item>Kepanjen#-8.131958#112.57328#8.34#8.37</item>
         <item>Malangkotalama#-7.994843#112.632595#8.58#9.01</item>
-        <item>Malang#-7.97754#112.637101#9.06#–</item>
+        <item>Malang#-7.97754#112.637101#9.06#X</item>
     </string-array>
     <string-array name="KA21">
         <item>Kereta Api Purwojaya</item>
@@ -219,14 +219,14 @@
         <item>Purwokerto#-7.419205#109.221934#3.08#3.3</item>
         <item>Kroya#-7.630099#109.253565#3.58#4.15</item>
         <item>Maos#-7.618954#109.1395#4.29#4.31</item>
-        <item>Cilacap#-7.736079#109.007036#4.57#–</item>
+        <item>Cilacap#-7.736079#109.007036#4.57#X</item>
     </string-array>
     <string-array name="KA22">
         <item>Kereta Api Argo Parahyangan</item>
         <item>Bekasi#-6.236138#106.999422#5.24#5.26</item>
         <item>PURWAKARTA#-6.552773#107.446474#6.3#6.35</item>
         <item>Cimahi#-6.88573#107.536122#8.21#8.23</item>
-        <item>Bandung#-6.914629#107.602439#8.34#–</item>
+        <item>Bandung#-6.914629#107.602439#8.34#X</item>
     </string-array>
     <string-array name="KA23">
         <item>Kereta Api Argo Lawu</item>
@@ -236,7 +236,7 @@
         <item>Purwokerto#-7.419205#109.221934#11.23#11.35</item>
         <item>Cirebon#-6.705297#108.555402#13.29#13.37</item>
         <item>Jatinegara#-6.215287#106.870162#16.11#16.13</item>
-        <item>Gambir#-6.176768#106.830637#16.27#–</item>
+        <item>Gambir#-6.176768#106.830637#16.27#X</item>
     </string-array>
     <string-array name="KA24">
         <item>Kereta Api Argo Dwipangga</item>
@@ -246,7 +246,7 @@
         <item>Purwokerto#-7.419205#109.221934#23.28#23.4</item>
         <item>Cirebon#-6.705297#108.555402#1.35#1.44</item>
         <item>Jatinegara#-6.215287#106.870162#4.19#4.21</item>
-        <item>Gambir#-6.176768#106.830637#4.37#–</item>
+        <item>Gambir#-6.176768#106.830637#4.37#X</item>
     </string-array>
     <string-array name="KA25">
         <item>Kereta Api Senja Utama Solo</item>
@@ -258,7 +258,7 @@
         <item>Cirebon#-6.705297#108.555402#23.42#23.58</item>
         <item>Bekasi#-6.236138#106.999422#2.23#2.25</item>
         <item>Jatinegara#-6.215287#106.870162#2.41#2.44</item>
-        <item>Pasarsenen#-6.17471#106.844362#2.54#–</item>
+        <item>Pasarsenen#-6.17471#106.844362#2.54#X</item>
     </string-array>
     <string-array name="KA26">
         <item>Kereta Api Lodaya</item>
@@ -272,7 +272,7 @@
         <item>Tasikmalaya#-7.322344#108.223812#12.55#13</item>
         <item>CIPEUNDEUY#-7.094597#108.103213#13.46#13.56</item>
         <item>KIARACONDONG#-6.924952#107.646302#15.35#15.38</item>
-        <item>Bandung#-6.914629#107.602439#15.48#–</item>
+        <item>Bandung#-6.914629#107.602439#15.48#X</item>
     </string-array>
     <string-array name="KA27">
         <item>Kereta Api Gumarang</item>
@@ -287,7 +287,7 @@
         <item>Bojonegoro#-7.164248#111.886684#0.37#0.42</item>
         <item>Babat#-7.106177#112.168762#1.13#1.16</item>
         <item>Lamongan#-7.112458#112.420288#1.4#1.43</item>
-        <item>Sb.Pasarturi#-7.248174#112.731132#2.2#–</item>
+        <item>Sb.Pasarturi#-7.248174#112.731132#2.2#X</item>
     </string-array>
     <string-array name="KA28">
         <item>Kereta Api Mutiara Timur</item>
@@ -303,7 +303,7 @@
         <item>Probolinggo#-7.742783#113.216009#13.16#13.24</item>
         <item>Bangil#-7.598884#112.778315#14.26#14.3</item>
         <item>Sidoarjo#-7.457406#112.713952#14.51#14.54</item>
-        <item>Surabaya Gubeng#-7.265663#112.752033#15.17#–</item>
+        <item>Surabaya Gubeng#-7.265663#112.752033#15.17#X</item>
     </string-array>
     <string-array name="KA29">
         <item>Kereta Api Gajayana</item>
@@ -322,7 +322,7 @@
         <item>PURWOKERTO#-7.419205#109.221934#23.12#23.24</item>
         <item>CIREBON#-6.705297#108.555402#1.22#1.31</item>
         <item>Jatinegara#-6.215287#106.870162#4.09#4.11</item>
-        <item>Gambir#-6.176768#106.830637#4.27#–</item>
+        <item>Gambir#-6.176768#106.830637#4.27#X</item>
     </string-array>
     <string-array name="KA30">
         <item>Kereta Api Malabar</item>
@@ -346,7 +346,7 @@
         <item>Tasikmalaya#-7.322344#108.223812#4.5#5</item>
         <item>CIPEUNDEUY#-7.094597#108.103213#5.46#5.56</item>
         <item>KIARACONDONG#-6.924952#107.646302#7.34#7.38</item>
-        <item>BANDUNG#-6.914629#107.602439#7.48#–</item>
+        <item>BANDUNG#-6.914629#107.602439#7.48#X</item>
     </string-array>
     <string-array name="KA31">
         <item>Kereta Api Malioboro Ekspres</item>
@@ -361,7 +361,7 @@
         <item>MADIUN#-7.618756#111.524389#12.59#13.15</item>
         <item>SOLO BALAPAN#-7.556974#110.821455#14.34#14.42</item>
         <item>KLATEN#-7.71234#110.603024#15.08#15.1</item>
-        <item>YOGYAKARTA#-7.789159#110.363491#15.35#–</item>
+        <item>YOGYAKARTA#-7.789159#110.363491#15.35#X</item>
     </string-array>
     <string-array name="KA32">
         <item>Kereta Api Sawunggalih Pagi</item>
@@ -375,7 +375,7 @@
         <item>CIREBON#-6.705297#108.555402#11.14#11.24</item>
         <item>Bekasi#-6.236138#106.999422#13.48#13.5</item>
         <item>Jatinegara#-6.215287#106.870162#14.06#14.08</item>
-        <item>JAKARTA PS SENEN#-6.17495#106.845401#14.18#–</item>
+        <item>JAKARTA PS SENEN#-6.17495#106.845401#14.18#X</item>
     </string-array>
     <string-array name="KA33">
         <item>Kereta Api Argo Bromo Anggrek Pagi</item>
@@ -383,7 +383,7 @@
         <item>PEKALONGAN#-6.889697#109.66437#12.37#12.4</item>
         <item>CIREBON#-6.705297#108.555402#14.17#14.23</item>
         <item>Jatinegara#-6.215287#106.870162#16.45#16.47</item>
-        <item>Gambir#-6.176768#106.830637#17#–</item>
+        <item>Gambir#-6.176768#106.830637#17#X</item>
     </string-array>
     <string-array name="KA34">
         <item>Kereta Api Sembrani</item>
@@ -395,7 +395,7 @@
         <item>TEGAL#-6.867314#109.14269#0.05#0.15</item>
         <item>CIREBON#-6.705297#108.555402#1.12#1.2</item>
         <item>Jatinegara#-6.215287#106.870162#3.57#3.59</item>
-        <item>Gambir#-6.176768#106.830637#4.15#–</item>
+        <item>Gambir#-6.176768#106.830637#4.15#X</item>
     </string-array>
     <string-array name="KA35">
         <item>Kereta Api Gumarang</item>
@@ -412,7 +412,7 @@
         <item>JATIBARANG#-6.473083#108.306334#0.04#0.06</item>
         <item>Bekasi#-6.236138#106.999422#2#2.02</item>
         <item>Jatinegara#-6.215287#106.870162#2.18#2.21</item>
-        <item>PASAR SENEN#-6.174951#106.8454#2.31#–</item>
+        <item>PASAR SENEN#-6.174951#106.8454#2.31#X</item>
     </string-array>
     <string-array name="KA36">
         <item>Kereta Api Harina</item>
@@ -428,7 +428,7 @@
         <item>CIKAMPEK#-6.406374#107.458952#1.55#2.15</item>
         <item>PURWAKARTA#-6.552773#107.446474#2.34#2.36</item>
         <item>CIMAHI#-6.88573#107.536122#3.59#4.01</item>
-        <item>BANDUNG#-6.914629#107.602439#4.11#–</item>
+        <item>BANDUNG#-6.914629#107.602439#4.11#X</item>
     </string-array>
     <string-array name="KA37">
         <item>Kereta Api Bima</item>
@@ -455,7 +455,7 @@
         <item>Banjar#-7.376.280#108.542.422#15.09#15.20</item>
         <item>Tasikmalaya#-7.322.344#108.223.812#16.07#16.21</item>
         <item>Cipeundeuy#-7.094.597#108.103.213#17.07#17.19</item>
-        <item>Bandung#-6.914.629#107.602.439#19.06#–</item>
+        <item>Bandung#-6.914.629#107.602.439#19.06#X</item>
     </string-array>
     <string-array name="KA39">
         <item>Kereta Api Turangga</item>
@@ -469,7 +469,7 @@
         <item>Banjar#-7.376.280#108.542.422#01.20#01.30</item>
         <item>Tasikmalaya#-7.322.344#108.223.812#02.17#02.22</item>
         <item>Cipeundeuy#-7.094.597#108.103.213#03.08#03.20</item>
-        <item>Bandung#-6.914.629#107.602.439#05.04#–</item>
+        <item>Bandung#-6.914.629#107.602.439#05.04#X</item>
     </string-array>
     <string-array name="KA40">
         <item>Kereta Api Mutiara Selatan</item>
@@ -490,7 +490,7 @@
         <item>Tasikmalaya#-7.322.344#108.223.812#05.31#05.37</item>
         <item>Cipeundeuy#-7.094.597#108.103.213#06.23#06.33</item>
         <item>Kiaracondong#-6.924.952#107.646.302#08.21#08.23</item>
-        <item>Bandung#-6.914.629#107.602.439#08.33#–</item>
+        <item>Bandung#-6.914.629#107.602.439#08.33#X</item>
     </string-array>
     <string-array name="KA41">
         <item>Kereta Api Sancaka</item>
@@ -500,7 +500,7 @@
         <item>Madiun#-7.618.756#111.524.389#10.06#10.30</item>
         <item>Solo balapan#-7.556.974#110.821.455#11.47#11.53</item>
         <item>Klaten#-7.712.340#110.603.024#12.18#12.20</item>
-        <item>Yogyakarta#-7.789.159#110.363.491#12.45#–</item>
+        <item>Yogyakarta#-7.789.159#110.363.491#12.45#X</item>
     </string-array>
     <string-array name="KA42">
         <item>Kereta Api Mutiara Timur</item>
@@ -516,7 +516,7 @@
         <item>Temuguruh#-8.309.786#114.201.962#14.35#14.37</item>
         <item>Rogojampi#-8.304.499#114.292.583#14.49#14.51</item>
         <item>Karangasem#-8.222.873#114.340.794#15.04#15.06</item>
-        <item>Banyuwangi#-8.141.264#114.397.290#15.20#–</item>
+        <item>Banyuwangi#-8.141.264#114.397.290#15.20#X</item>
     </string-array>
     <string-array name="KA43">
         <item>Kereta Api Bangunkarta</item>
@@ -534,7 +534,7 @@
         <item>Tegal#-6.867.314#109.142.690#00.49#00.55</item>
         <item>Cirebon#-6.705.284#108.555.397#01.52#01.59</item>
         <item>Jatinegara#-6.215.287#106.870.162#04.33#04.35</item>
-        <item>Gambir#-6.176.768#106.830.637#04.51#–</item>
+        <item>Gambir#-6.176.768#106.830.637#04.51#X</item>
     </string-array>
     <string-array name="KA44">
         <item>Kereta Api Argo Wilis</item>
@@ -547,7 +547,7 @@
         <item>Solo Balapan#-7.556.974#110.821.455#16.46#16.51</item>
         <item>Madiun#-7.618.756#111.524.389#18.05#18.10</item>
         <item>Jombang#-7.558.013#112.233.607#19.21#19.24</item>
-        <item>Surabaya Gubeng#-7.265.663#112.752.033#20.19#–</item>
+        <item>Surabaya Gubeng#-7.265.663#112.752.033#20.19#X</item>
     </string-array>
     <string-array name="KA45">
         <item>Kereta Api Turangga</item>
@@ -563,7 +563,7 @@
         <item>Kertosono#-7.592.019#112.100.620#06.51#06.53</item>
         <item>Jombang#-7.558.013#112.233.607#07.07#07.10</item>
         <item>Mojokerto#-7.472.139#112.434.932#07.32#07.38</item>
-        <item>Surabaya Gubeng#-7.265.663#112.752.033#08.14#–</item>
+        <item>Surabaya Gubeng#-7.265.663#112.752.033#08.14#X</item>
     </string-array>
     <string-array name="KA46">
         <item>Kereta Api Lodaya Pagi</item>
@@ -576,7 +576,7 @@
         <item>Wates#-7.859.556#110.157.929#14.44#14.46</item>
         <item>Yogyakarta#-7.789.159#110.363.491#15.12#15.20</item>
         <item>Klaten#-7.712.340#110.603.024#15.44#15.47</item>
-        <item>Solo Balapan#-7.556.974#110.821.455#16.15#–</item>
+        <item>Solo Balapan#-7.556.974#110.821.455#16.15#X</item>
     </string-array>
     <string-array name="KA47">
         <item>Kereta Api Mutiara Selatan</item>
@@ -600,7 +600,7 @@
         <item>Sidoarjo#-7.457.406#112.713.952#07.47#07.51</item>
         <item>Bangil#-7.598.884#112.778.315#08.24#08.30</item>
         <item>Lawang#-7.836.702#112.697.635#09.10#09.14</item>
-        <item>Malang#-7.977.540#112.637.101#09.38#–</item>
+        <item>Malang#-7.977.540#112.637.101#09.38#X</item>
     </string-array>
     <string-array name="KA48">
         <item>Kereta Api Malabar</item>
@@ -624,7 +624,7 @@
         <item>Wlingi#-8.088.300#112.320.067#05.44#05.47</item>
         <item>Kepanjen#-8.131.958#112.573.280#06.32#06.35</item>
         <item>Malang Kotalama#-7.994.843#112.632.595#06.56#07.00</item>
-        <item>Malang#-7.977.540#112.637.101#07.05#–</item>
+        <item>Malang#-7.977.540#112.637.101#07.05#X</item>
     </string-array>
     <string-array name="KA49">
         <item>Kereta Api Argo Parahyangan</item>
@@ -632,7 +632,7 @@
         <item>Purwakarta#-6.552.773#107.446.474#06.35#06.37</item>
         <item>Bekasi#-6.236.138#106.999.422#07.41#07.43</item>
         <item>Jatinegara#-6.215.287#106.870.162#07.59#08.01</item>
-        <item>Gambir#-6.176.768#106.830.637#08.15#–</item>
+        <item>Gambir#-6.176.768#106.830.637#08.15#X</item>
     </string-array>
     <string-array name="KA50">
         <item>Kereta Api Harina</item>
@@ -648,7 +648,7 @@
         <item>Bojonegoro#-7.164.248#111.886.684#07.59#08.02</item>
         <item>Babat#-7.106.007#112.168.772#08.32#08.35</item>
         <item>Lamongan#-7.112.458#112.420.288#08.58#09.01</item>
-        <item>Surabaya Pasarturi#-7.248.174#112.731.132#09.37#–</item>
+        <item>Surabaya Pasarturi#-7.248.174#112.731.132#09.37#X</item>
     </string-array>
     <string-array name="KA51">
         <item>Kereta Api Ciremai Express</item>
@@ -660,15 +660,15 @@
         <item>Cirebon#-6.705.284#108.555.397#10.27#10.35</item>
         <item>Tegal#-6.867.314#109.142.690#11.32#11.38</item>
         <item>Pekalongan#-6.889.697#109.664.370#12.24#12.29</item>
-        <item>Semarang Poncol#-6.972.822#110.414.698#Langsung#Tidak berhenti</item>
-        <item>Semarang Tawang#-6.964.446#110.427.923#13.45#–</item>
+        <item>Semarang Poncol#-6.972.822#110.414.698#-#-</item>
+        <item>Semarang Tawang#-6.964.446#110.427.923#13.45#X</item>
     </string-array>
     <string-array name="KA52">
         <item>Kereta Api Argo Jati</item>
         <item>JATIBARANG#-6.473.015#108.306.306#05.55#05.57</item>
         <item>BEKASI#-6.236.138#106.999.422#07.51#07.53</item>
         <item>JATINEGARA#-6.215.287#106.870.162#08.10#08.12</item>
-        <item>GAMBIR#-6.176.768#106.830.637#08.27#–</item>
+        <item>GAMBIR#-6.176.768#106.830.637#08.27#X</item>
     </string-array>
     <string-array name="KA53">
         <item>Kereta Api Cirebon Express</item>
@@ -677,7 +677,7 @@
         <item>CIKAMPEK#-6.406.374#107.458.952#07.38#07.40</item>
         <item>BEKASI#-6.236.138#106.999.422#08.27#08.29</item>
         <item>JATINEGARA#-6.215.287#106.870.162#08.46#08.48</item>
-        <item>GAMBIR#-6.176.768#106.830.637#09.05#–</item>
+        <item>GAMBIR#-6.176.768#106.830.637#09.05#X</item>
     </string-array>
     <string-array name="KA54">
         <item>Kereta Api Ciremai Express</item>
@@ -686,7 +686,7 @@
         <item>CIKAMPEK#-6.406.374#107.458.952#22.48#23.14</item>
         <item>PURWAKARTA#-6.552.773#107.446.474#23.34#23.36</item>
         <item>CIMAHI#-6.885.730#107.536.122#00.59#01.01</item>
-        <item>BANDUNG#-6.914.629#107.602.439#01.11#–</item>
+        <item>BANDUNG#-6.914.629#107.602.439#01.11#X</item>
     </string-array>
     <string-array name="KA55">
         <item>Kereta Api Taksaka Pagi</item>
@@ -696,7 +696,7 @@
         <item>PURWOKERTO#-7.419.205#109.221.934#10.33#10.43</item>
         <item>CIREBON#-6.705.284#108.555.397#12.38#12.46</item>
         <item>JATINEGARA#-6.215.287#106.870.162#15.23#15.26</item>
-        <item>JAKARTA GAMBIR#-6.176.768#106.830.637#15.42#–</item>
+        <item>JAKARTA GAMBIR#-6.176.768#106.830.637#15.42#X</item>
     </string-array>
     <string-array name="KA56">
         <item>Kereta Api Fajar Utama Yogyakarta</item>
@@ -709,7 +709,7 @@
         <item>JATIBARANG#-6.473.015#108.306.306#12.33#12.35</item>
         <item>HAURGEULIS#-6.458.454#107.940.943#13.09#13.11</item>
         <item>JATINEGARA#-6.215.287#106.870.162#14.55#14.57</item>
-        <item>PASARSENEN#-6.174.951#106.845.400#15.06#–</item>
+        <item>PASARSENEN#-6.174.951#106.845.400#15.06#X</item>
     </string-array>
     <string-array name="KA57">
         <item>Kereta Api Senja Utama Yogyakarta</item>
@@ -720,7 +720,7 @@
         <item>CIREBON#-6.705.284#108.555.397#22.50#23.05</item>
         <item>BEKASI#-6.236.138#106.999.422#01.34#01.36</item>
         <item>JATINEGARA#-6.215.287#106.870.162#01.52#01.55</item>
-        <item>PASARSENEN#-6.174.951#106.845.400#02.05#–</item>
+        <item>PASARSENEN#-6.174.951#106.845.400#02.05#X</item>
     </string-array>
     <string-array name="KA58">
         <item>Kereta Api Sancaka</item>
@@ -730,7 +730,7 @@
         <item>NGANJUK#-7.600.199#111.902.736#09.50#09.57</item>
         <item>JOMBANG#-7.558.013#112.233.607#10.31#10.35</item>
         <item>MOJOKERTO#-7.472.139#112.434.932#10.57#11.01</item>
-        <item>SURABAYA GUBENG#-7.265.663#112.752.033#11.37#–</item>
+        <item>SURABAYA GUBENG#-7.265.663#112.752.033#11.37#X</item>
     </string-array>
     <string-array name="KA59">
         <item>Kereta Api Malioboro Express</item>
@@ -745,7 +745,7 @@
         <item>WLINGI#-8.088.300#112.320.067#02.29#02.32</item>
         <item>KEPANJEN#-8.131.958#112.573.280#03.18#03.21</item>
         <item>MALANG KOTALAMA#-7.994.843#112.632.595#03.42#03.44</item>
-        <item>MALANG#-7.977.540#112.637.101#03.49#–</item>
+        <item>MALANG#-7.977.540#112.637.101#03.49#X</item>
     </string-array>
     <string-array name="KA60">
         <item>Kereta Api Fajar Utama Yogyakarta</item>
@@ -759,7 +759,7 @@
         <item>SRUWENG#-7.655.203#109.603.044#12.50#12.58</item>
         <item>KUTOARJO#-7.726.036#109.907.187#13.30#13.35</item>
         <item>WATES#-7.859.556#110.157.929#14.05#14.08</item>
-        <item>YOGYAKARTA#-7.789.159#110.363.491#14.35#–</item>
+        <item>YOGYAKARTA#-7.789.159#110.363.491#14.35#X</item>
     </string-array>
     <string-array name="KA61">
         <item>Kereta Api Senja Utama Yogyakarta</item>
@@ -768,7 +768,7 @@
         <item>PURWOKERTO#-7.419.205#109.221.934#23.52#00.05</item>
         <item>KEBUMEN#-7.681.834#109.662.139#01.37#01.50</item>
         <item>WATES#-7.859.556#110.157.929#02.43#02.46</item>
-        <item>YOGYAKARTA#-7.789.159#110.363.491#03.13#–</item>
+        <item>YOGYAKARTA#-7.789.159#110.363.491#03.13#X</item>
     </string-array>
     <string-array name="KA62">
         <item>Kereta Api Senja Utama Solo</item>
@@ -778,7 +778,7 @@
         <item>KUTOARJO#-7.726.036#109.907.187#04.50#05.00</item>
         <item>YOGYAKARTA#-7.789.159#110.363.491#05.53#06.00</item>
         <item>KLATEN#-7.712.340#110.603.024#06.25#06.28</item>
-        <item>SOLO BALAPAN#-7.556.974#110.821.455#06.55#–</item>
+        <item>SOLO BALAPAN#-7.556.974#110.821.455#06.55#X</item>
     </string-array>
     <string-array name="KA63">
         <item>Kereta Api Sawunggalih Pagi</item>
@@ -790,7 +790,7 @@
         <item>GOMBONG#-7.610.910#109.507.773#14.27#14.29</item>
         <item>KARANGANYAR#-7.633.166#109.573.491#14.38#14.40</item>
         <item>KEBUMEN#-7.681.834#109.662.139#14.52#14.54</item>
-        <item>KUTOARJO#-7.726.036#109.907.187#15.19#–</item>
+        <item>KUTOARJO#-7.726.036#109.907.187#15.19#X</item>
     </string-array>
     <string-array name="KA64">
         <item>Kereta Api Majapahit</item>
@@ -799,7 +799,7 @@
         <item>TEGAL#-6.867.314#109.142.690#05.58#06.07</item>
         <item>CIREBON PRUJAKAN#-6.719.322#108.558.796#07.03#07.12</item>
         <item>JATINEGARA#-6.215.287#106.870.162#09.56#09.58</item>
-        <item>JAKARTA PASARSENEN#-6.174.951#106.845.400#10.08#–</item>
+        <item>JAKARTA PASARSENEN#-6.174.951#106.845.400#10.08#X</item>
     </string-array>
     <string-array name="KA65">
         <item>Kereta Api Matarmaja</item>
@@ -811,7 +811,7 @@
         <item>JATIBARANG#-6.473.015#108.306.306#06.46#06.48</item>
         <item>PEGADEN BARU#-6.453.745#107.817.098#07.33#07.35</item>
         <item>JATINEGARA#-6.215.287#106.870.162#09.08#09.10</item>
-        <item>PASARSENEN#-6.174.951#106.845.400#09.20#–</item>
+        <item>PASARSENEN#-6.174.951#106.845.400#09.20#X</item>
     </string-array>
     <string-array name="KA66">
         <item>Kereta Api Brantas</item>
@@ -822,7 +822,7 @@
         <item>CIREBON PRUJAKAN#-6.719.322#108.558.796#00.39#00.50</item>
         <item>BEKASI#-6.236.138#106.999.422#03.24#03.26</item>
         <item>JATINEGARA#-6.215.287#106.870.162#03.42#03.44</item>
-        <item>PASARSENEN#-6.174.951#106.845.400#03.54#–</item>
+        <item>PASARSENEN#-6.174.951#106.845.400#03.54#X</item>
     </string-array>
     <string-array name="KA67">
         <item>Kereta Api Matarmaja</item>
@@ -837,7 +837,7 @@
         <item>KESAMBEN#-8.149.202#112.363.486#06.36#06.39</item>
         <item>SUMBER PUCUNG#-8.158.289#112.478.416#07.00#07.03</item>
         <item>KEPANJEN#-8.131.958#112.573.280#07.18#07.23</item>
-        <item>MALANG#-7.977.540#112.637.101#07.51#–</item>
+        <item>MALANG#-7.977.540#112.637.101#07.51#X</item>
     </string-array>
     <string-array name="KA68">
         <item>Kereta Api Majapahit</item>
@@ -852,7 +852,7 @@
         <item>WLINGI#-8.088.300#112.320.067#08.32#08.35</item>
         <item>KEPANJEN#-8.131.958#112.573.280#09.33#09.36</item>
         <item>MALANG KOTALAMA#-7.994.843#112.632.595#09.57#10.00</item>
-        <item>MALANG#-7.977.540#112.637.101#10.05#–</item>
+        <item>MALANG#-7.977.540#112.637.101#10.05#X</item>
     </string-array>
     <string-array name="KA69">
         <item>Kereta Api Brantas</item>
@@ -866,7 +866,7 @@
         <item>KERTOSONO#-7.592.019#112.100.620#05.59#06.02</item>
         <item>KEDIRI#-7.817.222#112.015.548#06.38#06.43</item>
         <item>TULUNGAGUNG#-8.062.889#111.904.489#07.09#07.20</item>
-        <item>BLITAR#-8.101.335#112.162.800#07.50#–</item>
+        <item>BLITAR#-8.101.335#112.162.800#07.50#X</item>
     </string-array>
     <array name="jadwal">
         <item>@array/KA01</item>

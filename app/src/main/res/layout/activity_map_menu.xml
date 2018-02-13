@@ -5,18 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.trainscheduler.MapMenu"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="25dp">
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="47dp"
-        android:layout_marginTop="4dp"
 
+        android:layout_marginBottom="111dp"
         android:apiKey="@string/google_android_map_api_key"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/homeButton"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerStasiun"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,8 +26,7 @@
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="173dp"
         app:layout_constraintBottom_toTopOf="@+id/homeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,9 +36,54 @@
         android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="Home"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/map" />
+
+    <Spinner
+        android:id="@+id/spinnerKereta"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginStart="33dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="109dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Kereta Api"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerKereta"
+        app:layout_constraintStart_toStartOf="@+id/spinnerKereta" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="194dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Tempat Pemberhentian"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerStasiun"
+        app:layout_constraintStart_toStartOf="@+id/spinnerStasiun" />
+
+    <Spinner
+        android:id="@+id/spinnerStasiun"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginBottom="44dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginStart="33dp"
+        app:layout_constraintBottom_toTopOf="@+id/homeButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView" />
 

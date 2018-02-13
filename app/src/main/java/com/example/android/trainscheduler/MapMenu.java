@@ -15,7 +15,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -44,11 +47,32 @@ public class MapMenu extends FragmentActivity
     private GoogleApiClient mGoogleApiClient;
     private Location loc;
 
+    private Button hButton;
+    private Spinner spinnerKereta, spinnerStasiun;
+    private static MapMenu instance;
+
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
+        this.instance = this;
+        hButton = findViewById(R.id.homeButton);
+
+        ArrayList<Kereta> tempKereta = Menu.getInstance().getKereta();
+        this.namaKereta = new ArrayList<>();
+        for(Kereta k : tempKereta){
+            namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(0).getStasiun().getNamaStasiun()+")");
+        }
+        this.namaJadwal = new ArrayList<>();
+        this.setAllSpinner();
+
+        hButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MapMenu.this, Menu.class));
+            }
+        });
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -60,27 +84,21 @@ public class MapMenu extends FragmentActivity
         if (mGoogleApiClient != null) {
             mGoogleApiClient.connect();
         }
-
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
         locationListener = new LocationListener() {
-
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
 
             }
-
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
 
             }
-
             @Override
             //waktu GPS on
             public void onProviderEnabled(String s) {
             }
-
             @Override
             //waktu GPS off
             public void onProviderDisabled(String s) {
@@ -88,11 +106,8 @@ public class MapMenu extends FragmentActivity
         };
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
         loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-        changeActivity();
     }
     @SuppressLint("MissingPermission")
     @Override
@@ -108,16 +123,6 @@ public class MapMenu extends FragmentActivity
                     }
                 }
         }
-    }
-
-    private void changeActivity() {
-        Button hButton = findViewById(R.id.homeButton);
-        hButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MapMenu.this, Menu.class));
-            }
-        });
     }
 
     @SuppressLint("MissingPermission")
@@ -206,5 +211,43 @@ public class MapMenu extends FragmentActivity
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    public static MapMenu getInstance(){
+        return instance;
+    }
+
+    private ArrayList<String> namaKereta;
+    private ArrayList<String> namaJadwal;
+
+    public void setAllSpinner(){
+        spinnerKereta = findViewById(R.id.spinnerKereta);
+        ArrayAdapter<String> adapterKereta = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, namaKereta);
+        spinnerKereta.setAdapter(adapterKereta);
+
+        spinnerKereta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MapMenu.getInstance().namaJadwal.clear();
+                Kereta selectedKereta = Menu.getInstance().getKereta().get(i);
+                ArrayList<Jadwal> jadwals = selectedKereta.getJadwals();
+                for(Jadwal j : jadwals){
+                    Stasiun s = j.getStasiun();
+                    String namaStasiun = s.getNamaStasiun();
+                    String jamDatang = j.getJamDatang();
+                    String jamPergi = j.getJamPergi();
+                    MapMenu.getInstance().namaJadwal.add(namaStasiun+" (datang:"+jamDatang+", pergi:"+jamPergi+")");
+                    MapMenu.getInstance().spinnerStasiun.setAdapter(new ArrayAdapter<String>(
+                            MapMenu.getInstance(),R.layout.support_simple_spinner_dropdown_item,namaJadwal
+                    ));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        spinnerStasiun = findViewById(R.id.spinnerStasiun);
     }
 }

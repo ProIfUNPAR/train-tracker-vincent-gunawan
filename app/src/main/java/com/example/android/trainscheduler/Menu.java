@@ -28,11 +28,8 @@ public class Menu extends AppCompatActivity {
 
 //    public DistanceCalculation dc;
 
-//    private ArrayList<Stasiun> stasiuns;
-//    private ArrayList<Jadwal> jadwals;
-
     private ArrayList<Kereta> keretas;
-    private HashMap<String,Stasiun> stasiuns;
+    private HashMap<String, Stasiun> stasiuns;
 
     private Context ctx;
 
@@ -55,7 +52,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
                 location.getLatitude();
-                tvSpeed.setText("Current Speed: " + (location.getSpeed()*3.6));
+                tvSpeed.setText("Current Speed: " + (location.getSpeed() * 3.6));
             }
 
             @Override
@@ -128,36 +125,91 @@ public class Menu extends AppCompatActivity {
         result.addAll(stasiuns.values());
         return result;
     }
-    public void getAll(){
+
+    public ArrayList<Kereta> getKereta() {
+        return this.keretas;
+    }
+
+    private void getAll() {
         TypedArray test = getResources().obtainTypedArray(R.array.jadwal);
         String[][] array = new String[test.length()][];
-        for(int i=0;i<test.length();i++){
-            int id= test.getResourceId(i,0);
+        for (int i = 0; i < test.length(); i++) {
+            int id = test.getResourceId(i, 0);
             array[i] = getResources().getStringArray(id);
             ArrayList<Jadwal> jadwals = new ArrayList<>();
-            for(int j=1;j<array[i].length;j++){
+            for (int j = 1; j < array[i].length; j++) {
                 String[] splits = array[i][j].split("#");
                 String namaStasiun = splits[0];
-                Log.d("namaStasiun",array[i][0]);
-                if(splits[1].length() == 10) {
+                namaStasiun = namaStasiun.toLowerCase();
+                Log.d("namaStasiun", array[i][0]);
+                if (splits[1].length() == 10) {
                     StringBuilder sb = new StringBuilder(splits[1]);
-                    sb = sb.deleteCharAt(splits[1].length()-4);
+                    sb = sb.deleteCharAt(splits[1].length() - 4);
                     splits[1] = sb.toString();
 
                     sb = new StringBuilder(splits[2]);
-                    sb = sb.deleteCharAt(splits[2].length()-4);
+                    sb = sb.deleteCharAt(splits[2].length() - 4);
                     splits[2] = sb.toString();
                 }
                 double latitude = Double.parseDouble(splits[1]);
                 double longtitude = Double.parseDouble(splits[2]);
                 String jamDatang = splits[3];
                 String jamPergi = splits[4];
-                if(!stasiuns.containsKey(namaStasiun)){
-                    stasiuns.put(namaStasiun,new Stasiun(namaStasiun,latitude,longtitude));
+                Log.d("jamjam", "" + jamDatang + (jamDatang.equalsIgnoreCase("NULL")) + " " + jamPergi);
+                if (!jamDatang.equalsIgnoreCase("X")) {
+                    if (jamDatang.length() > 2) {
+                        String[] jdSplit = jamDatang.split("\\.");
+                        if (jdSplit[0].length() == 1) {
+                            jdSplit[0] = "0" + jdSplit[0];
+                        }
+                        if (jdSplit[1].length() == 1) {
+                            jdSplit[1] = jdSplit[1] + "0";
+                        }
+                        jamDatang = jdSplit[0] + ":" + jdSplit[1];
+                    } else {
+                        if (jamDatang.length() == 1) {
+                            if (jamDatang.equalsIgnoreCase("-")) {
+                                jamDatang = jamDatang;
+                            } else {
+                                jamDatang = "0" + jamDatang + ":00";
+                            }
+                        } else {
+                            jamDatang = jamDatang + ":00";
+                        }
+                    }
+                } else {
+                    jamDatang = "X";
                 }
-                jadwals.add(new Jadwal(stasiuns.get(namaStasiun),jamDatang,jamPergi));
+                if (!jamPergi.equalsIgnoreCase("X")) {
+                    if (jamPergi.length() > 2) {
+                        String[] jpSplit = jamPergi.split("\\.");
+                        if (jpSplit[0].length() == 1) {
+                            jpSplit[0] = "0" + jpSplit[0];
+                        }
+                        if (jpSplit[1].length() == 1) {
+                            jpSplit[1] = jpSplit[1] + "0";
+                        }
+                        jamPergi = jpSplit[0] + ":" + jpSplit[1];
+                    } else {
+                        if (jamPergi.length() == 1) {
+                            if (jamPergi.equalsIgnoreCase("-")) {
+                                jamPergi = jamPergi;
+                            } else {
+                                jamPergi = "0" + jamPergi + ":00";
+                            }
+                        } else {
+                            jamPergi += ":00";
+                        }
+                    }
+                } else {
+                    jamPergi = "X";
+                }
+                if (!stasiuns.containsKey(namaStasiun)) {
+                    stasiuns.put(namaStasiun, new Stasiun(namaStasiun, latitude, longtitude));
+                }
+                jadwals.add(new Jadwal(stasiuns.get(namaStasiun), jamDatang, jamPergi));
             }
-            keretas.add(new Kereta(array[i][0],jadwals));
+            keretas.add(new Kereta(array[i][0], jadwals));
         }
 //        for(int i=0;i<keretas.size();i++){
 //            Log.d("namaKereta",""+keretas.get(i).getNamaKereta());
