@@ -12,9 +12,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
 
+        android:layout_marginBottom="151dp"
         android:apiKey="@string/google_android_map_api_key"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/map"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -83,8 +84,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:layout_marginStart="23dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="20dp"
         android:text="Kecepatan "
         app:layout_constraintBottom_toTopOf="@+id/tv_kecepatan"
         app:layout_constraintStart_toStartOf="@+id/tv_kecepatan" />
@@ -93,11 +94,11 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginEnd="73dp"
         android:text="Jarak"
         app:layout_constraintBottom_toTopOf="@+id/tv_jarak"
-        app:layout_constraintEnd_toEndOf="@+id/tv_jarak" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
 
     <TextView
         android:id="@+id/tv_kecepatan"
@@ -112,37 +113,38 @@
 
     <TextView
         android:id="@+id/tv_jarak"
-        android:layout_width="0dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="33dp"
+        android:layout_marginEnd="8dp"
         android:text="- km"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_waktu"
-        app:layout_constraintTop_toTopOf="@+id/tv_waktu" />
+        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintStart_toEndOf="@+id/tv_waktu" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="13dp"
+        android:layout_width="77dp"
+        android:layout_height="23dp"
+        android:layout_marginBottom="78dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginStart="8dp"
         android:text="Waktu"
-        app:layout_constraintBottom_toTopOf="@+id/tv_waktu"
-        app:layout_constraintEnd_toEndOf="@+id/tv_waktu" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
     <TextView
         android:id="@+id/tv_waktu"
-        android:layout_width="0dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="61dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginStart="37dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="32dp"
         android:text="-"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tv_jarak"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

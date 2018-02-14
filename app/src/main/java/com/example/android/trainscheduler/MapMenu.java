@@ -1,7 +1,6 @@
 package com.example.android.trainscheduler;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -18,7 +17,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -63,14 +61,9 @@ public class MapMenu extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
         this.instance = this;
-<<<<<<< HEAD
         tvJarak = findViewById(R.id.tv_jarak);
-        tvKecepatan = findViewById(R.id.tv_kecepatan);
-=======
-        hButton = findViewById(R.id.homeButton);
         this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvSpeed = findViewById(R.id.tv_kecepatan);
->>>>>>> 6d501cb6850d67599b3b7d50ce492db515f75ad0
         langNext = 0;
         langCurr = 0;
         latNext = 0;
