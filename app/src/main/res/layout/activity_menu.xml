@@ -7,44 +7,13 @@
     tools:context="com.example.android.trainscheduler.Menu"
     tools:layout_editor_absoluteY="25dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="34dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="3dp"
-        android:text="Menu"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/speed_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/speed_text"
-        android:layout_width="352dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="277dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/speed"
-        android:textAlignment="viewStart"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/mapButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/mapButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:layout_marginEnd="17dp"
-        android:text="MAP"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/speed_text" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id = "@+id/bgImg"
+        android:src="@drawable/vertical"></ImageView>
+
 
 </android.support.constraint.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -17,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -32,16 +34,14 @@ public class Menu extends AppCompatActivity {
     private HashMap<String, Stasiun> stasiuns;
 
     private Context ctx;
-
-    private TextView tvSpeed;
-
+    private Thread t;
+    private int TIME_OUT = 2500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         this.keretas = new ArrayList<>();
         this.stasiuns = new HashMap<>();
-        this.tvSpeed = this.findViewById(R.id.speed_text);
         this.instance = this;
 
 //        dc= new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
@@ -51,8 +51,7 @@ public class Menu extends AppCompatActivity {
         LocationListener ll = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                location.getLatitude();
-                tvSpeed.setText("Current Speed: " + (location.getSpeed() * 3.6));
+
             }
 
             @Override
@@ -80,8 +79,14 @@ public class Menu extends AppCompatActivity {
             }
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
-
-        changeActivity();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(Menu.this, MapMenu.class);
+                startActivity(i);
+                finish();
+            }
+        }, TIME_OUT);
         this.getAll();
 
 
@@ -90,14 +95,9 @@ public class Menu extends AppCompatActivity {
 //        }
     }
 
-    private void changeActivity() {
-        Button mapButton = (Button) findViewById(R.id.mapButton);
-        mapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Menu.this, MapMenu.class));
-            }
-        });
+    private void changeActivity(){
+                        startActivity(new Intent(Menu.this, MapMenu.class));
+
     }
 
     @SuppressLint("MissingPermission")
