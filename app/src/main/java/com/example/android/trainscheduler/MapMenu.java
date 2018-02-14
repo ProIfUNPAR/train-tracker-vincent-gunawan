@@ -55,7 +55,7 @@ public class MapMenu extends FragmentActivity
     private static MapMenu instance;
     private int idxKereta = -1;
 
-    private TextView tvJarak,tvKecepatan;
+    private TextView tvJarak,tvKecepatan,tvSpeed;
     private double langNext,langCurr,latNext,latCurr,jarak;
 
     @SuppressLint("MissingPermission")
