@@ -48,14 +48,13 @@ public class MapMenu extends FragmentActivity
     private LocationListener locationListener;
     private GoogleApiClient mGoogleApiClient;
     private Location loc;
-    private TextView tvSpeed;
 
     private Button hButton;
     private Spinner spinnerKereta, spinnerStasiun;
     private static MapMenu instance;
     private int idxKereta = -1;
 
-    private TextView tvJarak,tvKecepatan,tvSpeed;
+    private TextView tvJarak,tvSpeed;
     private double langNext,langCurr,latNext,latCurr,jarak;
 
     @SuppressLint("MissingPermission")
@@ -65,14 +64,13 @@ public class MapMenu extends FragmentActivity
         setContentView(R.layout.activity_map_menu);
         this.instance = this;
         hButton = findViewById(R.id.homeButton);
-        tvJarak = findViewById(R.id.tv_jarak);
-        tvKecepatan = findViewById(R.id.tv_kecepatan);
+        this.tvJarak = findViewById(R.id.tv_jarak);
+        this.tvSpeed = findViewById(R.id.tv_kecepatan);
         langNext = 0;
         langCurr = 0;
         latNext = 0;
         latCurr = 0;
 
-        this.tvSpeed = findViewById(R.id.tv_kecepatan);
         ArrayList<Kereta> tempKereta = Menu.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
         for(Kereta k : tempKereta){
@@ -103,8 +101,6 @@ public class MapMenu extends FragmentActivity
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
-                tvKecepatan.setText(Menu.getInstance().speed + "km/jam");
-
                 latCurr = loc.getLatitude();
                 langCurr = loc.getLongitude();
                 jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
