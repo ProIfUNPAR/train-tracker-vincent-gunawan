@@ -50,7 +50,6 @@ public class MapMenu extends FragmentActivity
     private Location loc;
     private TextView tvSpeed;
 
-    private Button hButton;
     private Spinner spinnerKereta, spinnerStasiun;
     private static MapMenu instance;
     private int idxKereta = -1;
@@ -64,7 +63,6 @@ public class MapMenu extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
         this.instance = this;
-        hButton = findViewById(R.id.homeButton);
         tvJarak = findViewById(R.id.tv_jarak);
         tvKecepatan = findViewById(R.id.tv_kecepatan);
         langNext = 0;
@@ -80,13 +78,6 @@ public class MapMenu extends FragmentActivity
         }
         this.namaJadwal = new ArrayList<>();
         this.setAllSpinner();
-
-        hButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MapMenu.this, Menu.class));
-            }
-        });
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
