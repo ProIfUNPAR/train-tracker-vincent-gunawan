@@ -107,6 +107,11 @@ public class MapMenu extends FragmentActivity
                 langCurr = loc.getLatitude();
                 jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
+<<<<<<< HEAD
+=======
+                location.getLatitude();
+                tvSpeed.setText(String.format("%.2f", (location.getSpeed()*3.6)));
+>>>>>>> 622ec68c2c62b9acc55c34c0abd0d608c07045dd
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
