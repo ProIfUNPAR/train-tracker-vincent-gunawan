@@ -34,7 +34,7 @@ public class Menu extends AppCompatActivity {
     public double speed = -1;
 
     private Thread t;
-    private int TIME_OUT = 2000;
+    private int TIME_OUT = 2500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,10 +96,10 @@ public class Menu extends AppCompatActivity {
 //        }
     }
 
-    private void changeActivity(){
-                        startActivity(new Intent(Menu.this, MapMenu.class));
-
-    }
+//    private void changeActivity(){
+//                        startActivity(new Intent(Menu.this, MapMenu.class));
+//
+//    }
 
     @SuppressLint("MissingPermission")
     @Override
@@ -132,10 +132,10 @@ public class Menu extends AppCompatActivity {
     }
 
     private void getAll() {
-        TypedArray test = getResources().obtainTypedArray(R.array.jadwal);
-        String[][] array = new String[test.length()][];
-        for (int i = 0; i < test.length(); i++) {
-            int id = test.getResourceId(i, 0);
+        TypedArray typedArray = getResources().obtainTypedArray(R.array.jadwal);
+        String[][] array = new String[typedArray.length()][];
+        for (int i = 0; i < typedArray.length(); i++) {
+            int id = typedArray.getResourceId(i, 0);
             array[i] = getResources().getStringArray(id);
             ArrayList<Jadwal> jadwals = new ArrayList<>();
             for (int j = 1; j < array[i].length; j++) {
@@ -215,6 +215,6 @@ public class Menu extends AppCompatActivity {
 //        for(int i=0;i<keretas.size();i++){
 //            Log.d("namaKereta",""+keretas.get(i).getNamaKereta());
 //        }
-        test.recycle();
+        typedArray.recycle();
     }
 }

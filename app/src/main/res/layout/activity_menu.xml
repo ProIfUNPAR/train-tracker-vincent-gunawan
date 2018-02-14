@@ -10,10 +10,13 @@
 
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:gravity="center_vertical"
+        android:scaleType="fitXY"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
         android:id = "@+id/bgImg"
-        android:src="@drawable/vertical"></ImageView>
+        android:src="@drawable/loading_screen"></ImageView>
 
 
 </android.support.constraint.ConstraintLayout>

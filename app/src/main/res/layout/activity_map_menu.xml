@@ -7,144 +7,127 @@
     tools:context="com.example.android.trainscheduler.MapMenu"
     tools:layout_editor_absoluteY="25dp">
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        android:layout_marginBottom="151dp"
-        android:apiKey="@string/google_android_map_api_key"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <fragment
-        android:id="@+id/map"
-        class="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="9dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinnerKereta"
-        android:layout_width="0dp"
-        android:layout_height="21dp"
-        android:layout_marginBottom="38dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="38dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="109dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="222dp"
-        android:text="Kereta Api"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/spinnerKereta" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="170dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="72dp"
-        android:layout_marginTop="73dp"
-        android:text="Tempat Pemberhentian"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_waktu"
-        app:layout_constraintStart_toStartOf="@+id/spinnerKereta"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
-
-    <Spinner
-        android:id="@+id/spinnerStasiun"
-        android:layout_width="0dp"
-        android:layout_height="21dp"
-        android:layout_marginBottom="54dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="54dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_jarak"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerKereta" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginStart="20dp"
-        android:text="Kecepatan "
-        app:layout_constraintBottom_toTopOf="@+id/tv_kecepatan"
-        app:layout_constraintStart_toStartOf="@+id/tv_kecepatan" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="73dp"
-        android:text="Jarak"
-        app:layout_constraintBottom_toTopOf="@+id/tv_jarak"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/tv_kecepatan"
-        android:layout_width="116dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="- km/jam"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_jarak"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="- km"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.813"
-        app:layout_constraintStart_toEndOf="@+id/tv_waktu" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="77dp"
-        android:layout_height="23dp"
-        android:layout_marginBottom="78dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginStart="8dp"
-        android:text="Waktu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView" />
-
-    <TextView
-        android:id="@+id/tv_waktu"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:layout_marginStart="32dp"
-        android:text="-"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:apiKey="@string/google_android_map_api_key"
+            android:layout_alignParentTop="true"
+            android:visibility="visible" />
+        <fragment
+            android:id="@+id/map"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:layout_alignParentTop="true" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="109dp"
+            android:layout_height="18dp"
+            android:text="Kereta Api"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="327dp"
+            android:layout_below="@id/map"
+            android:layout_marginTop="20px"
+            android:layout_marginLeft="40px" />
+        <Spinner
+            android:id="@+id/spinnerKereta"
+            android:layout_width="318dp"
+            android:layout_height="21dp"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="352dp"
+            android:layout_below="@id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15px"
+            android:layout_marginBottom="20px"/>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="170dp"
+            android:layout_height="24dp"
+            android:text="Tempat Pemberhentian"
+            android:textSize="13sp"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="387dp"
+            android:layout_below="@id/spinnerKereta"
+            android:layout_marginLeft="40px"/>
+        <Spinner
+            android:id="@+id/spinnerStasiun"
+            android:layout_width="318dp"
+            android:layout_height="21dp"
+            tools:layout_editor_absoluteX="33dp"
+            tools:layout_editor_absoluteY="431dp"
+            android:layout_below="@id/textView4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15px"
+            android:layout_marginBottom="20px"/>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:text="Kecepatan"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="154dp"
+            tools:layout_editor_absoluteY="510dp"
+            android:layout_above="@id/tv_kecepatan"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10px"/>
+        <TextView
+            android:id="@+id/tv_kecepatan"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:text="- km/jam"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="134dp"
+            tools:layout_editor_absoluteY="533dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40px"
+            />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="106dp"
+            android:layout_height="22dp"
+            android:text="Jarak"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="270dp"
+            tools:layout_editor_absoluteY="461dp"
+            android:layout_toRightOf="@id/tv_kecepatan"
+            android:layout_above="@id/tv_jarak"/>
+        <TextView
+            android:id="@+id/tv_jarak"
+            android:layout_width="106dp"
+            android:layout_height="22dp"
+            android:text="- km"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="246dp"
+            tools:layout_editor_absoluteY="483dp"
+            android:layout_toRightOf="@id/tv_kecepatan"
+            android:layout_above="@id/textView2"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="106dp"
+            android:layout_height="22dp"
+            android:text="Waktu"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="461dp"
+            android:layout_above="@id/tv_waktu"
+            android:layout_toLeftOf="@id/textView2"/>
+        <TextView
+            android:id="@+id/tv_waktu"
+            android:layout_width="106dp"
+            android:layout_height="22dp"
+            android:text="- : - : -"
+            android:textAlignment="center"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="483dp"
+            android:layout_toLeftOf="@id/textView2"
+            android:layout_above="@id/textView2"/>
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

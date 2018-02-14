@@ -98,7 +98,7 @@ public class MapMenu extends FragmentActivity
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
                 location.getLatitude();
-                tvSpeed.setText(String.format("%.2f", (location.getSpeed()*3.6)));
+                tvSpeed.setText(String.format("%.2f km/jam", (location.getSpeed()*3.6)));
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
@@ -274,6 +274,7 @@ public class MapMenu extends FragmentActivity
                     bIcon = Bitmap.createScaledBitmap(bIcon, 60, 60, false);
 
                     ArrayList listOfStasiun = new ArrayList();
+                    mMap.clear();
                     for(Jadwal j : selectedKereta.getJadwals()){
                         listOfStasiun.add(j.getStasiun());
                         LatLng llStasiun = new LatLng(j.getStasiun().getLatitude(),j.getStasiun().getLongtitude());
