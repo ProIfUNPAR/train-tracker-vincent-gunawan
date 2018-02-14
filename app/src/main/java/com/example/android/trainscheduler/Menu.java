@@ -34,7 +34,7 @@ public class Menu extends AppCompatActivity {
     public double speed = -1;
 
     private Thread t;
-    private int TIME_OUT = 2500;
+    private int TIME_OUT = 2000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
