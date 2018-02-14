@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -46,6 +47,7 @@ public class MapMenu extends FragmentActivity
     private LocationListener locationListener;
     private GoogleApiClient mGoogleApiClient;
     private Location loc;
+    private TextView tvSpeed;
 
     private Button hButton;
     private Spinner spinnerKereta, spinnerStasiun;
@@ -59,7 +61,7 @@ public class MapMenu extends FragmentActivity
         setContentView(R.layout.activity_map_menu);
         this.instance = this;
         hButton = findViewById(R.id.homeButton);
-
+        this.tvSpeed = findViewById(R.id.tv_kecepatan);
         ArrayList<Kereta> tempKereta = Menu.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
         for(Kereta k : tempKereta){
@@ -86,11 +88,12 @@ public class MapMenu extends FragmentActivity
             mGoogleApiClient.connect();
         }
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        locationListener = new LocationListener() {
+        locationListener  = new LocationListener() {
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
-
+                loc.getLatitude();
+                tvSpeed.setText(String.format("%.2f", (loc.getSpeed()*3.6)));
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
