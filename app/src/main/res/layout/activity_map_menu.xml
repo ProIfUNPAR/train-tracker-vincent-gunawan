@@ -76,7 +76,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="@+id/textView3"
+        android:layout_marginRight="29dp"
+        android:layout_marginLeft="33dp" />
 
     <Spinner
         android:id="@+id/spinnerStasiun"

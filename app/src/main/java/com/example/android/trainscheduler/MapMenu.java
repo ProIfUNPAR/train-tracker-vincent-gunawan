@@ -28,11 +28,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -104,9 +102,11 @@ public class MapMenu extends FragmentActivity
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
                 tvKecepatan.setText(Menu.getInstance().speed + "km/jam");
+
+                latCurr = loc.getLatitude();
+                langCurr = loc.getLatitude();
+                jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
-                loc.getLatitude();
-                tvSpeed.setText(String.format("%.2f", (loc.getSpeed()*3.6)));
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
@@ -176,14 +176,14 @@ public class MapMenu extends FragmentActivity
         }
         ArrayList<Stasiun> stasiuns = Menu.getInstance().getStasiuns();
 
-        Bitmap bIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon)).getBitmap();
-        bIcon = Bitmap.createScaledBitmap(bIcon, 60, 60, false);
-
-        for(int i=0;i<stasiuns.size();i++){
-            LatLng llStasiun = new LatLng(stasiuns.get(i).getLatitude(),stasiuns.get(i).getLongtitude());
-            String nama = stasiuns.get(i).getNamaStasiun();
-            mMap.addMarker(new MarkerOptions().position(llStasiun).title(nama).icon(BitmapDescriptorFactory.fromBitmap(bIcon)));
-        }
+//        Bitmap bIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon)).getBitmap();
+//        bIcon = Bitmap.createScaledBitmap(bIcon, 60, 60, false);
+//
+//        for(int i=0;i<stasiuns.size();i++){
+//            LatLng llStasiun = new LatLng(stasiuns.get(i).getLatitude(),stasiuns.get(i).getLongtitude());
+//            String nama = stasiuns.get(i).getNamaStasiun();
+//            mMap.addMarker(new MarkerOptions().position(llStasiun).title(nama).icon(BitmapDescriptorFactory.fromBitmap(bIcon)));
+//        }
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -276,6 +276,20 @@ public class MapMenu extends FragmentActivity
                     langCurr = loc.getLongitude();
                     jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
                     tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
+
+                    Bitmap bIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon)).getBitmap();
+                    bIcon = Bitmap.createScaledBitmap(bIcon, 60, 60, false);
+
+                    ArrayList listOfStasiun = new ArrayList();
+                    for(Jadwal j : selectedKereta.getJadwals()){
+                        listOfStasiun.add(j.getStasiun());
+                    }
+
+//                    for(int j=0;j<listOfStasiun.size();j++){
+//                        LatLng llStasiun = new LatLng(listOfStasiun.get(j),listOfStasiun.get(i).getLongtitude());
+//                        String nama = stasiuns.get(i).getNamaStasiun();
+//                        mMap.addMarker(new MarkerOptions().position(llStasiun).title(nama).icon(BitmapDescriptorFactory.fromBitmap(bIcon)));
+//                    }
                 }
             }
             @Override
