@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -101,10 +102,11 @@ public class MapMenu extends FragmentActivity
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
-                latCurr = loc.getLatitude();
-                langCurr = loc.getLongitude();
+                latCurr = location.getLatitude();
+                langCurr = location.getLongitude();
                 jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
+
                 location.getLatitude();
                 tvSpeed.setText(String.format("%.2f", (location.getSpeed()*3.6)));
             }
@@ -267,6 +269,7 @@ public class MapMenu extends FragmentActivity
         spinnerStasiun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("onItemSelected","dipanggil terus");
                 if(loc != null) {
                     Kereta selectedKereta = Menu.getInstance().getKereta().get(MapMenu.getInstance().idxKereta);
                     Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
@@ -294,4 +297,6 @@ public class MapMenu extends FragmentActivity
             }
         });
     }
+    @Override
+    public void onBackPressed() { }
 }
