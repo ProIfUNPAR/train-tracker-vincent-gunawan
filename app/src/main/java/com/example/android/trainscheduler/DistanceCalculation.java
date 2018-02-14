@@ -20,7 +20,7 @@ public class DistanceCalculation {
         this.dlong = Math.toRadians(long2-long1);
     }
 
-    public double count(){
+    public double getJarak(){
         this.a = Math.sin(this.dlat/2)*Math.sin(this.dlat/2) + (Math.cos(this.lat1)*Math.cos(this.lat2))*(Math.sin(this.dlong/2)*Math.sin(this.dlong/2));
         this.c = 2 * (Math.atan2(Math.sqrt(this.a),Math.sqrt(1-this.a)));
         this.d = this.R * this.c;

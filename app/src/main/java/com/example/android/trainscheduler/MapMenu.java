@@ -50,6 +50,7 @@ public class MapMenu extends FragmentActivity
     private Button hButton;
     private Spinner spinnerKereta, spinnerStasiun;
     private static MapMenu instance;
+    private int idxKereta = -1;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -156,7 +157,6 @@ public class MapMenu extends FragmentActivity
                     .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-            mMap.addMarker(new MarkerOptions().position(ll).title("Current Location"));
         }
         ArrayList<Stasiun> stasiuns = Menu.getInstance().getStasiuns();
 
@@ -199,7 +199,6 @@ public class MapMenu extends FragmentActivity
                     .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-            mMap.addMarker(new MarkerOptions().position(ll).title("Current Location"));
         }
     }
 
@@ -229,6 +228,7 @@ public class MapMenu extends FragmentActivity
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 MapMenu.getInstance().namaJadwal.clear();
+                MapMenu.getInstance().idxKereta = i;
                 Kereta selectedKereta = Menu.getInstance().getKereta().get(i);
                 ArrayList<Jadwal> jadwals = selectedKereta.getJadwals();
                 for(Jadwal j : jadwals){
@@ -242,12 +242,27 @@ public class MapMenu extends FragmentActivity
                     ));
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
         spinnerStasiun = findViewById(R.id.spinnerStasiun);
+        spinnerStasiun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Kereta selectedKereta = Menu.getInstance().getKereta().get(MapMenu.getInstance().idxKereta);
+                Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
+                double latNext = selectedJadwal.getStasiun().getLatitude();
+                double langNext = selectedJadwal.getStasiun().getLongtitude();
+                double latCurr = loc.getLatitude();
+                double langCurr = loc.getLongitude();
+                double jarak =  (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }
