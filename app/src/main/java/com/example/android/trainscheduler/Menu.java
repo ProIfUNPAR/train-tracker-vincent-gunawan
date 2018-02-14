@@ -15,9 +15,6 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,15 +30,11 @@ public class Menu extends AppCompatActivity {
     private HashMap<String, Stasiun> stasiuns;
 
     private Context ctx;
-<<<<<<< HEAD
-
     private TextView tvSpeed;
     public double speed = -1;
 
-=======
     private Thread t;
     private int TIME_OUT = 2500;
->>>>>>> d5f145998cf8d013c2b47427a48e7afae37d9f8d
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,13 +50,9 @@ public class Menu extends AppCompatActivity {
         LocationListener ll = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-<<<<<<< HEAD
                 location.getLatitude();
                 Menu.getInstance().speed = location.getSpeed() * 3.6;
 //                tvSpeed.setText("Current Speed: " + (location.getSpeed() * 3.6));
-=======
-
->>>>>>> d5f145998cf8d013c2b47427a48e7afae37d9f8d
             }
 
             @Override
