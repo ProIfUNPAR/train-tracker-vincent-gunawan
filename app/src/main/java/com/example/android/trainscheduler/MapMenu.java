@@ -105,8 +105,8 @@ public class MapMenu extends FragmentActivity
             public void onLocationChanged(Location location) {
                 tvKecepatan.setText(Menu.getInstance().speed + "km/jam");
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
-                loc.getLatitude();
-                tvSpeed.setText(String.format("%.2f", (loc.getSpeed()*3.6)));
+                location.getLatitude();
+                tvSpeed.setText(String.format("%.2f", (location.getSpeed()*3.6)));
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
