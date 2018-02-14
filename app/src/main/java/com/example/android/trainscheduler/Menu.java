@@ -15,7 +15,6 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -141,7 +140,7 @@ public class Menu extends AppCompatActivity {
                 String[] splits = array[i][j].split("#");
                 String namaStasiun = splits[0];
                 namaStasiun = namaStasiun.toLowerCase();
-                Log.d("namaStasiun", array[i][0]);
+//                Log.d("namaStasiun", array[i][0]);
                 if (splits[1].length() == 10) {
                     StringBuilder sb = new StringBuilder(splits[1]);
                     sb = sb.deleteCharAt(splits[1].length() - 4);
@@ -155,7 +154,7 @@ public class Menu extends AppCompatActivity {
                 double longtitude = Double.parseDouble(splits[2]);
                 String jamDatang = splits[3];
                 String jamPergi = splits[4];
-                Log.d("jamjam", "" + jamDatang + (jamDatang.equalsIgnoreCase("NULL")) + " " + jamPergi);
+//                Log.d("jamjam", "" + jamDatang + (jamDatang.equalsIgnoreCase("NULL")) + " " + jamPergi);
                 if (!jamDatang.equalsIgnoreCase("X")) {
                     if (jamDatang.length() > 2) {
                         String[] jdSplit = jamDatang.split("\\.");
