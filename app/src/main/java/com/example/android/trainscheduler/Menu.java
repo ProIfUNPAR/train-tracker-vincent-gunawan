@@ -33,6 +33,7 @@ public class Menu extends AppCompatActivity {
     private Context ctx;
 
     private TextView tvSpeed;
+    public double speed = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,8 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
                 location.getLatitude();
-                tvSpeed.setText("Current Speed: " + (location.getSpeed() * 3.6));
+                Menu.getInstance().speed = location.getSpeed() * 3.6;
+//                tvSpeed.setText("Current Speed: " + (location.getSpeed() * 3.6));
             }
 
             @Override

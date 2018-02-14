@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -33,6 +34,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MapMenu extends FragmentActivity
@@ -52,6 +54,9 @@ public class MapMenu extends FragmentActivity
     private static MapMenu instance;
     private int idxKereta = -1;
 
+    private TextView tvJarak,tvKecepatan;
+    private double langNext,langCurr,latNext,latCurr,jarak;
+
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,12 @@ public class MapMenu extends FragmentActivity
         setContentView(R.layout.activity_map_menu);
         this.instance = this;
         hButton = findViewById(R.id.homeButton);
+        tvJarak = findViewById(R.id.tv_jarak);
+        tvKecepatan = findViewById(R.id.tv_kecepatan);
+        langNext = 0;
+        langCurr = 0;
+        latNext = 0;
+        latCurr = 0;
 
         ArrayList<Kereta> tempKereta = Menu.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
@@ -90,7 +101,8 @@ public class MapMenu extends FragmentActivity
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
-
+                tvKecepatan.setText(Menu.getInstance().speed + "km/jam");
+                tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
@@ -251,13 +263,16 @@ public class MapMenu extends FragmentActivity
         spinnerStasiun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Kereta selectedKereta = Menu.getInstance().getKereta().get(MapMenu.getInstance().idxKereta);
-                Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
-                double latNext = selectedJadwal.getStasiun().getLatitude();
-                double langNext = selectedJadwal.getStasiun().getLongtitude();
-                double latCurr = loc.getLatitude();
-                double langCurr = loc.getLongitude();
-                double jarak =  (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
+                if(loc != null) {
+                    Kereta selectedKereta = Menu.getInstance().getKereta().get(MapMenu.getInstance().idxKereta);
+                    Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
+                    latNext = selectedJadwal.getStasiun().getLatitude();
+                    langNext = selectedJadwal.getStasiun().getLongtitude();
+                    latCurr = loc.getLatitude();
+                    langCurr = loc.getLongitude();
+                    jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
+                    tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
