@@ -47,12 +47,11 @@ public class MapMenu extends FragmentActivity
     private LocationListener locationListener;
     private GoogleApiClient mGoogleApiClient;
     private Location loc;
-
     private Spinner spinnerKereta, spinnerStasiun;
     private static MapMenu instance;
     private int idxKereta = -1;
-
     private TextView tvJarak,tvSpeed,tvWaktu;
+    private boolean isChange = false;
     private double langNext,langCurr,latNext,latCurr,jarak;
 
     @SuppressLint("MissingPermission")
@@ -105,8 +104,30 @@ public class MapMenu extends FragmentActivity
                 int temp = (int) (jarak/speed);
                 int jam = (int) Math.floor((jarak/speed)/60);
                 int menit = temp % 60;
+                int pos = spinnerStasiun.getSelectedItemPosition();
 
                 tvWaktu.setText(jam + ":" + menit);
+
+                int count = 0;
+                if (latCurr>latNext-0.000012 && latCurr<latNext+0.000012 || langCurr>langNext-0.000012 && langCurr>langNext+0.000012){
+                    switch (count) {
+                        case 0:
+                            if (pos >= spinnerStasiun.getCount()){
+                                break;
+                            }
+                            else {
+                                pos += 1;
+                                spinnerStasiun.setSelection(pos);
+                                count++;
+                            }
+                            break;
+                        case 1:
+                            break;
+                    }
+                }
+                else {
+                    count--;
+                }
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
