@@ -3,6 +3,7 @@ package com.example.android.trainscheduler;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.location.LocationListener;
@@ -32,6 +33,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -53,6 +55,9 @@ public class MapMenu extends FragmentActivity
     private TextView tvJarak,tvSpeed,tvWaktu;
     private boolean isChange = false;
     private double langNext,langCurr,latNext,latCurr,jarak;
+
+    private ArrayList<String> namaKereta;
+    private ArrayList<String> namaJadwal;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -92,6 +97,8 @@ public class MapMenu extends FragmentActivity
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
+                loc = location;
+
                 latCurr = location.getLatitude();
                 langCurr = location.getLongitude();
                 jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
@@ -136,16 +143,32 @@ public class MapMenu extends FragmentActivity
             @Override
             //waktu GPS on
             public void onProviderEnabled(String s) {
+                mMap.setMyLocationEnabled(true);
+//                loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                Log.d("loclocloc",""+(loc==null));
+                if (loc != null) {
+                    LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(ll)      // Sets the center of the map to location user
+                            .zoom(17)                   // Sets the zoom
+                            .bearing(0)                // Sets the orientation of the camera to east
+                            .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                            .build();                   // Creates a CameraPosition from the builder
+                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                }
             }
             @Override
             //waktu GPS off
             public void onProviderDisabled(String s) {
             }
         };
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
-        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
     }
     @SuppressLint("MissingPermission")
     @Override
@@ -167,22 +190,25 @@ public class MapMenu extends FragmentActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
+                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                Log.d("loclocloc",""+(loc==null));
                 LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(ll)      // Sets the center of the map to location user
                         .zoom(17)                   // Sets the zoom
-                        .bearing(90)                // Sets the orientation of the camera to east
+                        .bearing(0)                // Sets the orientation of the camera to east
                         .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                         .build();                   // Creates a CameraPosition from the builder
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 return true;
             }
-        });;
+        });
         mMap.setMyLocationEnabled(true);
-        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (loc != null) {
             //label.setText("");
             // label.append("\n " + loc.getLatitude() + " " + loc.getLongitude());
@@ -195,17 +221,6 @@ public class MapMenu extends FragmentActivity
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
-        ArrayList<Stasiun> stasiuns = Menu.getInstance().getStasiuns();
-
-//        Bitmap bIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon)).getBitmap();
-//        bIcon = Bitmap.createScaledBitmap(bIcon, 60, 60, false);
-//
-//        for(int i=0;i<stasiuns.size();i++){
-//            LatLng llStasiun = new LatLng(stasiuns.get(i).getLatitude(),stasiuns.get(i).getLongtitude());
-//            String nama = stasiuns.get(i).getNamaStasiun();
-//            mMap.addMarker(new MarkerOptions().position(llStasiun).title(nama).icon(BitmapDescriptorFactory.fromBitmap(bIcon)));
-//        }
-
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -226,13 +241,13 @@ public class MapMenu extends FragmentActivity
     @SuppressLint("MissingPermission")
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        loc = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         if (loc != null && mMap != null) {
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(ll)      // Sets the center of the map to location user
                     .zoom(17)                   // Sets the zoom
-                    .bearing(90)                // Sets the orientation of the camera to east
+                    .bearing(0)                // Sets the orientation of the camera to east
                     .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
@@ -252,9 +267,6 @@ public class MapMenu extends FragmentActivity
     public static MapMenu getInstance(){
         return instance;
     }
-
-    private ArrayList<String> namaKereta;
-    private ArrayList<String> namaJadwal;
 
     public void setAllSpinner(){
         spinnerKereta = findViewById(R.id.spinnerKereta);
@@ -299,16 +311,40 @@ public class MapMenu extends FragmentActivity
                     jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
                     tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
-                    Bitmap bIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon)).getBitmap();
-                    bIcon = Bitmap.createScaledBitmap(bIcon, 60, 60, false);
+                    Bitmap blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
+                    blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);
 
-                    ArrayList listOfStasiun = new ArrayList();
+                    Bitmap redIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
+                    redIcon = Bitmap.createScaledBitmap(redIcon, 120, 120, false);
+
+                    Bitmap greenIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
+                    greenIcon = Bitmap.createScaledBitmap(greenIcon, 120, 120, false);
+
+                    ArrayList<Stasiun> listOfStasiun = new ArrayList();
                     mMap.clear();
-                    for(Jadwal j : selectedKereta.getJadwals()){
-                        listOfStasiun.add(j.getStasiun());
-                        LatLng llStasiun = new LatLng(j.getStasiun().getLatitude(),j.getStasiun().getLongtitude());
-                        mMap.addMarker(new MarkerOptions().position(llStasiun).title(j.getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(bIcon)));
+                    ArrayList<Jadwal>  tempJadwals = selectedKereta.getJadwals();
+                    for(int j=0;j<tempJadwals.size();j++){
+                        listOfStasiun.add(tempJadwals.get(j).getStasiun());
+                        LatLng llStasiun = new LatLng(tempJadwals.get(j).getStasiun().getLatitude(),tempJadwals.get(j).getStasiun().getLongtitude());
+//                        mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(greenIcon)));
+                        if(j==0) {
+                            mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(greenIcon)));
+                        }else if(j==tempJadwals.size()-1){
+                            mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(redIcon)));
+                        }else{
+                            mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(blackIcon)));
+                        }
                     }
+
+                    for(int j = 0;j<listOfStasiun.size()-1;j++){
+                        LatLng currLatLng = new LatLng(listOfStasiun.get(j).getLatitude(),listOfStasiun.get(j).getLongtitude());
+                        LatLng nextLatLng = new LatLng(listOfStasiun.get(j+1).getLatitude(),listOfStasiun.get(j+1).getLongtitude());
+                        mMap.addPolyline(new PolylineOptions()
+                                .add(currLatLng, nextLatLng)
+                                .width(5)
+                                .color(Color.RED));
+                    }
+
                 }
             }
             @Override
