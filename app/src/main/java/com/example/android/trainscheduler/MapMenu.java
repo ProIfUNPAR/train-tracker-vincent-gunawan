@@ -54,7 +54,7 @@ public class MapMenu extends FragmentActivity
     private static MapMenu instance;
     private int idxKereta = -1;
 
-    private TextView tvJarak,tvSpeed;
+    private TextView tvJarak,tvSpeed,tvWaktu;
     private double langNext,langCurr,latNext,latCurr,jarak;
 
     private ArrayList<String> namaKereta;
@@ -69,6 +69,7 @@ public class MapMenu extends FragmentActivity
         tvJarak = findViewById(R.id.tv_jarak);
         this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvSpeed = findViewById(R.id.tv_kecepatan);
+        this.tvWaktu = findViewById(R.id.tv_waktu);
         langNext = 0;
         langCurr = 0;
         latNext = 0;
@@ -105,7 +106,14 @@ public class MapMenu extends FragmentActivity
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
                 location.getLatitude();
-                tvSpeed.setText(String.format("%.2f km/jam", (location.getSpeed()*3.6)));
+                float speed = location.getSpeed();
+                tvSpeed.setText(String.format("%.2f km/jam", (speed*3.6)));
+
+                int temp = (int) (jarak/speed);
+                int jam = (int) Math.floor((jarak/speed)/60);
+                int menit = temp % 60;
+
+                tvWaktu.setText(jam + ":" + menit);
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
