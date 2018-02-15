@@ -102,8 +102,10 @@ public class MapMenu extends FragmentActivity
                 float speed = location.getSpeed();
                 tvSpeed.setText(String.format("%.2f km/jam", (speed*3.6)));
 
-                int jam = (int) (jarak/speed);
-                int menit = (int) (jarak/speed) /60;
+                int temp = (int) (jarak/speed);
+                int jam = (int) Math.floor((jarak/speed)/60);
+                int menit = temp % 60;
+
                 tvWaktu.setText(jam + ":" + menit);
             }
             @Override
