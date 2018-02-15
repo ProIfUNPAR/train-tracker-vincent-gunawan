@@ -79,7 +79,8 @@ public class Menu extends AppCompatActivity {
                 return;
             }
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
+//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, ll);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -89,17 +90,7 @@ public class Menu extends AppCompatActivity {
             }
         }, TIME_OUT);
         this.getAll();
-
-
-//        for(int i=0;i<keretas.size();i++){
-//            Log.d("keretasTesting",""+keretas.get(i).getNamaKereta());
-//        }
     }
-
-//    private void changeActivity(){
-//                        startActivity(new Intent(Menu.this, MapMenu.class));
-//
-//    }
 
     @SuppressLint("MissingPermission")
     @Override
