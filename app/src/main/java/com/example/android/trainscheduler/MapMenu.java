@@ -1,6 +1,8 @@
 package com.example.android.trainscheduler;
 
 import android.annotation.SuppressLint;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -14,6 +16,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +26,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.gcm.OneoffTask;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -55,7 +59,7 @@ public class MapMenu extends FragmentActivity
     private TextView tvJarak,tvSpeed,tvWaktu;
     private boolean isChange = false;
     private double langNext,langCurr,latNext,latCurr,jarak;
-
+    private int stationPos;
     private ArrayList<String> namaKereta;
     private ArrayList<String> namaJadwal;
 
@@ -73,7 +77,6 @@ public class MapMenu extends FragmentActivity
         langCurr = 0;
         latNext = 0;
         latCurr = 0;
-
         ArrayList<Kereta> tempKereta = Menu.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
         for(Kereta k : tempKereta){
@@ -111,30 +114,21 @@ public class MapMenu extends FragmentActivity
                 int temp = (int) (jarak/speed);
                 int jam = (int) Math.floor((jarak/speed)/60);
                 int menit = temp % 60;
-                int pos = spinnerStasiun.getSelectedItemPosition();
+                stationPos = spinnerStasiun.getSelectedItemPosition();
 
                 tvWaktu.setText(jam + ":" + menit);
 
-                int count = 0;
-                if (latCurr>latNext-0.000012 && latCurr<latNext+0.000012 || langCurr>langNext-0.000012 && langCurr>langNext+0.000012){
-                    switch (count) {
-                        case 0:
-                            if (pos >= spinnerStasiun.getCount()){
-                                break;
-                            }
-                            else {
-                                pos += 1;
-                                spinnerStasiun.setSelection(pos);
-                                count++;
-                            }
-                            break;
-                        case 1:
-                            break;
+                if (jarak<=0.1){
+                    stationPos++;
+                    if (stationPos < spinnerStasiun.getCount()){
+                        makeNotif(spinnerStasiun.getSelectedItem().toString());
+                        spinnerStasiun.setSelection(stationPos);
+                    }
+                    else {
+                        makeNotif("terakhir kereta ini!");
                     }
                 }
-                else {
-                    count--;
-                }
+
             }
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
@@ -355,4 +349,17 @@ public class MapMenu extends FragmentActivity
     }
     @Override
     public void onBackPressed() { }
+    public void makeNotif(String station){
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.train_icon_black)
+                        .setContentTitle("Perhatian")
+                        .setTimeoutAfter(3000)
+                        .setVibrate(new long[] {1000,1000})
+                        .setContentText("Anda Telah tiba di stasiun " + station);
+        int mNotificationId = 1;
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNotifyMgr.notify(mNotificationId,mBuilder.build());
+    }
 }
