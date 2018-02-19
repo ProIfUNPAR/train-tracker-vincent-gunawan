@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.gcm.OneoffTask;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -41,6 +42,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import static com.google.android.gms.location.LocationRequest.PRIORITY_NO_POWER;
 
 public class MapMenu extends FragmentActivity
         implements
@@ -66,6 +69,12 @@ public class MapMenu extends FragmentActivity
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LocationRequest req=new LocationRequest();
+        req.setPriority(PRIORITY_NO_POWER);
+//        req.setInterval(5*60*1000);
+//        req.setFastestInterval(60*1000);
+//        req.setMaxWaitTime(60*60*1000);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
         this.instance = this;
@@ -160,7 +169,7 @@ public class MapMenu extends FragmentActivity
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, locationListener);
 //        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
     }
