@@ -2,7 +2,6 @@ package com.example.android.trainscheduler;
 
 import android.annotation.SuppressLint;
 import android.app.NotificationManager;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -17,7 +16,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,7 +24,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.gcm.OneoffTask;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -51,6 +48,8 @@ public class MapMenu extends FragmentActivity
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener
 {
+    public static double KECEPATAN_DEFAULT = 60.0;
+
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -78,14 +77,15 @@ public class MapMenu extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
         this.instance = this;
-        tvJarak = findViewById(R.id.tv_jarak);
+        this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvSpeed = findViewById(R.id.tv_kecepatan);
         this.tvWaktu = findViewById(R.id.tv_waktu);
-        langNext = 0;
-        langCurr = 0;
-        latNext = 0;
-        latCurr = 0;
+        this.langNext = 0;
+        this.langCurr = 0;
+        this.latNext = 0;
+        this.latCurr = 0;
+
         ArrayList<Kereta> tempKereta = Menu.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
         for(Kereta k : tempKereta){
@@ -111,22 +111,26 @@ public class MapMenu extends FragmentActivity
             public void onLocationChanged(Location location) {
                 loc = location;
 
-                latCurr = location.getLatitude();
-                langCurr = location.getLongitude();
+                latCurr = loc.getLatitude();
+                langCurr = loc.getLongitude();
                 jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
-                location.getLatitude();
-                float speed = location.getSpeed();
+                loc.getLatitude();
+                float speed = loc.getSpeed();
                 tvSpeed.setText(String.format("%.2f km/jam", (speed*3.6)));
 
                 int temp = (int) (jarak/speed);
-                int jam = (int) Math.floor((jarak/speed)/60);
-                int menit = temp % 60;
+                int jam = 0;
+                if(speed <= 0){
+                    jam = (int)Math.floor((jarak/KECEPATAN_DEFAULT)/60);
+                }else{
+                    jam = (int) Math.floor((jarak/speed)/60);
+                }
+                int menit = (temp % 1) * 60;
+                tvWaktu.setText(formatWaktu(jam,menit));
+
                 stationPos = spinnerStasiun.getSelectedItemPosition();
-
-                tvWaktu.setText(jam + ":" + menit);
-
                 if (jarak<=0.1){
                     stationPos++;
                     if (stationPos < spinnerStasiun.getCount()){
@@ -149,7 +153,7 @@ public class MapMenu extends FragmentActivity
                 mMap.setMyLocationEnabled(true);
 //                loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                Log.d("loclocloc",""+(loc==null));
+//                Log.d("loclocloc",""+(loc==null));
                 if (loc != null) {
                     LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                     CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -199,7 +203,7 @@ public class MapMenu extends FragmentActivity
             @Override
             public boolean onMyLocationButtonClick() {
                 loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                Log.d("loclocloc",""+(loc==null));
+//                Log.d("loclocloc",""+(loc==null));
                 LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(ll)      // Sets the center of the map to location user
@@ -303,7 +307,7 @@ public class MapMenu extends FragmentActivity
         spinnerStasiun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("onItemSelected","dipanggil terus");
+//                Log.d("onItemSelected","dipanggil terus");
                 if(loc != null) {
                     Kereta selectedKereta = Menu.getInstance().getKereta().get(MapMenu.getInstance().idxKereta);
                     Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
@@ -314,22 +318,24 @@ public class MapMenu extends FragmentActivity
                     jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
                     tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
+                    double temp =jarak/KECEPATAN_DEFAULT;
+                    int jam = (int)Math.floor(temp);
+                    int menit = (int)((temp % 1) * 60);
+//                    Log.d("waktuwaktu",temp+" "+jam+" "+menit+" "+jarak+" "+KECEPATAN_DEFAULT);
+                    tvWaktu.setText(formatWaktu(jam,menit));
+
+                    mMap.clear();
                     Bitmap blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
                     blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);
-
                     Bitmap redIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
                     redIcon = Bitmap.createScaledBitmap(redIcon, 120, 120, false);
-
                     Bitmap greenIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
                     greenIcon = Bitmap.createScaledBitmap(greenIcon, 120, 120, false);
-
                     ArrayList<Stasiun> listOfStasiun = new ArrayList();
-                    mMap.clear();
                     ArrayList<Jadwal>  tempJadwals = selectedKereta.getJadwals();
                     for(int j=0;j<tempJadwals.size();j++){
                         listOfStasiun.add(tempJadwals.get(j).getStasiun());
                         LatLng llStasiun = new LatLng(tempJadwals.get(j).getStasiun().getLatitude(),tempJadwals.get(j).getStasiun().getLongtitude());
-//                        mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(greenIcon)));
                         if(j==0) {
                             mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(greenIcon)));
                         }else if(j==tempJadwals.size()-1){
@@ -338,7 +344,6 @@ public class MapMenu extends FragmentActivity
                             mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(blackIcon)));
                         }
                     }
-
                     for(int j = 0;j<listOfStasiun.size()-1;j++){
                         LatLng currLatLng = new LatLng(listOfStasiun.get(j).getLatitude(),listOfStasiun.get(j).getLongtitude());
                         LatLng nextLatLng = new LatLng(listOfStasiun.get(j+1).getLatitude(),listOfStasiun.get(j+1).getLongtitude());
@@ -347,7 +352,6 @@ public class MapMenu extends FragmentActivity
                                 .width(5)
                                 .color(Color.RED));
                     }
-
                 }
             }
             @Override
@@ -358,6 +362,7 @@ public class MapMenu extends FragmentActivity
     }
     @Override
     public void onBackPressed() { }
+
     public void makeNotif(String station){
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
@@ -370,5 +375,10 @@ public class MapMenu extends FragmentActivity
         NotificationManager mNotifyMgr =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotifyMgr.notify(mNotificationId,mBuilder.build());
+    }
+    public String formatWaktu(int jam, int menit){
+        String sJam = (jam < 10)? "0"+jam : jam+"";
+        String sMenit = (menit < 10)? "0"+menit : (""+menit).substring(0,2);
+        return sJam+":"+sMenit+":00";
     }
 }
