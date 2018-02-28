@@ -17,7 +17,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,11 +40,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import static com.google.android.gms.location.LocationRequest.PRIORITY_NO_POWER;
-import static java.util.Collections.sort;
 
 public class MenuActivity extends FragmentActivity
         implements
@@ -170,7 +166,7 @@ public class MenuActivity extends FragmentActivity
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 1, locationListener);
 //        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
     }
@@ -305,7 +301,7 @@ public class MenuActivity extends FragmentActivity
         spinnerStasiun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                Log.d("onItemSelected","dipanggil terus");
+//                Log.d("onItemSelected","dipanggil teru/s");
                 if(loc != null) {
                     Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(MenuActivity.getInstance().idxKereta);
                     Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
@@ -319,34 +315,7 @@ public class MenuActivity extends FragmentActivity
                     int[] waktu = hitungWaktu(jarak,KECEPATAN_DEFAULT);
                     tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
 
-                    mMap.clear();
-                    Bitmap blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
-                    blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);
-                    Bitmap redIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
-                    redIcon = Bitmap.createScaledBitmap(redIcon, 120, 120, false);
-                    Bitmap greenIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
-                    greenIcon = Bitmap.createScaledBitmap(greenIcon, 120, 120, false);
-                    ArrayList<Stasiun> listOfStasiun = new ArrayList();
-                    ArrayList<Jadwal>  tempJadwals = selectedKereta.getJadwals();
-                    for(int j=0;j<tempJadwals.size();j++){
-                        listOfStasiun.add(tempJadwals.get(j).getStasiun());
-                        LatLng llStasiun = new LatLng(tempJadwals.get(j).getStasiun().getLatitude(),tempJadwals.get(j).getStasiun().getLongtitude());
-                        if(j==0) {
-                            mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(greenIcon)));
-                        }else if(j==tempJadwals.size()-1){
-                            mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(redIcon)));
-                        }else{
-                            mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(blackIcon)));
-                        }
-                    }
-                    for(int j = 0;j<listOfStasiun.size()-1;j++){
-                        LatLng currLatLng = new LatLng(listOfStasiun.get(j).getLatitude(),listOfStasiun.get(j).getLongtitude());
-                        LatLng nextLatLng = new LatLng(listOfStasiun.get(j+1).getLatitude(),listOfStasiun.get(j+1).getLongtitude());
-                        mMap.addPolyline(new PolylineOptions()
-                                .add(currLatLng, nextLatLng)
-                                .width(5)
-                                .color(Color.RED));
-                    }
+                    setAllMarkerAndLine(selectedKereta);
                 }
             }
             @Override
@@ -393,5 +362,35 @@ public class MenuActivity extends FragmentActivity
         array[1] = menit;
         array[2] = detik;
         return array;
+    }
+    private void setAllMarkerAndLine(Kereta selectedKereta){
+        mMap.clear();
+        Bitmap blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
+        blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);
+        Bitmap redIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
+        redIcon = Bitmap.createScaledBitmap(redIcon, 120, 120, false);
+        Bitmap greenIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
+        greenIcon = Bitmap.createScaledBitmap(greenIcon, 120, 120, false);
+        ArrayList<Stasiun> listOfStasiun = new ArrayList();
+        ArrayList<Jadwal>  tempJadwals = selectedKereta.getJadwals();
+        for(int j=0;j<tempJadwals.size();j++){
+            listOfStasiun.add(tempJadwals.get(j).getStasiun());
+            LatLng llStasiun = new LatLng(tempJadwals.get(j).getStasiun().getLatitude(),tempJadwals.get(j).getStasiun().getLongtitude());
+            if(j==0) {
+                mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(greenIcon)));
+            }else if(j==tempJadwals.size()-1){
+                mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(redIcon)));
+            }else{
+                mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(blackIcon)));
+            }
+        }
+        for(int j = 0;j<listOfStasiun.size()-1;j++){
+            LatLng currLatLng = new LatLng(listOfStasiun.get(j).getLatitude(),listOfStasiun.get(j).getLongtitude());
+            LatLng nextLatLng = new LatLng(listOfStasiun.get(j+1).getLatitude(),listOfStasiun.get(j+1).getLongtitude());
+            mMap.addPolyline(new PolylineOptions()
+                    .add(currLatLng, nextLatLng)
+                    .width(5)
+                    .color(Color.RED));
+        }
     }
 }
