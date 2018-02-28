@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
@@ -40,8 +41,11 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static com.google.android.gms.location.LocationRequest.PRIORITY_NO_POWER;
+import static java.util.Collections.sort;
 
 public class MenuActivity extends FragmentActivity
         implements
@@ -60,7 +64,6 @@ public class MenuActivity extends FragmentActivity
     private static MenuActivity instance;
     private int idxKereta = -1;
     private TextView tvJarak,tvSpeed,tvWaktu;
-    private boolean isChange = false;
     private double langNext,langCurr,latNext,latCurr,jarak;
     private int stationPos;
     private float speed;
@@ -217,7 +220,7 @@ public class MenuActivity extends FragmentActivity
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(ll)      // Sets the center of the map to location user
                     .zoom(17)                   // Sets the zoom
-                    .bearing(90)                // Sets the orientation of the camera to east
+                    .bearing(0)                // Sets the orientation of the camera to east
                     .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
@@ -229,7 +232,7 @@ public class MenuActivity extends FragmentActivity
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(posisi)      // Sets the center of the map to location user
                         .zoom(17)                   // Sets the zoom
-                        .bearing(90)                // Sets the orientation of the camera to east
+                        .bearing(0)                // Sets the orientation of the camera to east
                         .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                         .build();                   // Creates a CameraPosition from the builder
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
@@ -275,6 +278,7 @@ public class MenuActivity extends FragmentActivity
         spinnerKereta.setAdapter(adapterKereta);
 
         spinnerKereta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 MenuActivity.getInstance().namaJadwal.clear();

@@ -18,6 +18,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class LoadingActivity extends AppCompatActivity {
@@ -199,8 +202,15 @@ public class LoadingActivity extends AppCompatActivity {
                     stasiuns.put(namaStasiun, new Stasiun(namaStasiun, latitude, longtitude));
                 }
                 jadwals.add(new Jadwal(stasiuns.get(namaStasiun), jamDatang, jamPergi));
+
             }
             keretas.add(new Kereta(array[i][0], jadwals));
+            Collections.sort(keretas, new Comparator<Kereta>() {
+                @Override
+                public int compare(Kereta kereta1, Kereta kereta2) {
+                    return kereta1.getNamaKereta().compareToIgnoreCase(kereta2.getNamaKereta());
+                }
+            });
         }
 //        for(int i=0;i<keretas.size();i++){
 //            Log.d("namaKereta",""+keretas.get(i).getNamaKereta());
