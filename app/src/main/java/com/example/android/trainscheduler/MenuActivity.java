@@ -374,7 +374,7 @@ public class MenuActivity extends FragmentActivity
     public String formatWaktu(int jam, int menit,int detik){
         String sJam = (jam < 10)? "0"+jam : jam+"";
         String sMenit = (menit < 10)? "0"+menit : (""+menit).substring(0,2);
-        String sDetik = (detik < 10)? "0"+menit : (""+detik).substring(0,2);
+        String sDetik = (detik < 10)? "0"+detik : (""+detik).substring(0,2);
         return sJam+":"+sMenit+":"+sDetik;
     }
 
