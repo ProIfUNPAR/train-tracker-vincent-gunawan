@@ -18,7 +18,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -82,7 +81,8 @@ public class LoadingActivity extends AppCompatActivity {
             }
         }
 //        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, ll);
+//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, ll);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 1, ll);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
