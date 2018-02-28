@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -62,6 +63,7 @@ public class MenuActivity extends FragmentActivity
     private boolean isChange = false;
     private double langNext,langCurr,latNext,latCurr,jarak;
     private int stationPos;
+    private float speed;
     private ArrayList<String> namaKereta;
     private ArrayList<String> namaJadwal;
 
@@ -117,18 +119,10 @@ public class MenuActivity extends FragmentActivity
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
                 loc.getLatitude();
-                float speed = loc.getSpeed();
+                speed = loc.getSpeed();
                 tvSpeed.setText(String.format("%.2f km/jam", (speed*3.6)));
-
-                int temp = (int) (jarak/speed);
-                int jam = 0;
-                if(speed <= 0){
-                    jam = (int)Math.floor((jarak/KECEPATAN_DEFAULT)/60);
-                }else{
-                    jam = (int) Math.floor((jarak/speed)/60);
-                }
-                int menit = (temp % 1) * 60;
-                tvWaktu.setText(formatWaktu(jam,menit));
+                int[] waktu = hitungWaktu(jarak,speed);
+                tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
 
                 stationPos = spinnerStasiun.getSelectedItemPosition();
                 if (jarak<=0.1){
@@ -318,11 +312,8 @@ public class MenuActivity extends FragmentActivity
                     jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
                     tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
-                    double temp =jarak/KECEPATAN_DEFAULT;
-                    int jam = (int)Math.floor(temp);
-                    int menit = (int)((temp % 1) * 60);
-//                    Log.d("waktuwaktu",temp+" "+jam+" "+menit+" "+jarak+" "+KECEPATAN_DEFAULT);
-                    tvWaktu.setText(formatWaktu(jam,menit));
+                    int[] waktu = hitungWaktu(jarak,KECEPATAN_DEFAULT);
+                    tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
 
                     mMap.clear();
                     Bitmap blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
@@ -376,9 +367,27 @@ public class MenuActivity extends FragmentActivity
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotifyMgr.notify(mNotificationId,mBuilder.build());
     }
-    public String formatWaktu(int jam, int menit){
+    public String formatWaktu(int jam, int menit,int detik){
         String sJam = (jam < 10)? "0"+jam : jam+"";
         String sMenit = (menit < 10)? "0"+menit : (""+menit).substring(0,2);
-        return sJam+":"+sMenit+":00";
+        String sDetik = (detik < 10)? "0"+menit : (""+detik).substring(0,2);
+        return sJam+":"+sMenit+":"+sDetik;
+    }
+
+    public int[] hitungWaktu(double jarak,double kecepatan){
+        int[] array = new int[3];
+        if (kecepatan == 0){
+            kecepatan = KECEPATAN_DEFAULT;
+        }
+        double temp = (jarak/kecepatan);
+        int jam = 0;
+        jam = (int) Math.floor(temp);
+        int menit = (int) ((temp % 1) * 60);
+        int detik = (int)((((temp % 1) * 60)%1)*60);
+
+        array[0] = jam;
+        array[1] = menit;
+        array[2] = detik;
+        return array;
     }
 }
