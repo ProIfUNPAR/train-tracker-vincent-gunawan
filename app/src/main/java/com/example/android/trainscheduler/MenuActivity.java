@@ -42,7 +42,7 @@ import java.util.ArrayList;
 
 import static com.google.android.gms.location.LocationRequest.PRIORITY_NO_POWER;
 
-public class MapMenu extends FragmentActivity
+public class MenuActivity extends FragmentActivity
         implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -56,7 +56,7 @@ public class MapMenu extends FragmentActivity
     private GoogleApiClient mGoogleApiClient;
     private Location loc;
     private Spinner spinnerKereta, spinnerStasiun;
-    private static MapMenu instance;
+    private static MenuActivity instance;
     private int idxKereta = -1;
     private TextView tvJarak,tvSpeed,tvWaktu;
     private boolean isChange = false;
@@ -86,7 +86,7 @@ public class MapMenu extends FragmentActivity
         this.latNext = 0;
         this.latCurr = 0;
 
-        ArrayList<Kereta> tempKereta = Menu.getInstance().getKereta();
+        ArrayList<Kereta> tempKereta = LoadingActivity.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
         for(Kereta k : tempKereta){
             namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(0).getStasiun().getNamaStasiun()+")");
@@ -271,7 +271,7 @@ public class MapMenu extends FragmentActivity
 
     }
 
-    public static MapMenu getInstance(){
+    public static MenuActivity getInstance(){
         return instance;
     }
 
@@ -283,18 +283,18 @@ public class MapMenu extends FragmentActivity
         spinnerKereta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                MapMenu.getInstance().namaJadwal.clear();
-                MapMenu.getInstance().idxKereta = i;
-                Kereta selectedKereta = Menu.getInstance().getKereta().get(i);
+                MenuActivity.getInstance().namaJadwal.clear();
+                MenuActivity.getInstance().idxKereta = i;
+                Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(i);
                 ArrayList<Jadwal> jadwals = selectedKereta.getJadwals();
                 for(Jadwal j : jadwals){
                     Stasiun s = j.getStasiun();
                     String namaStasiun = s.getNamaStasiun();
                     String jamDatang = j.getJamDatang();
                     String jamPergi = j.getJamPergi();
-                    MapMenu.getInstance().namaJadwal.add(namaStasiun+" (datang:"+jamDatang+", pergi:"+jamPergi+")");
-                    MapMenu.getInstance().spinnerStasiun.setAdapter(new ArrayAdapter<String>(
-                            MapMenu.getInstance(),R.layout.support_simple_spinner_dropdown_item,namaJadwal
+                    MenuActivity.getInstance().namaJadwal.add(namaStasiun+" (datang:"+jamDatang+", pergi:"+jamPergi+")");
+                    MenuActivity.getInstance().spinnerStasiun.setAdapter(new ArrayAdapter<String>(
+                            MenuActivity.getInstance(),R.layout.support_simple_spinner_dropdown_item,namaJadwal
                     ));
                 }
             }
@@ -309,7 +309,7 @@ public class MapMenu extends FragmentActivity
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 //                Log.d("onItemSelected","dipanggil terus");
                 if(loc != null) {
-                    Kereta selectedKereta = Menu.getInstance().getKereta().get(MapMenu.getInstance().idxKereta);
+                    Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(MenuActivity.getInstance().idxKereta);
                     Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
                     latNext = selectedJadwal.getStasiun().getLatitude();
                     langNext = selectedJadwal.getStasiun().getLongtitude();

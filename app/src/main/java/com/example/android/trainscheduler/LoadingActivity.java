@@ -20,9 +20,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Menu extends AppCompatActivity {
+public class LoadingActivity extends AppCompatActivity {
     private LocationManager locationManager;
-    private static Menu instance;
+    private static LoadingActivity instance;
 
 //    public DistanceCalculation dc;
 
@@ -51,8 +51,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
                 location.getLatitude();
-                Menu.getInstance().speed = location.getSpeed() * 3.6;
-//                tvSpeed.setText("Current Speed: " + (location.getSpeed() * 3.6));
+                LoadingActivity.getInstance().speed = location.getSpeed() * 3.6;
             }
 
             @Override
@@ -84,7 +83,7 @@ public class Menu extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(Menu.this, MapMenu.class);
+                Intent i = new Intent(LoadingActivity.this, MenuActivity.class);
                 startActivity(i);
                 finish();
             }
@@ -108,7 +107,7 @@ public class Menu extends AppCompatActivity {
         }
     }
 
-    public static Menu getInstance() {
+    public static LoadingActivity getInstance() {
         return instance;
     }
 
