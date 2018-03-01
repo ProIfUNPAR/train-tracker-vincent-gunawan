@@ -15,6 +15,7 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -156,6 +157,7 @@ public class LoadingActivity extends AppCompatActivity {
                         if (jdSplit[0].length() == 1) {
                             jdSplit[0] = "0" + jdSplit[0];
                         }
+                        Log.d("DATABASE",namaStasiun);
                         if (jdSplit[1].length() == 1) {
                             jdSplit[1] = jdSplit[1] + "0";
                         }
