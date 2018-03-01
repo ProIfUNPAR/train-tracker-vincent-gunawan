@@ -14,7 +14,7 @@
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="340dp"
+            android:layout_height="match_parent"
             android:apiKey="@string/google_android_map_api_key"
             android:layout_alignParentTop="true"
             android:visibility="visible" />
@@ -22,13 +22,16 @@
             android:id="@+id/map"
             class="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="340dp"
-            android:layout_alignParentTop="true" />
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/ivBorder"/>
         <ImageView
+            android:layout_marginBottom="60px"
+            android:id="@+id/ivBorder"
             android:layout_width="match_parent"
             android:layout_height="15px"
-            android:layout_below="@id/map"
-            android:background="@color/darkerOrange"/>
+            android:background="@color/darkerOrange"
+            android:layout_above="@id/textView3"/>
 
         <TextView
             android:id="@+id/textView3"
@@ -38,7 +41,7 @@
             android:textSize="14sp"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="327dp"
-            android:layout_below="@id/map"
+            android:layout_above="@id/spinnerKereta"
             android:layout_marginTop="20px"
             android:layout_marginLeft="40px" />
         <Spinner
@@ -47,7 +50,7 @@
             android:layout_height="30dp"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="352dp"
-            android:layout_below="@id/textView3"
+            android:layout_above="@id/textView4"
             android:layout_centerHorizontal="true"
             android:background="@drawable/border"
             android:layout_marginTop="15px"
@@ -60,7 +63,7 @@
             android:textSize="13sp"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="387dp"
-            android:layout_below="@id/spinnerKereta"
+            android:layout_above="@id/spinnerStasiun"
             android:layout_marginLeft="40px"/>
         <Spinner
             android:id="@+id/spinnerStasiun"
@@ -69,7 +72,7 @@
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="431dp"
             android:background="@drawable/border"
-            android:layout_below="@id/textView4"
+            android:layout_above="@id/textView5"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15px"
             android:layout_marginBottom="20px"/>
