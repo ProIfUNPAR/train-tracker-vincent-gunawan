@@ -24,6 +24,12 @@
             android:layout_width="match_parent"
             android:layout_height="340dp"
             android:layout_alignParentTop="true" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="15px"
+            android:layout_below="@id/map"
+            android:background="@color/darkerOrange"/>
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="109dp"
@@ -38,11 +44,12 @@
         <Spinner
             android:id="@+id/spinnerKereta"
             android:layout_width="318dp"
-            android:layout_height="21dp"
+            android:layout_height="30dp"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="352dp"
             android:layout_below="@id/textView3"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/border"
             android:layout_marginTop="15px"
             android:layout_marginBottom="20px"/>
         <TextView
@@ -58,9 +65,10 @@
         <Spinner
             android:id="@+id/spinnerStasiun"
             android:layout_width="318dp"
-            android:layout_height="21dp"
+            android:layout_height="30dp"
             tools:layout_editor_absoluteX="33dp"
             tools:layout_editor_absoluteY="431dp"
+            android:background="@drawable/border"
             android:layout_below="@id/textView4"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15px"

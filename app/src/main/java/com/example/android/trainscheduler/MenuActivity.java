@@ -69,23 +69,24 @@ public class MenuActivity extends FragmentActivity
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LocationRequest req=new LocationRequest();
-        req.setPriority(PRIORITY_NO_POWER);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_map_menu);
 //        req.setInterval(5*60*1000);
 //        req.setFastestInterval(60*1000);
 //        req.setMaxWaitTime(60*60*1000);
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_menu);
-        this.instance = this;
         this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvSpeed = findViewById(R.id.tv_kecepatan);
         this.tvWaktu = findViewById(R.id.tv_waktu);
+
         this.langNext = 0;
         this.langCurr = 0;
         this.latNext = 0;
         this.latCurr = 0;
+        this.instance = this;
+
+        LocationRequest req=new LocationRequest();
+        req.setPriority(PRIORITY_NO_POWER);
 
         ArrayList<Kereta> tempKereta = LoadingActivity.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
