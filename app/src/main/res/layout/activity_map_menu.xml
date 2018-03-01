@@ -29,6 +29,7 @@
             android:layout_height="10px"
             android:layout_below="@id/map"
             android:background="@color/black"/>
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="109dp"
