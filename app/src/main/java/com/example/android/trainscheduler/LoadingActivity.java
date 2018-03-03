@@ -83,7 +83,7 @@ public class LoadingActivity extends AppCompatActivity {
         }
 //        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
 //        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, ll);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 1, ll);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, ll);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

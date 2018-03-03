@@ -118,8 +118,8 @@ public class MenuActivity extends FragmentActivity
                 jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
-                loc.getLatitude();
-                speed = loc.getSpeed();
+                location.getLatitude();
+                speed = location.getSpeed();
                 tvSpeed.setText(String.format("%.2f km/jam", (speed*3.6)));
                 int[] waktu = hitungWaktu(jarak,speed);
                 tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
@@ -167,7 +167,7 @@ public class MenuActivity extends FragmentActivity
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 1, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, locationListener);
 //        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
     }
@@ -191,12 +191,12 @@ public class MenuActivity extends FragmentActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+//        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
-                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+//                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 //                Log.d("loclocloc",""+(loc==null));
                 LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                 CameraPosition cameraPosition = new CameraPosition.Builder()
