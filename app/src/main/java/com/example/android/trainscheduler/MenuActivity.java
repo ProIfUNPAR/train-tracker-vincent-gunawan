@@ -49,7 +49,7 @@ public class MenuActivity extends FragmentActivity
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener
 {
-    public static double KECEPATAN_DEFAULT = 60.0;
+    public static double KECEPATAN_DEFAULT = 40.0;
 
     private GoogleMap mMap;
     private LocationManager locationManager;
@@ -91,7 +91,7 @@ public class MenuActivity extends FragmentActivity
         ArrayList<Kereta> tempKereta = LoadingActivity.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
         for(Kereta k : tempKereta){
-            namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(0).getStasiun().getNamaStasiun()+")");
+            namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(k.getJadwals().size()-1).getStasiun().getNamaStasiun()+")");
         }
         this.namaJadwal = new ArrayList<>();
         this.setAllSpinner();
@@ -341,6 +341,7 @@ public class MenuActivity extends FragmentActivity
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotifyMgr.notify(mNotificationId,mBuilder.build());
     }
+
     public String formatWaktu(int jam, int menit,int detik){
         String sJam = (jam < 10)? "0"+jam : jam+"";
         String sMenit = (menit < 10)? "0"+menit : (""+menit).substring(0,2);
@@ -364,6 +365,7 @@ public class MenuActivity extends FragmentActivity
         array[2] = detik;
         return array;
     }
+
     private void setAllMarkerAndLine(Kereta selectedKereta){
         mMap.clear();
         Bitmap blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
