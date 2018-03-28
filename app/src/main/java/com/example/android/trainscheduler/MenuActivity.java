@@ -23,6 +23,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.akexorcist.googledirection.DirectionCallback;
+import com.akexorcist.googledirection.GoogleDirection;
+import com.akexorcist.googledirection.constant.AvoidType;
+import com.akexorcist.googledirection.constant.TransitMode;
+import com.akexorcist.googledirection.model.Direction;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -389,11 +394,30 @@ public class MenuActivity extends FragmentActivity
         }
         for(int j = 0;j<listOfStasiun.size()-1;j++){
             LatLng currLatLng = new LatLng(listOfStasiun.get(j).getLatitude(),listOfStasiun.get(j).getLongtitude());
-            LatLng nextLatLng = new LatLng(listOfStasiun.get(j+1).getLatitude(),listOfStasiun.get(j+1).getLongtitude());
-            mMap.addPolyline(new PolylineOptions()
-                    .add(currLatLng, nextLatLng)
-                    .width(5)
-                    .color(Color.RED));
+            LatLng nextLatLng = new LatLng(listOfStasiun.get(j+1).getLatitude(),listOfStasiun.get(j+1).getLongtitude());\
+            ArrayList<LatLng> listLatLng =
+            GoogleDirection.withServerKey("AIzaSyA5HQFXnZCDVOy2T5IHKwmfoCvn48BAcEI")
+                    .from(currLatLng)
+                    .to(nextLatLng)
+                    .transitMode(TransitMode.TRAIN)
+                    .avoid(AvoidType.FERRIES)
+                    .avoid(AvoidType.HIGHWAYS)
+                    .avoid(AvoidType.TOLLS)
+                    .execute(new DirectionCallback() {
+                        @Override
+                        public void onDirectionSuccess(Direction direction, String rawBody) {
+                            mMap.addPolyline(new PolylineOptions()
+                                    .add(currLatLng, nextLatLng)
+                                    .width(5)
+                                    .color(Color.RED));
+                        }
+
+                        @Override
+                        public void onDirectionFailure(Throwable t) {
+                            // Do something
+                        }
+                    });
+
         }
     }
 }
