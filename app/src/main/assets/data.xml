@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kereta>
+    <namaK>Kereta Api Argo Sindoro</namaK>
+    <jadwals>
+        <jadwal>
+            <stasiun>
+                <namaS>Sm.Tawang</namaS>
+                <latitude>-6.964446</latitude>
+                <longitude>110.427923</longitude>
+                <datang>X</datang>
+                <pergi>6</pergi>
+            </stasiun>
+            <stasiun>
+                <namaS>Pekalongan</namaS>
+                <latitude>-6.889697</latitude>
+                <longitude>109.66437</longitude>
+                <datang>7.1</datang>
+                <pergi>7.13</pergi>
+            </stasiun>
+        </jadwal>
+    </jadwals>
+</kereta>

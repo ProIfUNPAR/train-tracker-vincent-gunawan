@@ -15,6 +15,10 @@ public class Kereta {
         this.jadwals = jadwals;
     }
 
+    public Kereta(){
+
+    }
+
     public String getNamaKereta() {
         return namaKereta;
     }
