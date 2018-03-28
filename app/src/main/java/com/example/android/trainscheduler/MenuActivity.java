@@ -170,9 +170,6 @@ public class MenuActivity extends FragmentActivity
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, locationListener);
 //        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-        Parser p = new Parser();
-        p.parseXML();
     }
     @SuppressLint("MissingPermission")
     @Override

@@ -92,7 +92,16 @@ public class LoadingActivity extends AppCompatActivity {
                 finish();
             }
         }, TIME_OUT);
-        this.getAll();
+//        this.getAll();
+
+        Parser parser = new Parser();
+        keretas = parser.parseXML();
+        Collections.sort(keretas, new Comparator<Kereta>() {
+            @Override
+            public int compare(Kereta kereta1, Kereta kereta2) {
+                return kereta1.getNamaKereta().compareToIgnoreCase(kereta2.getNamaKereta());
+            }
+        });
     }
 
     @SuppressLint("MissingPermission")

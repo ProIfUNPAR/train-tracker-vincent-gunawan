@@ -1,7 +1,5 @@
 package com.example.android.trainscheduler;
 
-import android.util.Log;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -15,23 +13,23 @@ import java.util.ArrayList;
  */
 
 public class Parser {
-
-    public void parseXML(){
+    public ArrayList<Kereta> parseXML() {
         XmlPullParserFactory parserFactory;
         try {
             parserFactory = XmlPullParserFactory.newInstance();
             XmlPullParser parser = parserFactory.newPullParser();
-            InputStream input = MenuActivity.getInstance().getAssets().open("data.xml");
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES,false);
-            parser.setInput(input,null);
+            InputStream input = LoadingActivity.getInstance().getAssets().open("data.xml");
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            parser.setInput(input, null);
 
-            processParsing(parser);
+            return processParsing(parser);
         } catch (XmlPullParserException e) {
         } catch (IOException e) {
         }
+        return null;
     }
 
-    public void processParsing(XmlPullParser parser) throws IOException, XmlPullParserException {
+    public ArrayList<Kereta> processParsing(XmlPullParser parser) throws IOException, XmlPullParserException {
         ArrayList<Kereta> keretas = new ArrayList<>();
         ArrayList<Jadwal> jadwals = new ArrayList<>();
         int eventType = parser.getEventType();
@@ -39,59 +37,69 @@ public class Parser {
         Jadwal cJadwal = null;
         Stasiun cStasiun = null;
 
-        while(eventType != XmlPullParser.END_DOCUMENT){
+        while (eventType != XmlPullParser.END_DOCUMENT) {
             String tokenName = null;
-            switch(eventType){
+            switch (eventType) {
                 case XmlPullParser.START_TAG:
                     tokenName = parser.getName();
-                    if("kereta".equals(tokenName)){
+                    if ("kereta".equals(tokenName)) {
                         cKereta = new Kereta();
-                    }else if(cKereta != null){
-                        if("namaK".equals(tokenName)){
+                        keretas.add(cKereta);
+                    } else if (cKereta != null) {
+                        if ("namaK".equals(tokenName)) {
                             cKereta.setNamaKereta(parser.nextText());
-                        }else if("jadwals".equals(tokenName)){
+                        } else if ("jadwals".equals(tokenName)) {
                             jadwals = new ArrayList<>();
                             cKereta.setJadwals(jadwals);
-                        }else if("jadwal".equals(tokenName)){
+                        }
+                        if ("jadwal".equals(tokenName)) {
                             cJadwal = new Jadwal();
                         }
-                        else if("stasiun".equals(tokenName)){
-                            cStasiun = new Stasiun();
-                        }
-                        if(cStasiun != null){
-                            if("namaS".equals(tokenName)){
-                                cStasiun.setNamaStasiun(parser.nextText());
-                            }else if("latitude".equals(tokenName)){
-                                cStasiun.setLatitude(Double.parseDouble(parser.nextText()));
-                            }else if("longitude".equals(tokenName)){
-                                cStasiun.setLongtitude(Double.parseDouble(parser.nextText()));
+
+                        if (cJadwal != null) {
+                            if ("datang".equals(tokenName)) {
+                                cJadwal.setJamDatang(parser.nextText());
+                            } else if ("pergi".equals(tokenName)) {
+                                cJadwal.setJamPergi(parser.nextText());
                             }
                         }
-                        if(cJadwal != null){
-                            if("datang".equals(tokenName)){
-                                cJadwal.setJamDatang(parser.nextText());
-                            }else if("pergi".equals(tokenName)){
-                                cJadwal.setJamPergi(parser.nextText());
+
+                        if ("stasiun".equals(tokenName)) {
+                            cStasiun = new Stasiun();
+                        }
+
+                        if (cStasiun != null) {
+                            if ("namaS".equals(tokenName)) {
+                                cStasiun.setNamaStasiun(parser.nextText());
+                            } else if ("latitude".equals(tokenName)) {
+                                cStasiun.setLatitude(Double.parseDouble(parser.nextText()));
+                            } else if ("longitude".equals(tokenName)) {
+                                cStasiun.setLongtitude(Double.parseDouble(parser.nextText()));
                                 cJadwal.setStasiun(cStasiun);
                                 jadwals.add(cJadwal);
                             }
                         }
+
                     }
                     break;
             }
+            eventType = parser.next();
         }
-        printKereta(cKereta);
+        return keretas;
+//        for(Kereta k : keretas) {
+//            printKereta(k);
+//        }
     }
-    public void printKereta(Kereta kereta){
-        String text = "";
-        text = text + kereta.getNamaKereta();
-        String jadwals = "";
-        for(Jadwal j : kereta.getJadwals()){
-            Stasiun currentStasiun = j.getStasiun();
-            jadwals += currentStasiun.getNamaStasiun()+" "+currentStasiun.getLatitude()+" "
-                    +currentStasiun.getLongtitude()+" "+j.getJamDatang()+" "+j.getJamPergi()+"\n";
-        }
-        text = text +"||"+jadwals;
-        Log.d("PRINTKERETA",text);
-    }
+//    public void printKereta(Kereta kereta){
+//        String text = "";
+//        text = text + kereta.getNamaKereta();
+//        String jadwals = "";
+//        for(Jadwal j : kereta.getJadwals()){
+//            Stasiun currentStasiun = j.getStasiun();
+//            jadwals += currentStasiun.getNamaStasiun()+" "+currentStasiun.getLatitude()+" "
+//                    +currentStasiun.getLongtitude()+" "+j.getJamDatang()+" "+j.getJamPergi()+"\n";
+//        }
+//        text = text +"||"+jadwals;
+//        Log.d("PRINTKERETA",text);
+//    }
 }
