@@ -38,6 +38,7 @@ public class LoadingActivity extends AppCompatActivity {
 
     private Thread t;
     private int TIME_OUT = 2500;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +93,16 @@ public class LoadingActivity extends AppCompatActivity {
                 finish();
             }
         }, TIME_OUT);
-        this.getAll();
+//        this.getAll();
+
+        Parser parser = new Parser();
+        keretas = parser.parseXML();
+        Collections.sort(keretas, new Comparator<Kereta>() {
+            @Override
+            public int compare(Kereta kereta1, Kereta kereta2) {
+                return kereta1.getNamaKereta().compareToIgnoreCase(kereta2.getNamaKereta());
+            }
+        });
     }
 
     @SuppressLint("MissingPermission")
@@ -125,6 +135,7 @@ public class LoadingActivity extends AppCompatActivity {
         return this.keretas;
     }
 
+    //UDAH GA KEPAKE!
     private void getAll() {
         TypedArray typedArray = getResources().obtainTypedArray(R.array.jadwal);
         String[][] array = new String[typedArray.length()][];
@@ -157,7 +168,7 @@ public class LoadingActivity extends AppCompatActivity {
                         if (jdSplit[0].length() == 1) {
                             jdSplit[0] = "0" + jdSplit[0];
                         }
-                        Log.d("DATABASE",namaStasiun);
+                        Log.d("DATABASE", namaStasiun);
                         if (jdSplit[1].length() == 1) {
                             jdSplit[1] = jdSplit[1] + "0";
                         }

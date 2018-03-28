@@ -15,6 +15,8 @@ public class Stasiun {
         this.longtitude = longtitude;
     }
 
+    public Stasiun(){}
+
     public String getNamaStasiun() {
         return namaStasiun;
     }

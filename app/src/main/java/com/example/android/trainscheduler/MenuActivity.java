@@ -153,8 +153,8 @@ public class MenuActivity extends FragmentActivity
                     CameraPosition cameraPosition = new CameraPosition.Builder()
                             .target(ll)      // Sets the center of the map to location user
                             .zoom(17)                   // Sets the zoom
-                            .bearing(0)                // Sets the orientation of the camera to east
-                            .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                            .bearing(0)                // Sets the orientation of the camera
+                            .tilt(0)                   // Sets the tilt of the camera
                             .build();                   // Creates a CameraPosition from the builder
                     mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 }
@@ -202,8 +202,8 @@ public class MenuActivity extends FragmentActivity
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(ll)      // Sets the center of the map to location user
                         .zoom(17)                   // Sets the zoom
-                        .bearing(0)                // Sets the orientation of the camera to east
-                        .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                        .bearing(0)                // Sets the orientation of the camera
+                        .tilt(0)                   // Sets the tilt of the camera
                         .build();                   // Creates a CameraPosition from the builder
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 return true;
@@ -217,8 +217,8 @@ public class MenuActivity extends FragmentActivity
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(ll)      // Sets the center of the map to location user
                     .zoom(17)                   // Sets the zoom
-                    .bearing(0)                // Sets the orientation of the camera to east
-                    .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                    .bearing(0)                // Sets the orientation of the camera
+                    .tilt(0)                   // Sets the tilt of the camera
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
@@ -229,8 +229,8 @@ public class MenuActivity extends FragmentActivity
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(posisi)      // Sets the center of the map to location user
                         .zoom(17)                   // Sets the zoom
-                        .bearing(0)                // Sets the orientation of the camera to east
-                        .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                        .bearing(0)                // Sets the orientation of the camera
+                        .tilt(0)                   // Sets the tilt of the camera
                         .build();                   // Creates a CameraPosition from the builder
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 return true;
@@ -248,8 +248,8 @@ public class MenuActivity extends FragmentActivity
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(ll)      // Sets the center of the map to location user
                     .zoom(17)                   // Sets the zoom
-                    .bearing(0)                // Sets the orientation of the camera to east
-                    .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                    .bearing(0)                // Sets the orientation of the camera
+                    .tilt(0)                   // Sets the tilt of the camera
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }

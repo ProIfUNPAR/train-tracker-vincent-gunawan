@@ -344,7 +344,7 @@
         <item>Kertosono#-7.592.019#112.100.620#6.51#6.53##3</item>
         <item>Jombang#-7.558.013#112.233.607#7.07#7.1##1</item>
         <item>Mojokerto#-7.472.139#112.434.932#7.32#7.38##3</item>
-        <item>Surabaya Gubeng#-7.265.663#112.752.033#8.14#X##3</item>
+        <item>Surabaya Gubeng#-7.265663#112.752033#8.14#X##3</item>
     </string-array>
     <string-array name="KA28">
         <item>Kereta Api Lodaya Pagi</item>
@@ -377,8 +377,8 @@
         <item>Kertosono#-7.592.019#112.100.620#5.03#5.06##5</item>
         <item>Jombang#-7.558.013#112.233.607#5.2#5.23##3</item>
         <item>Mojokerto#-7.472.139#112.434.932#5.45#5.48##5</item>
-        <item>Surabaya Gubeng#-7.265.663#112.752.033#6.24#7.2##4</item>
-        <item>Sidoarjo#-7.457.406#112.713.952#7.47#7.51##4</item>
+        <item>Surabaya Gubeng#-7.265663#112.752033#6.24#7.2##4</item>
+        <item>Sidoarjo#-7.457406#112.713952#7.47#7.51##4</item>
         <item>Bangil#-7.598.884#112.778.315#8.24#8.3##4</item>
         <item>Lawang#-7.836.702#112.697.635#9.1#9.14##5</item>
         <item>Malang#-7.977.540#112.637.101#9.38#X##5</item>

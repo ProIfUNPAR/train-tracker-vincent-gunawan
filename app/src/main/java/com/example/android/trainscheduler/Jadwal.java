@@ -14,6 +14,7 @@ public class Jadwal {
         this.jamDatang = jamDatang;
         this.jamPergi = jamPergi;
     }
+    public Jadwal(){}
 
     public Stasiun getStasiun() {
         return stasiun;
