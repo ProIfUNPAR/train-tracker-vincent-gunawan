@@ -1,10 +1,8 @@
 package com.example.android.trainscheduler;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.TypedArray;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -15,8 +13,6 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,11 +28,11 @@ public class LoadingActivity extends AppCompatActivity {
     private ArrayList<Kereta> keretas;
     private HashMap<String, Stasiun> stasiuns;
 
-    private Context ctx;
-    private TextView tvSpeed;
-    public double speed = -1;
+//    private Context ctx;
+//    private TextView tvSpeed;
+//    private Thread t;
 
-    private Thread t;
+    public double speed = -1;
     private int TIME_OUT = 2500;
 
     @Override
@@ -50,7 +46,7 @@ public class LoadingActivity extends AppCompatActivity {
 //        dc= new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
 //        Log.d("rStasiun", dc.count() + "");
 
-        locationManager = (LocationManager) this.getSystemService(ctx.LOCATION_SERVICE);
+        locationManager = (LocationManager) this.getSystemService(this.LOCATION_SERVICE);
         LocationListener ll = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {

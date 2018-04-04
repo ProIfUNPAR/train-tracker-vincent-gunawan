@@ -145,18 +145,12 @@ public class MenuActivity extends FragmentActivity
             //waktu GPS on
             public void onProviderEnabled(String s) {
                 mMap.setMyLocationEnabled(true);
-//                loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 //                Log.d("loclocloc",""+(loc==null));
                 if (loc != null) {
                     LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
-                    CameraPosition cameraPosition = new CameraPosition.Builder()
-                            .target(ll)      // Sets the center of the map to location user
-                            .zoom(17)                   // Sets the zoom
-                            .bearing(0)                // Sets the orientation of the camera
-                            .tilt(0)                   // Sets the tilt of the camera
-                            .build();                   // Creates a CameraPosition from the builder
-                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                    animateCamera(ll,17);
                 }
             }
             @Override
@@ -167,9 +161,9 @@ public class MenuActivity extends FragmentActivity
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, locationListener);
-//        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
+        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
     }
     @SuppressLint("MissingPermission")
     @Override
@@ -199,13 +193,7 @@ public class MenuActivity extends FragmentActivity
 //                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 //                Log.d("loclocloc",""+(loc==null));
                 LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(ll)      // Sets the center of the map to location user
-                        .zoom(17)                   // Sets the zoom
-                        .bearing(0)                // Sets the orientation of the camera
-                        .tilt(0)                   // Sets the tilt of the camera
-                        .build();                   // Creates a CameraPosition from the builder
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                animateCamera(ll,17);
                 return true;
             }
         });
@@ -214,25 +202,13 @@ public class MenuActivity extends FragmentActivity
             //label.setText("");
             // label.append("\n " + loc.getLatitude() + " " + loc.getLongitude());
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
-            CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(ll)      // Sets the center of the map to location user
-                    .zoom(17)                   // Sets the zoom
-                    .bearing(0)                // Sets the orientation of the camera
-                    .tilt(0)                   // Sets the tilt of the camera
-                    .build();                   // Creates a CameraPosition from the builder
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            animateCamera(ll,17);
         }
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                LatLng posisi = marker.getPosition();
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(posisi)      // Sets the center of the map to location user
-                        .zoom(17)                   // Sets the zoom
-                        .bearing(0)                // Sets the orientation of the camera
-                        .tilt(0)                   // Sets the tilt of the camera
-                        .build();                   // Creates a CameraPosition from the builder
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                LatLng ll = marker.getPosition();
+                animateCamera(ll,17);
                 return true;
             }
         });
@@ -245,13 +221,7 @@ public class MenuActivity extends FragmentActivity
         loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         if (loc != null && mMap != null) {
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
-            CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(ll)      // Sets the center of the map to location user
-                    .zoom(17)                   // Sets the zoom
-                    .bearing(0)                // Sets the orientation of the camera
-                    .tilt(0)                   // Sets the tilt of the camera
-                    .build();                   // Creates a CameraPosition from the builder
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+            animateCamera(ll,17);
         }
     }
 
@@ -291,6 +261,10 @@ public class MenuActivity extends FragmentActivity
                     MenuActivity.getInstance().spinnerStasiun.setAdapter(new ArrayAdapter<String>(
                             MenuActivity.getInstance(),R.layout.support_simple_spinner_dropdown_item,namaJadwal
                     ));
+                }
+                if(loc != null){
+                    LatLng ll = new LatLng(jadwals.get(0).getStasiun().getLatitude(),jadwals.get(0).getStasiun().getLongtitude());
+                    animateCamera(ll,6);
                 }
             }
             @Override
@@ -380,11 +354,23 @@ public class MenuActivity extends FragmentActivity
             listOfStasiun.add(tempJadwals.get(j).getStasiun());
             LatLng llStasiun = new LatLng(tempJadwals.get(j).getStasiun().getLatitude(),tempJadwals.get(j).getStasiun().getLongtitude());
             if(j==0) {
-                mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(greenIcon)));
+                mMap.addMarker(new MarkerOptions()
+                        .position(llStasiun)
+                        .title(tempJadwals.get(j).getStasiun().getNamaStasiun())
+                        .icon(BitmapDescriptorFactory.fromBitmap(greenIcon))
+                        .alpha(1f));
             }else if(j==tempJadwals.size()-1){
-                mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(redIcon)));
+                mMap.addMarker(new MarkerOptions()
+                        .position(llStasiun)
+                        .title(tempJadwals.get(j).getStasiun().getNamaStasiun())
+                        .icon(BitmapDescriptorFactory.fromBitmap(redIcon))
+                        .alpha(0.8f));
             }else{
-                mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(blackIcon)));
+                mMap.addMarker(new MarkerOptions()
+                        .position(llStasiun)
+                        .title(tempJadwals.get(j).getStasiun().getNamaStasiun())
+                        .icon(BitmapDescriptorFactory.fromBitmap(blackIcon))
+                        .alpha(1f));
             }
         }
         for(int j = 0;j<listOfStasiun.size()-1;j++){
@@ -395,5 +381,14 @@ public class MenuActivity extends FragmentActivity
                     .width(5)
                     .color(Color.RED));
         }
+    }
+    private void animateCamera(LatLng ll, int zoom){
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(ll)      // Sets the center of the map to location user
+                .zoom(zoom)                   // Sets the zoom
+                .bearing(0)                // Sets the orientation of the camera
+                .tilt(0)                   // Sets the tilt of the camera
+                .build();                   // Creates a CameraPosition from the builder
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 }
