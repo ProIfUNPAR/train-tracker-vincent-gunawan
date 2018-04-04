@@ -71,9 +71,6 @@ public class MenuActivity extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
-//        req.setInterval(5*60*1000);
-//        req.setFastestInterval(60*1000);
-//        req.setMaxWaitTime(60*60*1000);
         this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvSpeed = findViewById(R.id.tv_kecepatan);
@@ -84,9 +81,6 @@ public class MenuActivity extends FragmentActivity
         this.latNext = 0;
         this.latCurr = 0;
         this.instance = this;
-
-        LocationRequest req=new LocationRequest();
-        req.setPriority(PRIORITY_NO_POWER);
 
         ArrayList<Kereta> tempKereta = LoadingActivity.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
@@ -118,8 +112,8 @@ public class MenuActivity extends FragmentActivity
                 jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
-                location.getLatitude();
-                speed = location.getSpeed();
+                loc.getLatitude();
+                speed = loc.getSpeed();
                 tvSpeed.setText(String.format("%.2f km/jam", (speed*3.6)));
                 int[] waktu = hitungWaktu(jarak,speed);
                 tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
@@ -167,9 +161,8 @@ public class MenuActivity extends FragmentActivity
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, locationListener);
-//        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
+        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
     @SuppressLint("MissingPermission")
     @Override
