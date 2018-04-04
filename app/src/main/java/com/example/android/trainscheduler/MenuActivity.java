@@ -118,9 +118,8 @@ public class MenuActivity extends FragmentActivity
                 jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
-                location.getLatitude();
-                speed = location.getSpeed();
-                tvSpeed.setText(String.format("%.2f km/jam", (speed*3.6)));
+                speed = location.getSpeed()*3.6f;
+                tvSpeed.setText(String.format("%.2f km/jam", (speed)));
                 int[] waktu = hitungWaktu(jarak,speed);
                 tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
 
