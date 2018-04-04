@@ -41,8 +41,6 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import static com.google.android.gms.location.LocationRequest.PRIORITY_NO_POWER;
-
 public class MenuActivity extends FragmentActivity
         implements
         OnMapReadyCallback,
@@ -112,11 +110,12 @@ public class MenuActivity extends FragmentActivity
                 jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
-                loc.getLatitude();
-                speed = loc.getSpeed();
-                tvSpeed.setText(String.format("%.2f km/jam", (speed*3.6)));
+                speed = loc.getSpeed()*3.6f;
+                tvSpeed.setText(String.format("%.2f km/jam", (speed)));
+                android.util.Log.d("speed", speed+"");
                 int[] waktu = hitungWaktu(jarak,speed);
                 tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
+
 
                 stationPos = spinnerStasiun.getSelectedItemPosition();
                 if (jarak<=0.1){
