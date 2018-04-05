@@ -23,7 +23,7 @@ public class LoadingActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private static LoadingActivity instance;
 
-//    public DistanceCalculation dc;
+//    public MainPresenter dc;
 
     private ArrayList<Kereta> keretas;
     private HashMap<String, Stasiun> stasiuns;
@@ -43,7 +43,7 @@ public class LoadingActivity extends AppCompatActivity {
         this.stasiuns = new HashMap<>();
         this.instance = this;
 
-//        dc= new DistanceCalculation(-6.914430, -7.329102, 107.602447, 108.355991);
+//        dc= new MainPresenter(-6.914430, -7.329102, 107.602447, 108.355991);
 //        Log.d("rStasiun", dc.count() + "");
 
         locationManager = (LocationManager) this.getSystemService(this.LOCATION_SERVICE);

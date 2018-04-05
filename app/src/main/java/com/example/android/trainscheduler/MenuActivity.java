@@ -65,7 +65,9 @@ public class MenuActivity extends FragmentActivity
     private float speed;
     private ArrayList<String> namaKereta;
     private ArrayList<String> namaJadwal;
+    private MainPresenter presenter;
 
+    private Bitmap blackIcon, greenIcon, redIcon;
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,11 +81,20 @@ public class MenuActivity extends FragmentActivity
         this.tvSpeed = findViewById(R.id.tv_kecepatan);
         this.tvWaktu = findViewById(R.id.tv_waktu);
 
+        this.presenter = new MainPresenter();
+
         this.langNext = 0;
         this.langCurr = 0;
         this.latNext = 0;
         this.latCurr = 0;
         this.instance = this;
+
+        this.blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
+        this.blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);
+        this.redIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
+        this.redIcon = Bitmap.createScaledBitmap(redIcon, 120, 120, false);
+        this.greenIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
+        this.greenIcon = Bitmap.createScaledBitmap(greenIcon, 120, 120, false);
 
         LocationRequest req=new LocationRequest();
         req.setPriority(PRIORITY_NO_POWER);
@@ -115,13 +126,13 @@ public class MenuActivity extends FragmentActivity
 
                 latCurr = loc.getLatitude();
                 langCurr = loc.getLongitude();
-                jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
+                jarak = presenter.getJarak(latCurr,latNext,langCurr,langNext);
                 tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
                 speed = location.getSpeed()*3.6f;
                 tvSpeed.setText(String.format("%.2f km/jam", (speed)));
-                int[] waktu = hitungWaktu(jarak,speed);
-                tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
+                int[] waktu = presenter.hitungWaktu(jarak,speed);
+                tvWaktu.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
 
                 stationPos = spinnerStasiun.getSelectedItemPosition();
                 if (jarak<=0.1){
@@ -217,7 +228,7 @@ public class MenuActivity extends FragmentActivity
     @SuppressLint("MissingPermission")
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (loc != null && mMap != null) {
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
             animateCamera(ll,17);
@@ -283,11 +294,11 @@ public class MenuActivity extends FragmentActivity
                     langNext = selectedJadwal.getStasiun().getLongtitude();
                     latCurr = loc.getLatitude();
                     langCurr = loc.getLongitude();
-                    jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
+                    jarak = presenter.getJarak(latCurr, latNext, langCurr, langNext);
                     tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
-                    int[] waktu = hitungWaktu(jarak,KECEPATAN_DEFAULT);
-                    tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
+                    int[] waktu = presenter.hitungWaktu(jarak,KECEPATAN_DEFAULT);
+                    tvWaktu.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
 
                     setAllMarkerAndLine(selectedKereta);
                 }
@@ -315,38 +326,8 @@ public class MenuActivity extends FragmentActivity
         mNotifyMgr.notify(mNotificationId,mBuilder.build());
     }
 
-    public String formatWaktu(int jam, int menit,int detik){
-        String sJam = (jam < 10)? "0"+jam : jam+"";
-        String sMenit = (menit < 10)? "0"+menit : (""+menit).substring(0,2);
-        String sDetik = (detik < 10)? "0"+detik : (""+detik).substring(0,2);
-        return sJam+":"+sMenit+":"+sDetik;
-    }
-
-    public int[] hitungWaktu(double jarak,double kecepatan){
-        int[] array = new int[3];
-        if (kecepatan == 0){
-            kecepatan = KECEPATAN_DEFAULT;
-        }
-        double temp = (jarak/kecepatan);
-        int jam = 0;
-        jam = (int) Math.floor(temp);
-        int menit = (int) ((temp % 1) * 60);
-        int detik = (int)((((temp % 1) * 60)%1)*60);
-
-        array[0] = jam;
-        array[1] = menit;
-        array[2] = detik;
-        return array;
-    }
-
     private void setAllMarkerAndLine(Kereta selectedKereta){
         mMap.clear();
-        Bitmap blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
-        blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);
-        Bitmap redIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
-        redIcon = Bitmap.createScaledBitmap(redIcon, 120, 120, false);
-        Bitmap greenIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
-        greenIcon = Bitmap.createScaledBitmap(greenIcon, 120, 120, false);
         ArrayList<Stasiun> listOfStasiun = new ArrayList();
         ArrayList<Jadwal>  tempJadwals = selectedKereta.getJadwals();
         for(int j=0;j<tempJadwals.size();j++){
