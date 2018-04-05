@@ -99,11 +99,7 @@ public class MenuActivity extends FragmentActivity
         LocationRequest req=new LocationRequest();
         req.setPriority(PRIORITY_NO_POWER);
 
-        ArrayList<Kereta> tempKereta = LoadingActivity.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
-        for(Kereta k : tempKereta){
-            namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(k.getJadwals().size()-1).getStasiun().getNamaStasiun()+")");
-        }
         this.namaJadwal = new ArrayList<>();
         this.setAllSpinner();
 
@@ -195,13 +191,16 @@ public class MenuActivity extends FragmentActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        if(loc == null) {
+            loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        }
 
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
-//                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//                Log.d("loclocloc",""+(loc==null));
+                if(loc == null) {
+                    loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                }
                 LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                 animateCamera(ll,17);
                 return true;
@@ -250,6 +249,9 @@ public class MenuActivity extends FragmentActivity
     }
 
     public void setAllSpinner(){
+        for(Kereta k : LoadingActivity.getInstance().getKereta()){
+            namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(0).getStasiun().getNamaStasiun()+" - "+k.getJadwals().get(k.getJadwals().size()-1).getStasiun().getNamaStasiun()+")");
+        }
         spinnerKereta = findViewById(R.id.spinnerKereta);
         ArrayAdapter<String> adapterKereta = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, namaKereta);
         spinnerKereta.setAdapter(adapterKereta);

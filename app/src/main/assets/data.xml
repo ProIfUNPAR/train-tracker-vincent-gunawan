@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <keretas>
     <kereta>
-        <namaK>Kereta Api Argo Sindoro</namaK>
+        <namaK>Argo Sindoro</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -60,7 +60,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Argo Muria</namaK>
+        <namaK>Argo Muria</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -128,7 +128,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Menoreh</namaK>
+        <namaK>Menoreh</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -223,7 +223,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Purwojaya</namaK>
+        <namaK>Purwojaya</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -300,7 +300,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Tegal Bahari</namaK>
+        <namaK>Tegal Bahari</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -395,7 +395,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Argo Bromo</namaK>
+        <namaK>Argo Bromo</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -445,7 +445,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Cirebon Ekspres</namaK>
+        <namaK>Cirebon Ekspres</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -504,7 +504,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Taksaka Siang</namaK>
+        <namaK>Taksaka Siang</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -563,7 +563,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Taksaka Malam</namaK>
+        <namaK>Taksaka Malam</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -613,7 +613,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Bima</namaK>
+        <namaK>Bima</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -744,7 +744,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Argo Lawu</namaK>
+        <namaK>Argo Lawu</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -821,7 +821,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Argo Dwipangga</namaK>
+        <namaK>Argo Dwipangga</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -898,7 +898,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Senja Utama Solo</namaK>
+        <namaK>Senja Utama Solo</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -993,7 +993,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Lodaya</namaK>
+        <namaK>Lodaya</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -1106,7 +1106,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Mutiara Timur</namaK>
+        <namaK>Mutiara Timur</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -1237,7 +1237,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Gajayana</namaK>
+        <namaK>Gajayana</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -1395,7 +1395,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Malabar</namaK>
+        <namaK>Malabar</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -1598,7 +1598,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Malioboro Ekspres</namaK>
+        <namaK>Malioboro Ekspres</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -1720,7 +1720,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Sawunggalih Pagi</namaK>
+        <namaK>Sawunggalih Pagi</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -1833,7 +1833,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Argo Bromo Anggrek Pagi</namaK>
+        <namaK>Argo Bromo Anggrek Pagi</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -1892,7 +1892,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Sembrani</namaK>
+        <namaK>Sembrani</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -1987,7 +1987,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Gumarang</namaK>
+        <namaK>Gumarang</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>
@@ -2127,7 +2127,7 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Kereta Api Harina</namaK>
+        <namaK>Harina</namaK>
         <jadwals>
             <jadwal>
                 <datang>X</datang>

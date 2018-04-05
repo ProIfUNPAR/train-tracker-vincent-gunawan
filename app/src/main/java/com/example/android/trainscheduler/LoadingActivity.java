@@ -78,9 +78,8 @@ public class LoadingActivity extends AppCompatActivity {
                 return;
             }
         }
-//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
 //        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, ll);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, ll);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, ll);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
