@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Train Scheduler</string>
+    <string name="app_name">Train Tracker</string>
     <string name="title_activity_maps">Map</string>
     <string name="speed">Current Speed:</string>
     <string name="google_android_map_api_key"> AIzaSyCufmvrgGgdU1lfCqW-_Pacr1sn4yrhuQQ </string>

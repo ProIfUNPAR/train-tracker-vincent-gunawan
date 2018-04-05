@@ -89,11 +89,7 @@ public class MenuActivity extends FragmentActivity
         this.latCurr = 0;
         this.instance = this;
 
-        ArrayList<Kereta> tempKereta = LoadingActivity.getInstance().getKereta();
         this.namaKereta = new ArrayList<>();
-        for(Kereta k : tempKereta){
-            namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(k.getJadwals().size()-1).getStasiun().getNamaStasiun()+")");
-        }
         this.namaJadwal = new ArrayList<>();
         this.setAllSpinner();
 
@@ -271,6 +267,10 @@ public class MenuActivity extends FragmentActivity
     }
 
     public void setAllSpinner(){
+
+        for(Kereta k : LoadingActivity.getInstance().getKereta()){
+            namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(0).getStasiun().getNamaStasiun()+" - "+k.getJadwals().get(k.getJadwals().size()-1).getStasiun().getNamaStasiun()+")");
+        }
         spinnerKereta = findViewById(R.id.spinnerKereta);
         ArrayAdapter<String> adapterKereta = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, namaKereta);
         spinnerKereta.setAdapter(adapterKereta);
@@ -293,6 +293,15 @@ public class MenuActivity extends FragmentActivity
                             MenuActivity.getInstance(),R.layout.support_simple_spinner_dropdown_item,namaJadwal
                     ));
                 }
+
+                LatLng ll = new LatLng(jadwals.get(0).getStasiun().getLatitude(), jadwals.get(0).getStasiun().getLongtitude());
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(ll)      // Sets the center of the map to location user
+                        .zoom(8)                   // Sets the zoom
+                        .bearing(0)                // Sets the orientation of the camera
+                        .tilt(0)                   // Sets the tilt of the camera
+                        .build();                   // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -356,8 +365,7 @@ public class MenuActivity extends FragmentActivity
             kecepatan = KECEPATAN_DEFAULT;
         }
         double temp = (jarak/kecepatan);
-        int jam = 0;
-        jam = (int) Math.floor(temp);
+        int jam = (int) Math.floor(temp);
         int menit = (int) ((temp % 1) * 60);
         int detik = (int)((((temp % 1) * 60)%1)*60);
 
