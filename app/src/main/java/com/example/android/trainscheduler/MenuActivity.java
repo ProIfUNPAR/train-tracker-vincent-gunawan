@@ -23,6 +23,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.akexorcist.googledirection.DirectionCallback;
+import com.akexorcist.googledirection.GoogleDirection;
+import com.akexorcist.googledirection.constant.TransitMode;
+import com.akexorcist.googledirection.constant.TransportMode;
+import com.akexorcist.googledirection.model.Direction;
+import com.akexorcist.googledirection.model.Leg;
+import com.akexorcist.googledirection.model.Route;
+import com.akexorcist.googledirection.util.DirectionConverter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -45,7 +53,8 @@ public class MenuActivity extends FragmentActivity
         implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener
+        GoogleApiClient.OnConnectionFailedListener,
+        DirectionCallback
 {
     public static double KECEPATAN_DEFAULT = 40.0;
 
@@ -63,6 +72,7 @@ public class MenuActivity extends FragmentActivity
     private float speed;
     private ArrayList<String> namaKereta;
     private ArrayList<String> namaJadwal;
+    private ArrayList<LatLng> directionList;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -382,10 +392,26 @@ public class MenuActivity extends FragmentActivity
         for(int j = 0;j<listOfStasiun.size()-1;j++){
             LatLng currLatLng = new LatLng(listOfStasiun.get(j).getLatitude(),listOfStasiun.get(j).getLongtitude());
             LatLng nextLatLng = new LatLng(listOfStasiun.get(j+1).getLatitude(),listOfStasiun.get(j+1).getLongtitude());
-            mMap.addPolyline(new PolylineOptions()
-                    .add(currLatLng, nextLatLng)
-                    .width(5)
-                    .color(Color.RED));
+            GoogleDirection.withServerKey(getString(R.string.google_direction_api)).
+                    from(currLatLng).
+                    to(nextLatLng).
+                    transportMode(TransportMode.TRANSIT).
+                    transitMode(TransitMode.RAIL).
+                    execute(this);
         }
+    }
+
+    @Override
+    public void onDirectionSuccess(Direction direction, String rawBody) {
+        Route route = direction.getRouteList().get(0);
+        Leg leg = route.getLegList().get(0);
+        directionList = leg.getDirectionPoint();
+        PolylineOptions po = DirectionConverter.createPolyline(this,directionList,5,Color.RED);
+        mMap.addPolyline(po);
+    }
+
+    @Override
+    public void onDirectionFailure(Throwable t) {
+
     }
 }
