@@ -30,6 +30,7 @@ public class CSVParser {
         String nk = "", ns, lat, longi, jDatang, jPergi;
         while ((text = reader.readLine()) != null) {
             String[] token = text.split(",");
+            token[0] = token[0].trim();
             if (nk.equals("") || !nk.equalsIgnoreCase(token[0])) {
                 nk = token[0].trim();
                 if (!hasil.equals("")) {
@@ -38,7 +39,7 @@ public class CSVParser {
                 hasil += "<kereta>\n<namaK>" + nk + "</namaK>\n<jadwals>\n";
             } else {
             }
-            ns = token[1].trim().toLowerCase();
+            ns = token[1].trim();
             lat = token[2].trim();
             longi = token[3].trim();
             jDatang = token[4].trim();
