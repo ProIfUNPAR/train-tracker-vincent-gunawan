@@ -1,407 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <keretas>
     <kereta>
-        <namaK>Argo Sindoro</namaK>
+        <namaK>Argo Bromo Anggrek Pagi</namaK>
         <jadwals>
             <jadwal>
-                <datang>X</datang>
-                <pergi>06:00</pergi>
-                <stasiun>
-                    <namaS>sm.tawang</namaS>
-                    <latitude>-6.964446</latitude>
-                    <longitude>110.427923</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>07:10</datang>
-                <pergi>07:13</pergi>
-                <stasiun>
-                    <namaS>pekalongan</namaS>
-                    <latitude>-6.889697</latitude>
-                    <longitude>109.66437</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>07:58</datang>
-                <pergi>08:04</pergi>
-                <stasiun>
-                    <namaS>tegal</namaS>
-                    <latitude>-6.867314</latitude>
-                    <longitude>109.14269</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>9</datang>
-                <pergi>09:07</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:43</datang>
-                <pergi>11:45</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>12</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Argo Muria</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>16:00</pergi>
-                <stasiun>
-                    <namaS>sm.tawang</namaS>
-                    <latitude>-6.964446</latitude>
-                    <longitude>110.427923</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>17:10</datang>
-                <pergi>17:13</pergi>
-                <stasiun>
-                    <namaS>pekalongan</namaS>
-                    <latitude>-6.889697</latitude>
-                    <longitude>109.66437</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>17:58</datang>
-                <pergi>18:05</pergi>
-                <stasiun>
-                    <namaS>tegal</namaS>
-                    <latitude>-6.867314</latitude>
-                    <longitude>109.14269</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>19:01</datang>
-                <pergi>19:09</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21:31</datang>
-                <pergi>21:33</pergi>
-                <stasiun>
-                    <namaS>bekasi</namaS>
-                    <latitude>-6.236138</latitude>
-                    <longitude>106.999422</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21:49</datang>
-                <pergi>21:51</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>22:08</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Menoreh</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>08:00</pergi>
-                <stasiun>
-                    <namaS>sm.tawang</namaS>
-                    <latitude>-6.964446</latitude>
-                    <longitude>110.427923</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>08:36</datang>
-                <pergi>08:40</pergi>
-                <stasiun>
-                    <namaS>weleri</namaS>
-                    <latitude>-6.970878</latitude>
-                    <longitude>110.069743</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:18</datang>
-                <pergi>09:22</pergi>
-                <stasiun>
-                    <namaS>pekalongan</namaS>
-                    <latitude>-6.889697</latitude>
-                    <longitude>109.66437</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:47</datang>
-                <pergi>09:50</pergi>
-                <stasiun>
-                    <namaS>pemalang</namaS>
-                    <latitude>-6.887228</latitude>
-                    <longitude>109.388262</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>10:13</datang>
-                <pergi>10:24</pergi>
-                <stasiun>
-                    <namaS>tegal</namaS>
-                    <latitude>-6.867314</latitude>
-                    <longitude>109.14269</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>10:36</datang>
-                <pergi>10:38</pergi>
-                <stasiun>
-                    <namaS>brebes</namaS>
-                    <latitude>-6.874456</latitude>
-                    <longitude>109.043894</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:25</datang>
-                <pergi>11:33</pergi>
-                <stasiun>
-                    <namaS>cirebon prujakan</namaS>
-                    <latitude>-6.719322</latitude>
-                    <longitude>108.558796</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>12:06</datang>
-                <pergi>12:08</pergi>
-                <stasiun>
-                    <namaS>jatibarang</namaS>
-                    <latitude>-6.473083</latitude>
-                    <longitude>108.306334</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>14:18</datang>
-                <pergi>14:20</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>14:30</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>pasarsenen</namaS>
-                    <latitude>-6.17471</latitude>
-                    <longitude>106.844362</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Purwojaya</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>14:30</pergi>
-                <stasiun>
-                    <namaS>cilacap</namaS>
-                    <latitude>-7.736079</latitude>
-                    <longitude>109.007036</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>14:55</datang>
-                <pergi>14:58</pergi>
-                <stasiun>
-                    <namaS>maos</namaS>
-                    <latitude>-7.618954</latitude>
-                    <longitude>109.1395</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>15:12</datang>
-                <pergi>15:30</pergi>
-                <stasiun>
-                    <namaS>kroya</namaS>
-                    <latitude>-7.630099</latitude>
-                    <longitude>109.253565</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>15:57</datang>
-                <pergi>16:10</pergi>
-                <stasiun>
-                    <namaS>purwokerto</namaS>
-                    <latitude>-7.419205</latitude>
-                    <longitude>109.221934</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>18:05</datang>
-                <pergi>18:15</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>20:41</datang>
-                <pergi>20:43</pergi>
-                <stasiun>
-                    <namaS>bekasi</namaS>
-                    <latitude>-6.236138</latitude>
-                    <longitude>106.999422</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21</datang>
-                <pergi>21:02</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21:18</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Tegal Bahari</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>05:40</pergi>
-                <stasiun>
-                    <namaS>tegal</namaS>
-                    <latitude>-6.867314</latitude>
-                    <longitude>109.14269</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>05:52</datang>
-                <pergi>05:55</pergi>
-                <stasiun>
-                    <namaS>brebes</namaS>
-                    <latitude>-6.874456</latitude>
-                    <longitude>109.043894</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>06:12</datang>
-                <pergi>06:14</pergi>
-                <stasiun>
-                    <namaS>tanjung</namaS>
-                    <latitude>-6.876793</latitude>
-                    <longitude>108.860447</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>06:22</datang>
-                <pergi>06:24</pergi>
-                <stasiun>
-                    <namaS>losari</namaS>
-                    <latitude>-6.846247</latitude>
-                    <longitude>108.798287</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>06:33</datang>
-                <pergi>06:35</pergi>
-                <stasiun>
-                    <namaS>babakan</namaS>
-                    <latitude>-6.860552</latitude>
-                    <longitude>108.719648</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>06:57</datang>
-                <pergi>07:25</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>07:40</datang>
-                <pergi>07:42</pergi>
-                <stasiun>
-                    <namaS>arjawinangun</namaS>
-                    <latitude>-6.64463</latitude>
-                    <longitude>108.414547</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:53</datang>
-                <pergi>09:55</pergi>
-                <stasiun>
-                    <namaS>bekasi</namaS>
-                    <latitude>-6.236138</latitude>
-                    <longitude>106.999422</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>10:11</datang>
-                <pergi>10:13</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>10:29</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Argo Bromo</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
+                <datang>-</datang>
                 <pergi>09:30</pergi>
                 <stasiun>
-                    <namaS>gambir</namaS>
+                    <namaS>Gambir</namaS>
                     <latitude>-6.176768</latitude>
                     <longitude>106.830637</longitude>
                 </stasiun>
@@ -410,7 +16,7 @@
                 <datang>12:09</datang>
                 <pergi>12:15</pergi>
                 <stasiun>
-                    <namaS>cirebon</namaS>
+                    <namaS>Cirebon</namaS>
                     <latitude>-6.705297</latitude>
                     <longitude>108.555402</longitude>
                 </stasiun>
@@ -419,7 +25,7 @@
                 <datang>13:49</datang>
                 <pergi>13:52</pergi>
                 <stasiun>
-                    <namaS>pekalongan</namaS>
+                    <namaS>Pekalongan</namaS>
                     <latitude>-6.889697</latitude>
                     <longitude>109.66437</longitude>
                 </stasiun>
@@ -428,18 +34,286 @@
                 <datang>14:59</datang>
                 <pergi>15:09</pergi>
                 <stasiun>
-                    <namaS>sm.tawang</namaS>
+                    <namaS>Sm.Tawang</namaS>
                     <latitude>-6.964446</latitude>
                     <longitude>110.427923</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
                 <datang>18:30</datang>
-                <pergi>X</pergi>
+                <pergi>-</pergi>
                 <stasiun>
-                    <namaS>sb.pasarturi</namaS>
+                    <namaS>Sb.Pasarturi</namaS>
                     <latitude>-7.248174</latitude>
                     <longitude>112.731132</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Argo Bromo Anggrek Malam</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>21:30</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>00:14</datang>
+                <pergi>00:20</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>03:00</datang>
+                <pergi>03:09</pergi>
+                <stasiun>
+                    <namaS>Sm.Tawang</namaS>
+                    <latitude>-6.964446</latitude>
+                    <longitude>110.427923</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>06:30</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Sb.Pasarturi</namaS>
+                    <latitude>-7.248174</latitude>
+                    <longitude>112.731132</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Argo Sindoro</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>16:15</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>19:05</datang>
+                <pergi>19:12</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>20:09</datang>
+                <pergi>20:14</pergi>
+                <stasiun>
+                    <namaS>Tegal</namaS>
+                    <latitude>-6.867314</latitude>
+                    <longitude>109.14269</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>20:57</datang>
+                <pergi>21:01</pergi>
+                <stasiun>
+                    <namaS>Pekalongan</namaS>
+                    <latitude>-6.889697</latitude>
+                    <longitude>109.66437</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>22:15</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Sm.Tawang</namaS>
+                    <latitude>-6.964446</latitude>
+                    <longitude>110.427923</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Argo Muria</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>07:00</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>09:51</datang>
+                <pergi>09:58</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>10:54</datang>
+                <pergi>10:59</pergi>
+                <stasiun>
+                    <namaS>Tegal</namaS>
+                    <latitude>-6.867314</latitude>
+                    <longitude>109.14269</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>11:43</datang>
+                <pergi>11:47</pergi>
+                <stasiun>
+                    <namaS>Pekalongan</namaS>
+                    <latitude>-6.889697</latitude>
+                    <longitude>109.66437</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>13:00</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Sm.Tawang</namaS>
+                    <latitude>-6.964446</latitude>
+                    <longitude>110.427923</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Sembrani</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>19:15</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>22:07</datang>
+                <pergi>22:17</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>23:15</datang>
+                <pergi>23:23</pergi>
+                <stasiun>
+                    <namaS>Tegal</namaS>
+                    <latitude>-6.867314</latitude>
+                    <longitude>109.14269</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>00:09</datang>
+                <pergi>00:14</pergi>
+                <stasiun>
+                    <namaS>Pekalongan</namaS>
+                    <latitude>-6.889697</latitude>
+                    <longitude>109.66437</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>01:27</datang>
+                <pergi>01:45</pergi>
+                <stasiun>
+                    <namaS>Sm.Tawang</namaS>
+                    <latitude>-6.964446</latitude>
+                    <longitude>110.427923</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>03:34</datang>
+                <pergi>03:40</pergi>
+                <stasiun>
+                    <namaS>Cepu</namaS>
+                    <latitude>-7.141683</latitude>
+                    <longitude>111.59724</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>04:11</datang>
+                <pergi>04:14</pergi>
+                <stasiun>
+                    <namaS>Bojonegoro</namaS>
+                    <latitude>-7.164248</latitude>
+                    <longitude>111.886684</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>05:04</datang>
+                <pergi>05:07</pergi>
+                <stasiun>
+                    <namaS>Lamongan</namaS>
+                    <latitude>-7.112458</latitude>
+                    <longitude>112.420288</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>05:43</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Sb.Pasarturi</namaS>
+                    <latitude>-7.248174</latitude>
+                    <longitude>112.731132</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Argo Jati</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>09:00</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>09:32</datang>
+                <pergi>09:34</pergi>
+                <stasiun>
+                    <namaS>Bekasi</namaS>
+                    <latitude>-6.236138</latitude>
+                    <longitude>106.999422</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>11:24</datang>
+                <pergi>11:26</pergi>
+                <stasiun>
+                    <namaS>Jatibarang</namaS>
+                    <latitude>-6.473083</latitude>
+                    <longitude>108.306334</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>11:56</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
                 </stasiun>
             </jadwal>
         </jadwals>
@@ -448,10 +322,10 @@
         <namaK>Cirebon Ekspres</namaK>
         <jadwals>
             <jadwal>
-                <datang>X</datang>
+                <datang>-</datang>
                 <pergi>12:10</pergi>
                 <stasiun>
-                    <namaS>gambir</namaS>
+                    <namaS>Gambir</namaS>
                     <latitude>-6.176768</latitude>
                     <longitude>106.830637</longitude>
                 </stasiun>
@@ -460,7 +334,7 @@
                 <datang>12:40</datang>
                 <pergi>12:42</pergi>
                 <stasiun>
-                    <namaS>bekasi</namaS>
+                    <namaS>Bekasi</namaS>
                     <latitude>-6.236138</latitude>
                     <longitude>106.999422</longitude>
                 </stasiun>
@@ -469,7 +343,7 @@
                 <datang>14:08</datang>
                 <pergi>14:10</pergi>
                 <stasiun>
-                    <namaS>haurgeulis</namaS>
+                    <namaS>Haurgeulis</namaS>
                     <latitude>-6.458454</latitude>
                     <longitude>107.940943</longitude>
                 </stasiun>
@@ -478,7 +352,7 @@
                 <datang>14:41</datang>
                 <pergi>14:43</pergi>
                 <stasiun>
-                    <namaS>jatibarang</namaS>
+                    <namaS>Jatibarang</namaS>
                     <latitude>-6.473083</latitude>
                     <longitude>108.306334</longitude>
                 </stasiun>
@@ -487,18 +361,380 @@
                 <datang>15:01</datang>
                 <pergi>15:03</pergi>
                 <stasiun>
-                    <namaS>arjawinangun</namaS>
+                    <namaS>Arjawinangun</namaS>
                     <latitude>-6.64463</latitude>
                     <longitude>108.414547</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
                 <datang>15:18</datang>
-                <pergi>X</pergi>
+                <pergi>-</pergi>
                 <stasiun>
-                    <namaS>cirebon</namaS>
+                    <namaS>Cirebon</namaS>
                     <latitude>-6.705297</latitude>
                     <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Tegal Bahari</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>09:40</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>10:10</datang>
+                <pergi>10:12</pergi>
+                <stasiun>
+                    <namaS>Bekasi</namaS>
+                    <latitude>-6.236138</latitude>
+                    <longitude>106.999422</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>11:38</datang>
+                <pergi>11:40</pergi>
+                <stasiun>
+                    <namaS>Haurgeulis</namaS>
+                    <latitude>-6.458454</latitude>
+                    <longitude>107.940943</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>12:11</datang>
+                <pergi>12:13</pergi>
+                <stasiun>
+                    <namaS>Jatibarang</namaS>
+                    <latitude>-6.473083</latitude>
+                    <longitude>108.306334</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>12:44</datang>
+                <pergi>12:54</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>13:16</datang>
+                <pergi>13:18</pergi>
+                <stasiun>
+                    <namaS>Babakan</namaS>
+                    <latitude>-6.860552</latitude>
+                    <longitude>108.719648</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>13:27</datang>
+                <pergi>13:29</pergi>
+                <stasiun>
+                    <namaS>Losari</namaS>
+                    <latitude>-6.846247</latitude>
+                    <longitude>108.798287</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>13:37</datang>
+                <pergi>13:39</pergi>
+                <stasiun>
+                    <namaS>Tanjung</namaS>
+                    <latitude>-6.876793</latitude>
+                    <longitude>108.860447</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>13:56</datang>
+                <pergi>13:58</pergi>
+                <stasiun>
+                    <namaS>Brebes</namaS>
+                    <latitude>-6.874456</latitude>
+                    <longitude>109.043894</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>14:10</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Tegal</namaS>
+                    <latitude>-6.867314</latitude>
+                    <longitude>109.14269</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Bangunkarta</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>15:00</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>17:47</datang>
+                <pergi>17:54</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>18:52</datang>
+                <pergi>18:57</pergi>
+                <stasiun>
+                    <namaS>Tegal</namaS>
+                    <latitude>-6.867314</latitude>
+                    <longitude>109.14269</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>19:18</datang>
+                <pergi>19:20</pergi>
+                <stasiun>
+                    <namaS>Pemalang</namaS>
+                    <latitude>-6.887228</latitude>
+                    <longitude>109.388262</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>19:45</datang>
+                <pergi>19:51</pergi>
+                <stasiun>
+                    <namaS>Pekalongan</namaS>
+                    <latitude>-6.889697</latitude>
+                    <longitude>109.66437</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>21:05</datang>
+                <pergi>21:19</pergi>
+                <stasiun>
+                    <namaS>Sm.Tawang</namaS>
+                    <latitude>-6.964446</latitude>
+                    <longitude>110.427923</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>23:32</datang>
+                <pergi>23:37</pergi>
+                <stasiun>
+                    <namaS>Solojebres</namaS>
+                    <latitude>-7.562164</latitude>
+                    <longitude>110.839514</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>00:30</datang>
+                <pergi>00:32</pergi>
+                <stasiun>
+                    <namaS>Paron</namaS>
+                    <latitude>-7.442035</latitude>
+                    <longitude>111.386413</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>00:54</datang>
+                <pergi>01:04</pergi>
+                <stasiun>
+                    <namaS>Madiun</namaS>
+                    <latitude>-7.618756</latitude>
+                    <longitude>111.524389</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>01:45</datang>
+                <pergi>01:47</pergi>
+                <stasiun>
+                    <namaS>Nganjuk</namaS>
+                    <latitude>-7.600199</latitude>
+                    <longitude>111.902736</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>02:07</datang>
+                <pergi>02:10</pergi>
+                <stasiun>
+                    <namaS>Kertosono</namaS>
+                    <latitude>-7.592019</latitude>
+                    <longitude>112.10062</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>02:25</datang>
+                <pergi>02:28</pergi>
+                <stasiun>
+                    <namaS>Jombang</namaS>
+                    <latitude>-7.558013</latitude>
+                    <longitude>112.233607</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>02:50</datang>
+                <pergi>02:54</pergi>
+                <stasiun>
+                    <namaS>Mojokerto</namaS>
+                    <latitude>-7.472139</latitude>
+                    <longitude>112.434932</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>03:30</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Sby Gubeng</namaS>
+                    <latitude>-7.265663</latitude>
+                    <longitude>112.752033</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Argo Lawu</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>20:15</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>23:03</datang>
+                <pergi>23:12</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>01:09</datang>
+                <pergi>01:23</pergi>
+                <stasiun>
+                    <namaS>Purwokerto</namaS>
+                    <latitude>-7.419205</latitude>
+                    <longitude>109.221934</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>02:52</datang>
+                <pergi>02:56</pergi>
+                <stasiun>
+                    <namaS>Kutoarjo</namaS>
+                    <latitude>-7.726036</latitude>
+                    <longitude>109.907187</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>03:48</datang>
+                <pergi>03:53</pergi>
+                <stasiun>
+                    <namaS>Yogyakarta</namaS>
+                    <latitude>-7.789159</latitude>
+                    <longitude>110.363491</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>04:17</datang>
+                <pergi>04:19</pergi>
+                <stasiun>
+                    <namaS>Klaten</namaS>
+                    <latitude>-7.71234</latitude>
+                    <longitude>110.603024</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>04:45</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Solo Balapan</namaS>
+                    <latitude>-7.556974</latitude>
+                    <longitude>110.821455</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Argo Dwipangga</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>08:00</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>10:50</datang>
+                <pergi>10:58</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>12:56</datang>
+                <pergi>13:12</pergi>
+                <stasiun>
+                    <namaS>Purwokerto</namaS>
+                    <latitude>-7.419205</latitude>
+                    <longitude>109.221934</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>14:43</datang>
+                <pergi>14:47</pergi>
+                <stasiun>
+                    <namaS>Kutoarjo</namaS>
+                    <latitude>-7.726036</latitude>
+                    <longitude>109.907187</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>15:39</datang>
+                <pergi>15:44</pergi>
+                <stasiun>
+                    <namaS>Yogyakarta</namaS>
+                    <latitude>-7.789159</latitude>
+                    <longitude>110.363491</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>16:08</datang>
+                <pergi>16:10</pergi>
+                <stasiun>
+                    <namaS>Klaten</namaS>
+                    <latitude>-7.71234</latitude>
+                    <longitude>110.603024</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>16:35</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Solo Balapan</namaS>
+                    <latitude>-7.556974</latitude>
+                    <longitude>110.821455</longitude>
                 </stasiun>
             </jadwal>
         </jadwals>
@@ -507,10 +743,10 @@
         <namaK>Taksaka Siang</namaK>
         <jadwals>
             <jadwal>
-                <datang>X</datang>
+                <datang>-</datang>
                 <pergi>08:30</pergi>
                 <stasiun>
-                    <namaS>gambir</namaS>
+                    <namaS>Gambir</namaS>
                     <latitude>-6.176768</latitude>
                     <longitude>106.830637</longitude>
                 </stasiun>
@@ -519,7 +755,7 @@
                 <datang>11:29</datang>
                 <pergi>11:40</pergi>
                 <stasiun>
-                    <namaS>cirebon</namaS>
+                    <namaS>Cirebon</namaS>
                     <latitude>-6.705297</latitude>
                     <longitude>108.555402</longitude>
                 </stasiun>
@@ -528,16 +764,16 @@
                 <datang>13:37</datang>
                 <pergi>13:50</pergi>
                 <stasiun>
-                    <namaS>purwokerto</namaS>
+                    <namaS>Purwokerto</namaS>
                     <latitude>-7.419205</latitude>
                     <longitude>109.221934</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>15</datang>
+                <datang>15:00</datang>
                 <pergi>15:04</pergi>
                 <stasiun>
-                    <namaS>kebumen</namaS>
+                    <namaS>Kebumen</namaS>
                     <latitude>-7.681834</latitude>
                     <longitude>109.662139</longitude>
                 </stasiun>
@@ -546,16 +782,16 @@
                 <datang>15:28</datang>
                 <pergi>15:32</pergi>
                 <stasiun>
-                    <namaS>kutoarjo</namaS>
+                    <namaS>Kutoarjo</namaS>
                     <latitude>-7.726036</latitude>
                     <longitude>109.907187</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
                 <datang>16:25</datang>
-                <pergi>X</pergi>
+                <pergi>-</pergi>
                 <stasiun>
-                    <namaS>yogyakarta</namaS>
+                    <namaS>Yogyakarta</namaS>
                     <latitude>-7.789159</latitude>
                     <longitude>110.363491</longitude>
                 </stasiun>
@@ -566,10 +802,10 @@
         <namaK>Taksaka Malam</namaK>
         <jadwals>
             <jadwal>
-                <datang>X</datang>
+                <datang>-</datang>
                 <pergi>20:45</pergi>
                 <stasiun>
-                    <namaS>gambir</namaS>
+                    <namaS>Gambir</namaS>
                     <latitude>-6.176768</latitude>
                     <longitude>106.830637</longitude>
                 </stasiun>
@@ -578,7 +814,7 @@
                 <datang>23:41</datang>
                 <pergi>23:48</pergi>
                 <stasiun>
-                    <namaS>cirebon</namaS>
+                    <namaS>Cirebon</namaS>
                     <latitude>-6.705297</latitude>
                     <longitude>108.555402</longitude>
                 </stasiun>
@@ -587,7 +823,7 @@
                 <datang>01:43</datang>
                 <pergi>01:51</pergi>
                 <stasiun>
-                    <namaS>purwokerto</namaS>
+                    <namaS>Purwokerto</namaS>
                     <latitude>-7.419205</latitude>
                     <longitude>109.221934</longitude>
                 </stasiun>
@@ -596,16 +832,16 @@
                 <datang>03:20</datang>
                 <pergi>03:24</pergi>
                 <stasiun>
-                    <namaS>kutoarjo</namaS>
+                    <namaS>Kutoarjo</namaS>
                     <latitude>-7.726036</latitude>
                     <longitude>109.907187</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
                 <datang>04:15</datang>
-                <pergi>X</pergi>
+                <pergi>-</pergi>
                 <stasiun>
-                    <namaS>yogyakarta</namaS>
+                    <namaS>Yogyakarta</namaS>
                     <latitude>-7.789159</latitude>
                     <longitude>110.363491</longitude>
                 </stasiun>
@@ -616,28 +852,28 @@
         <namaK>Bima</namaK>
         <jadwals>
             <jadwal>
-                <datang>X</datang>
+                <datang>-</datang>
                 <pergi>16:30</pergi>
                 <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
                 <datang>18:53</datang>
                 <pergi>18:55</pergi>
                 <stasiun>
-                    <namaS>jatibarang</namaS>
-                    <latitude>-6.473083</latitude>
-                    <longitude>108.306334</longitude>
+                    <namaS>Jatibarang</namaS>
+                    <latitude>-6.473015</latitude>
+                    <longitude>108.306306</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
                 <datang>19:27</datang>
                 <pergi>19:34</pergi>
                 <stasiun>
-                    <namaS>cirebon</namaS>
+                    <namaS>Cirebon</namaS>
                     <latitude>-6.705297</latitude>
                     <longitude>108.555402</longitude>
                 </stasiun>
@@ -646,7 +882,7 @@
                 <datang>21:28</datang>
                 <pergi>21:36</pergi>
                 <stasiun>
-                    <namaS>purwokerto</namaS>
+                    <namaS>Purwokerto</namaS>
                     <latitude>-7.419205</latitude>
                     <longitude>109.221934</longitude>
                 </stasiun>
@@ -655,7 +891,7 @@
                 <datang>00:40</datang>
                 <pergi>00:52</pergi>
                 <stasiun>
-                    <namaS>yogyakarta</namaS>
+                    <namaS>Yogyakarta</namaS>
                     <latitude>-7.789159</latitude>
                     <longitude>110.363491</longitude>
                 </stasiun>
@@ -664,7 +900,7 @@
                 <datang>01:39</datang>
                 <pergi>01:44</pergi>
                 <stasiun>
-                    <namaS>solo balapan</namaS>
+                    <namaS>Solo Balapan</namaS>
                     <latitude>-7.556974</latitude>
                     <longitude>110.821455</longitude>
                 </stasiun>
@@ -673,7 +909,7 @@
                 <datang>03:01</datang>
                 <pergi>03:15</pergi>
                 <stasiun>
-                    <namaS>madiun</namaS>
+                    <namaS>Madiun</namaS>
                     <latitude>-7.618756</latitude>
                     <longitude>111.524389</longitude>
                 </stasiun>
@@ -682,7 +918,7 @@
                 <datang>03:56</datang>
                 <pergi>03:59</pergi>
                 <stasiun>
-                    <namaS>nganjuk</namaS>
+                    <namaS>Nganjuk</namaS>
                     <latitude>-7.600199</latitude>
                     <longitude>111.902736</longitude>
                 </stasiun>
@@ -691,7 +927,7 @@
                 <datang>04:33</datang>
                 <pergi>04:36</pergi>
                 <stasiun>
-                    <namaS>jombang</namaS>
+                    <namaS>Jombang</namaS>
                     <latitude>-7.558013</latitude>
                     <longitude>112.233607</longitude>
                 </stasiun>
@@ -700,7 +936,7 @@
                 <datang>04:58</datang>
                 <pergi>05:02</pergi>
                 <stasiun>
-                    <namaS>mojokerto</namaS>
+                    <namaS>Mojokerto</namaS>
                     <latitude>-7.472139</latitude>
                     <longitude>112.434932</longitude>
                 </stasiun>
@@ -709,7 +945,7 @@
                 <datang>05:38</datang>
                 <pergi>06:20</pergi>
                 <stasiun>
-                    <namaS>surabaya gubeng</namaS>
+                    <namaS>sb.Gubeng</namaS>
                     <latitude>-7.265663</latitude>
                     <longitude>112.752033</longitude>
                 </stasiun>
@@ -734,504 +970,11 @@
             </jadwal>
             <jadwal>
                 <datang>08:15</datang>
-                <pergi>X</pergi>
+                <pergi>-</pergi>
                 <stasiun>
                     <namaS>malang</namaS>
                     <latitude>-7.97754</latitude>
                     <longitude>112.637101</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Argo Lawu</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>08:00</pergi>
-                <stasiun>
-                    <namaS>solo balapan</namaS>
-                    <latitude>-7.556974</latitude>
-                    <longitude>110.821455</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>08:25</datang>
-                <pergi>08:27</pergi>
-                <stasiun>
-                    <namaS>klaten</namaS>
-                    <latitude>-7.71234</latitude>
-                    <longitude>110.603024</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>08:52</datang>
-                <pergi>08:57</pergi>
-                <stasiun>
-                    <namaS>yogyakarta</namaS>
-                    <latitude>-7.789159</latitude>
-                    <longitude>110.363491</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:49</datang>
-                <pergi>09:53</pergi>
-                <stasiun>
-                    <namaS>kutoarjo</namaS>
-                    <latitude>-7.726036</latitude>
-                    <longitude>109.907187</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:23</datang>
-                <pergi>11:35</pergi>
-                <stasiun>
-                    <namaS>purwokerto</namaS>
-                    <latitude>-7.419205</latitude>
-                    <longitude>109.221934</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>13:29</datang>
-                <pergi>13:37</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>16:11</datang>
-                <pergi>16:13</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>16:27</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Argo Dwipangga</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>20:00</pergi>
-                <stasiun>
-                    <namaS>solo balapan</namaS>
-                    <latitude>-7.556974</latitude>
-                    <longitude>110.821455</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>20:25</datang>
-                <pergi>20:27</pergi>
-                <stasiun>
-                    <namaS>klaten</namaS>
-                    <latitude>-7.71234</latitude>
-                    <longitude>110.603024</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>20:52</datang>
-                <pergi>20:57</pergi>
-                <stasiun>
-                    <namaS>yogyakarta</namaS>
-                    <latitude>-7.789159</latitude>
-                    <longitude>110.363491</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21:49</datang>
-                <pergi>21:55</pergi>
-                <stasiun>
-                    <namaS>kutoarjo</namaS>
-                    <latitude>-7.726036</latitude>
-                    <longitude>109.907187</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>23:28</datang>
-                <pergi>23:40</pergi>
-                <stasiun>
-                    <namaS>purwokerto</namaS>
-                    <latitude>-7.419205</latitude>
-                    <longitude>109.221934</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>01:35</datang>
-                <pergi>01:44</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>04:19</datang>
-                <pergi>04:21</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>04:37</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Senja Utama Solo</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>17:30</pergi>
-                <stasiun>
-                    <namaS>solo balapan</namaS>
-                    <latitude>-7.556974</latitude>
-                    <longitude>110.821455</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>17:57</datang>
-                <pergi>18:00</pergi>
-                <stasiun>
-                    <namaS>klaten</namaS>
-                    <latitude>-7.71234</latitude>
-                    <longitude>110.603024</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>18:27</datang>
-                <pergi>18:40</pergi>
-                <stasiun>
-                    <namaS>yogyakarta</namaS>
-                    <latitude>-7.789159</latitude>
-                    <longitude>110.363491</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>19:34</datang>
-                <pergi>19:40</pergi>
-                <stasiun>
-                    <namaS>kutoarjo</namaS>
-                    <latitude>-7.726036</latitude>
-                    <longitude>109.907187</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>20:58</datang>
-                <pergi>21:05</pergi>
-                <stasiun>
-                    <namaS>kroya</namaS>
-                    <latitude>-7.630099</latitude>
-                    <longitude>109.253565</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21:32</datang>
-                <pergi>21:46</pergi>
-                <stasiun>
-                    <namaS>purwokerto</namaS>
-                    <latitude>-7.419205</latitude>
-                    <longitude>109.221934</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>23:42</datang>
-                <pergi>23:58</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>02:23</datang>
-                <pergi>02:25</pergi>
-                <stasiun>
-                    <namaS>bekasi</namaS>
-                    <latitude>-6.236138</latitude>
-                    <longitude>106.999422</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>02:41</datang>
-                <pergi>02:44</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>02:54</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>pasarsenen</namaS>
-                    <latitude>-6.17471</latitude>
-                    <longitude>106.844362</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Lodaya</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>07:10</pergi>
-                <stasiun>
-                    <namaS>solo balapan</namaS>
-                    <latitude>-7.556974</latitude>
-                    <longitude>110.821455</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>07:36</datang>
-                <pergi>07:38</pergi>
-                <stasiun>
-                    <namaS>klaten</namaS>
-                    <latitude>-7.71234</latitude>
-                    <longitude>110.603024</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>08:03</datang>
-                <pergi>08:08</pergi>
-                <stasiun>
-                    <namaS>yogyakarta</namaS>
-                    <latitude>-7.789159</latitude>
-                    <longitude>110.363491</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>08:34</datang>
-                <pergi>08:36</pergi>
-                <stasiun>
-                    <namaS>wates</namaS>
-                    <latitude>-7.859556</latitude>
-                    <longitude>110.157929</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:05</datang>
-                <pergi>09:10</pergi>
-                <stasiun>
-                    <namaS>kutoarjo</namaS>
-                    <latitude>-7.726036</latitude>
-                    <longitude>109.907187</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:35</datang>
-                <pergi>09:37</pergi>
-                <stasiun>
-                    <namaS>kebumen</namaS>
-                    <latitude>-7.681834</latitude>
-                    <longitude>109.662139</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:10</datang>
-                <pergi>11:12</pergi>
-                <stasiun>
-                    <namaS>sidareja</namaS>
-                    <latitude>-7.486341</latitude>
-                    <longitude>108.807519</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:54</datang>
-                <pergi>12:08</pergi>
-                <stasiun>
-                    <namaS>banjar</namaS>
-                    <latitude>-7.37628</latitude>
-                    <longitude>108.542422</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>12:55</datang>
-                <pergi>13:00</pergi>
-                <stasiun>
-                    <namaS>tasikmalaya</namaS>
-                    <latitude>-7.322344</latitude>
-                    <longitude>108.223812</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>13:46</datang>
-                <pergi>13:56</pergi>
-                <stasiun>
-                    <namaS>cipeundeuy</namaS>
-                    <latitude>-7.094597</latitude>
-                    <longitude>108.103213</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>15:35</datang>
-                <pergi>15:38</pergi>
-                <stasiun>
-                    <namaS>kiaracondong</namaS>
-                    <latitude>-6.924952</latitude>
-                    <longitude>107.646302</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>15:48</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>bandung</namaS>
-                    <latitude>-6.914629</latitude>
-                    <longitude>107.602439</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Mutiara Timur</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>09:00</pergi>
-                <stasiun>
-                    <namaS>banyuwangi</namaS>
-                    <latitude>-8.141264</latitude>
-                    <longitude>114.39729</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:13</datang>
-                <pergi>09:15</pergi>
-                <stasiun>
-                    <namaS>karangasem</namaS>
-                    <latitude>-8.222873</latitude>
-                    <longitude>114.340794</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:27</datang>
-                <pergi>09:29</pergi>
-                <stasiun>
-                    <namaS>rogojampi</namaS>
-                    <latitude>-8.304499</latitude>
-                    <longitude>114.292583</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:41</datang>
-                <pergi>09:43</pergi>
-                <stasiun>
-                    <namaS>temuguruh</namaS>
-                    <latitude>-8.309786</latitude>
-                    <longitude>114.201962</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>09:53</datang>
-                <pergi>09:55</pergi>
-                <stasiun>
-                    <namaS>kalisetail</namaS>
-                    <latitude>-8.302851</latitude>
-                    <longitude>114.139769</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>10:13</datang>
-                <pergi>10:17</pergi>
-                <stasiun>
-                    <namaS>kalibaru</namaS>
-                    <latitude>-8.288854</latitude>
-                    <longitude>113.984387</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:01</datang>
-                <pergi>11:03</pergi>
-                <stasiun>
-                    <namaS>kalisat</namaS>
-                    <latitude>-8.126866</latitude>
-                    <longitude>113.812324</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:22</datang>
-                <pergi>11:30</pergi>
-                <stasiun>
-                    <namaS>jember</namaS>
-                    <latitude>-8.164785</latitude>
-                    <longitude>113.703605</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:42</datang>
-                <pergi>11:44</pergi>
-                <stasiun>
-                    <namaS>rambipuji</namaS>
-                    <latitude>-8.203394</latitude>
-                    <longitude>113.614407</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>12:05</datang>
-                <pergi>12:11</pergi>
-                <stasiun>
-                    <namaS>tanggul</namaS>
-                    <latitude>-8.162857</latitude>
-                    <longitude>113.44838</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>13:16</datang>
-                <pergi>13:24</pergi>
-                <stasiun>
-                    <namaS>probolinggo</namaS>
-                    <latitude>-7.742783</latitude>
-                    <longitude>113.216009</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>14:26</datang>
-                <pergi>14:30</pergi>
-                <stasiun>
-                    <namaS>bangil</namaS>
-                    <latitude>-7.598884</latitude>
-                    <longitude>112.778315</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>14:51</datang>
-                <pergi>14:54</pergi>
-                <stasiun>
-                    <namaS>sidoarjo</namaS>
-                    <latitude>-7.457406</latitude>
-                    <longitude>112.713952</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>15:17</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>surabaya gubeng</namaS>
-                    <latitude>-7.265663</latitude>
-                    <longitude>112.752033</longitude>
                 </stasiun>
             </jadwal>
         </jadwals>
@@ -1240,357 +983,254 @@
         <namaK>Gajayana</namaK>
         <jadwals>
             <jadwal>
-                <datang>X</datang>
-                <pergi>13:30</pergi>
+                <datang>-</datang>
+                <pergi>17:40</pergi>
                 <stasiun>
-                    <namaS>malang</namaS>
-                    <latitude>-7.97754</latitude>
-                    <longitude>112.637101</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>13:35</datang>
-                <pergi>13:37</pergi>
-                <stasiun>
-                    <namaS>malang kotalama</namaS>
-                    <latitude>-7.994843</latitude>
-                    <longitude>112.632595</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>13:58</datang>
-                <pergi>14:01</pergi>
-                <stasiun>
-                    <namaS>kepanjen</namaS>
-                    <latitude>-8.131958</latitude>
-                    <longitude>112.57328</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>14:48</datang>
-                <pergi>14:51</pergi>
-                <stasiun>
-                    <namaS>wlingi</namaS>
-                    <latitude>-8.0883</latitude>
-                    <longitude>112.320067</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>15:10</datang>
-                <pergi>15:14</pergi>
-                <stasiun>
-                    <namaS>blitar</namaS>
-                    <latitude>-8.101335</latitude>
-                    <longitude>112.1628</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>15:43</datang>
-                <pergi>15:46</pergi>
-                <stasiun>
-                    <namaS>tulungagung</namaS>
-                    <latitude>-8.062889</latitude>
-                    <longitude>111.904489</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>16:12</datang>
-                <pergi>16:15</pergi>
-                <stasiun>
-                    <namaS>kediri</namaS>
-                    <latitude>-7.817222</latitude>
-                    <longitude>112.015548</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>16:51</datang>
-                <pergi>16:54</pergi>
-                <stasiun>
-                    <namaS>kertosono</namaS>
-                    <latitude>-7.592019</latitude>
-                    <longitude>112.10062</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>17:14</datang>
-                <pergi>17:16</pergi>
-                <stasiun>
-                    <namaS>nganjuk</namaS>
-                    <latitude>-7.600199</latitude>
-                    <longitude>111.902736</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>17:57</datang>
-                <pergi>18:12</pergi>
-                <stasiun>
-                    <namaS>madiun</namaS>
-                    <latitude>-7.618756</latitude>
-                    <longitude>111.524389</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>19:29</datang>
-                <pergi>19:35</pergi>
-                <stasiun>
-                    <namaS>solo balapan</namaS>
-                    <latitude>-7.556974</latitude>
-                    <longitude>110.821455</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>20:22</datang>
-                <pergi>20:30</pergi>
-                <stasiun>
-                    <namaS>yogyakarta</namaS>
-                    <latitude>-7.789159</latitude>
-                    <longitude>110.363491</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21:22</datang>
-                <pergi>21:26</pergi>
-                <stasiun>
-                    <namaS>kutoarjo</namaS>
-                    <latitude>-7.726036</latitude>
-                    <longitude>109.907187</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>23:12</datang>
-                <pergi>23:24</pergi>
-                <stasiun>
-                    <namaS>purwokerto</namaS>
-                    <latitude>-7.419205</latitude>
-                    <longitude>109.221934</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>01:22</datang>
-                <pergi>01:31</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
+                    <namaS>Gambir</namaS>
                     <latitude>-6.705297</latitude>
                     <longitude>108.555402</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>04:09</datang>
-                <pergi>04:11</pergi>
+                <datang>20:32</datang>
+                <pergi>20:39</pergi>
                 <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>04:27</datang>
-                <pergi>X</pergi>
+                <datang>22:34</datang>
+                <pergi>22:49</pergi>
                 <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Malabar</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>16:00</pergi>
-                <stasiun>
-                    <namaS>malang</namaS>
-                    <latitude>-7.97754</latitude>
-                    <longitude>112.637101</longitude>
+                    <namaS>Purwokerto</namaS>
+                    <latitude>-7.419205</latitude>
+                    <longitude>109.221934</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>16:05</datang>
-                <pergi>16:07</pergi>
+                <datang>00:45</datang>
+                <pergi>00:55</pergi>
                 <stasiun>
-                    <namaS>malang kotalama</namaS>
-                    <latitude>-7.994843</latitude>
-                    <longitude>112.632595</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>16:30</datang>
-                <pergi>16:34</pergi>
-                <stasiun>
-                    <namaS>kepanjen</namaS>
-                    <latitude>-8.131958</latitude>
-                    <longitude>112.57328</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>17:20</datang>
-                <pergi>17:23</pergi>
-                <stasiun>
-                    <namaS>wlingi</namaS>
-                    <latitude>-8.0883</latitude>
-                    <longitude>112.320067</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>17:42</datang>
-                <pergi>17:47</pergi>
-                <stasiun>
-                    <namaS>blitar</namaS>
-                    <latitude>-8.101335</latitude>
-                    <longitude>112.1628</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>18:16</datang>
-                <pergi>18:19</pergi>
-                <stasiun>
-                    <namaS>tulungagung</namaS>
-                    <latitude>-8.062889</latitude>
-                    <longitude>111.904489</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>18:46</datang>
-                <pergi>18:50</pergi>
-                <stasiun>
-                    <namaS>kediri</namaS>
-                    <latitude>-7.817222</latitude>
-                    <longitude>112.015548</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>19:26</datang>
-                <pergi>19:32</pergi>
-                <stasiun>
-                    <namaS>kertosono</namaS>
-                    <latitude>-7.592019</latitude>
-                    <longitude>112.10062</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>19:52</datang>
-                <pergi>19:50</pergi>
-                <stasiun>
-                    <namaS>nganjuk</namaS>
-                    <latitude>-7.600199</latitude>
-                    <longitude>111.902736</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>20:44</datang>
-                <pergi>20:59</pergi>
-                <stasiun>
-                    <namaS>madiun</namaS>
-                    <latitude>-7.618756</latitude>
-                    <longitude>111.524389</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21:22</datang>
-                <pergi>21:24</pergi>
-                <stasiun>
-                    <namaS>paron</namaS>
-                    <latitude>-7.442035</latitude>
-                    <longitude>111.386413</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>22:31</datang>
-                <pergi>22:36</pergi>
-                <stasiun>
-                    <namaS>solo balapan</namaS>
-                    <latitude>-7.556974</latitude>
-                    <longitude>110.821455</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>23:23</datang>
-                <pergi>23:30</pergi>
-                <stasiun>
-                    <namaS>yogyakarta</namaS>
-                    <latitude>-7.789159</latitude>
-                    <longitude>110.363491</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>00:24</datang>
-                <pergi>00:29</pergi>
-                <stasiun>
-                    <namaS>kutoarjo</namaS>
+                    <namaS>Kutoarjo</namaS>
                     <latitude>-7.726036</latitude>
                     <longitude>109.907187</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>01:03</datang>
-                <pergi>01:17</pergi>
+                <datang>01:47</datang>
+                <pergi>02:00</pergi>
                 <stasiun>
-                    <namaS>kebumen</namaS>
-                    <latitude>-7.681834</latitude>
-                    <longitude>109.662139</longitude>
+                    <namaS>Yogyakarta</namaS>
+                    <latitude>-7.789159</latitude>
+                    <longitude>110.363491</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>01:35</datang>
-                <pergi>01:41</pergi>
+                <datang>02:47</datang>
+                <pergi>02:55</pergi>
                 <stasiun>
-                    <namaS>gombong</namaS>
-                    <latitude>-7.61091</latitude>
-                    <longitude>109.507773</longitude>
+                    <namaS>Solo Balapan</namaS>
+                    <latitude>-7.556974</latitude>
+                    <longitude>110.821455</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>02:14</datang>
-                <pergi>02:30</pergi>
+                <datang>04:12</datang>
+                <pergi>04:30</pergi>
                 <stasiun>
-                    <namaS>kroya</namaS>
+                    <namaS>Madiun</namaS>
+                    <latitude>-7.618756</latitude>
+                    <longitude>111.524389</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>05:11</datang>
+                <pergi>05:14</pergi>
+                <stasiun>
+                    <namaS>Nganjuk</namaS>
+                    <latitude>-7.600199</latitude>
+                    <longitude>111.902736</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>05:34</datang>
+                <pergi>05:38</pergi>
+                <stasiun>
+                    <namaS>Kertosono</namaS>
+                    <latitude>-7.592019</latitude>
+                    <longitude>112.10062</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>06:16</datang>
+                <pergi>06:21</pergi>
+                <stasiun>
+                    <namaS>Kediri</namaS>
+                    <latitude>-7.817222</latitude>
+                    <longitude>112.015548</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>06:47</datang>
+                <pergi>06:51</pergi>
+                <stasiun>
+                    <namaS>Tulungagung</namaS>
+                    <latitude>-8.062889</latitude>
+                    <longitude>111.904489</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>07:20</datang>
+                <pergi>07:25</pergi>
+                <stasiun>
+                    <namaS>Blitar</namaS>
+                    <latitude>-8.101335</latitude>
+                    <longitude>112.1628</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>07:46</datang>
+                <pergi>07:49</pergi>
+                <stasiun>
+                    <namaS>Wlingi</namaS>
+                    <latitude>-8.0883</latitude>
+                    <longitude>112.320067</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>08:34</datang>
+                <pergi>08:37</pergi>
+                <stasiun>
+                    <namaS>Kepanjen</namaS>
+                    <latitude>-8.131958</latitude>
+                    <longitude>112.57328</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>08:58</datang>
+                <pergi>09:01</pergi>
+                <stasiun>
+                    <namaS>Malangkotalama</namaS>
+                    <latitude>-7.994843</latitude>
+                    <longitude>112.632595</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>09:06</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Malang</namaS>
+                    <latitude>-7.97754</latitude>
+                    <longitude>112.637101</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Purwojaya</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>22:05</pergi>
+                <stasiun>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>01:00</datang>
+                <pergi>01:08</pergi>
+                <stasiun>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>03:08</datang>
+                <pergi>03:30</pergi>
+                <stasiun>
+                    <namaS>Purwokerto</namaS>
+                    <latitude>-7.419205</latitude>
+                    <longitude>109.221934</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>03:58</datang>
+                <pergi>04:15</pergi>
+                <stasiun>
+                    <namaS>Kroya</namaS>
                     <latitude>-7.630099</latitude>
                     <longitude>109.253565</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>03:53</datang>
-                <pergi>04:03</pergi>
+                <datang>04:29</datang>
+                <pergi>04:31</pergi>
                 <stasiun>
-                    <namaS>banjar</namaS>
-                    <latitude>-7.37628</latitude>
-                    <longitude>108.542422</longitude>
+                    <namaS>Maos</namaS>
+                    <latitude>-7.618954</latitude>
+                    <longitude>109.1395</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>04:50</datang>
+                <datang>04:57</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Cilacap</namaS>
+                    <latitude>-7.736079</latitude>
+                    <longitude>109.007036</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Argo Parahyangan</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
                 <pergi>05:00</pergi>
                 <stasiun>
-                    <namaS>tasikmalaya</namaS>
-                    <latitude>-7.322344</latitude>
-                    <longitude>108.223812</longitude>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.705297</latitude>
+                    <longitude>108.555402</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>05:46</datang>
-                <pergi>05:56</pergi>
+                <datang>05:24</datang>
+                <pergi>05:26</pergi>
                 <stasiun>
-                    <namaS>cipeundeuy</namaS>
-                    <latitude>-7.094597</latitude>
-                    <longitude>108.103213</longitude>
+                    <namaS>Bekasi</namaS>
+                    <latitude>-6.236138</latitude>
+                    <longitude>106.999422</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>07:34</datang>
-                <pergi>07:38</pergi>
+                <datang>06:30</datang>
+                <pergi>06:35</pergi>
                 <stasiun>
-                    <namaS>kiaracondong</namaS>
-                    <latitude>-6.924952</latitude>
-                    <longitude>107.646302</longitude>
+                    <namaS>Purwakarta</namaS>
+                    <latitude>-6.552773</latitude>
+                    <longitude>107.446474</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>07:48</datang>
-                <pergi>X</pergi>
+                <datang>08:21</datang>
+                <pergi>08:23</pergi>
                 <stasiun>
-                    <namaS>bandung</namaS>
+                    <namaS>Cimahi</namaS>
+                    <latitude>-6.88573</latitude>
+                    <longitude>107.536122</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>08:34</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Bandung</namaS>
                     <latitude>-6.914629</latitude>
                     <longitude>107.602439</longitude>
                 </stasiun>
@@ -1598,661 +1238,864 @@
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Malioboro Ekspres</namaK>
+        <namaK>Bima</namaK>
         <jadwals>
             <jadwal>
-                <datang>X</datang>
-                <pergi>08:20</pergi>
+                <datang>16:24</datang>
+                <pergi>17:00</pergi>
                 <stasiun>
-                    <namaS>malang</namaS>
-                    <latitude>-7.97754</latitude>
-                    <longitude>112.637101</longitude>
+                    <namaS>Sb.Gubeng</namaS>
+                    <latitude>-7.265663</latitude>
+                    <longitude>112.752033</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>08:23</datang>
-                <pergi>08:28</pergi>
+                <datang>17:36</datang>
+                <pergi>17:40</pergi>
                 <stasiun>
-                    <namaS>malangkotalama</namaS>
-                    <latitude>-7.994843</latitude>
-                    <longitude>112.632595</longitude>
+                    <namaS>Mojokerto</namaS>
+                    <latitude>-7.472139</latitude>
+                    <longitude>112.434932</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>9</datang>
-                <pergi>09:02</pergi>
+                <datang>18:02</datang>
+                <pergi>18:05</pergi>
                 <stasiun>
-                    <namaS>kepanjen</namaS>
-                    <latitude>-8.131958</latitude>
-                    <longitude>112.57328</longitude>
+                    <namaS>Jombang</namaS>
+                    <latitude>-7.558013</latitude>
+                    <longitude>112.233607</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>09:48</datang>
-                <pergi>09:50</pergi>
+                <datang>18:40</datang>
+                <pergi>18:50</pergi>
                 <stasiun>
-                    <namaS>wlingi</namaS>
-                    <latitude>-8.0883</latitude>
-                    <longitude>112.320067</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>10:09</datang>
-                <pergi>10:13</pergi>
-                <stasiun>
-                    <namaS>blitar</namaS>
-                    <latitude>-8.101335</latitude>
-                    <longitude>112.1628</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>10:41</datang>
-                <pergi>10:44</pergi>
-                <stasiun>
-                    <namaS>tulungagung</namaS>
-                    <latitude>-8.062889</latitude>
-                    <longitude>111.904489</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:10</datang>
-                <pergi>11:13</pergi>
-                <stasiun>
-                    <namaS>kediri</namaS>
-                    <latitude>-7.817222</latitude>
-                    <longitude>112.015548</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:49</datang>
-                <pergi>11:56</pergi>
-                <stasiun>
-                    <namaS>kertosono</namaS>
-                    <latitude>-7.592019</latitude>
-                    <longitude>112.10062</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>12:16</datang>
-                <pergi>12:19</pergi>
-                <stasiun>
-                    <namaS>nganjuk</namaS>
+                    <namaS>Nganjuk</namaS>
                     <latitude>-7.600199</latitude>
                     <longitude>111.902736</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>12:59</datang>
-                <pergi>13:15</pergi>
+                <datang>19:30</datang>
+                <pergi>19:38</pergi>
                 <stasiun>
-                    <namaS>madiun</namaS>
+                    <namaS>Madiun</namaS>
                     <latitude>-7.618756</latitude>
                     <longitude>111.524389</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>14:34</datang>
-                <pergi>14:42</pergi>
+                <datang>20:53</datang>
+                <pergi>20:58</pergi>
                 <stasiun>
-                    <namaS>solo balapan</namaS>
+                    <namaS>Solo Balapan</namaS>
                     <latitude>-7.556974</latitude>
                     <longitude>110.821455</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>15:08</datang>
-                <pergi>15:10</pergi>
+                <datang>21:46</datang>
+                <pergi>22:00</pergi>
                 <stasiun>
-                    <namaS>klaten</namaS>
-                    <latitude>-7.71234</latitude>
-                    <longitude>110.603024</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>15:35</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>yogyakarta</namaS>
+                    <namaS>Yogyakarta</namaS>
                     <latitude>-7.789159</latitude>
                     <longitude>110.363491</longitude>
                 </stasiun>
             </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Sawunggalih Pagi</namaK>
-        <jadwals>
             <jadwal>
-                <datang>X</datang>
-                <pergi>07:00</pergi>
+                <datang>00:30</datang>
+                <pergi>00:38</pergi>
                 <stasiun>
-                    <namaS>kutoarjo</namaS>
-                    <latitude>-7.726036</latitude>
-                    <longitude>109.907187</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>07:25</datang>
-                <pergi>07:27</pergi>
-                <stasiun>
-                    <namaS>kebumen</namaS>
-                    <latitude>-7.681834</latitude>
-                    <longitude>109.662139</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>07:39</datang>
-                <pergi>07:41</pergi>
-                <stasiun>
-                    <namaS>karang anyar</namaS>
-                    <latitude>-7.633166</latitude>
-                    <longitude>109.573491</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>07:50</datang>
-                <pergi>08:02</pergi>
-                <stasiun>
-                    <namaS>gombong</namaS>
-                    <latitude>-7.61091</latitude>
-                    <longitude>109.507773</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>08:26</datang>
-                <pergi>08:30</pergi>
-                <stasiun>
-                    <namaS>kroya</namaS>
-                    <latitude>-7.630099</latitude>
-                    <longitude>109.253565</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>08:57</datang>
-                <pergi>09:10</pergi>
-                <stasiun>
-                    <namaS>purwokerto</namaS>
+                    <namaS>Purwokerto</namaS>
                     <latitude>-7.419205</latitude>
                     <longitude>109.221934</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>09:52</datang>
-                <pergi>09:54</pergi>
+                <datang>02:34</datang>
+                <pergi>02:42</pergi>
                 <stasiun>
-                    <namaS>bumiayu</namaS>
-                    <latitude>-7.237398</latitude>
-                    <longitude>109.009802</longitude>
+                    <namaS>Cirebon</namaS>
+                    <latitude>-6.705284</latitude>
+                    <longitude>108.555397</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>10:45</datang>
-                <pergi>10:47</pergi>
+                <datang>03:13</datang>
+                <pergi>03:15</pergi>
                 <stasiun>
-                    <namaS>ciledug</namaS>
-                    <latitude>-6.903082</latitude>
-                    <longitude>108.743934</longitude>
+                    <namaS>Jatibarang</namaS>
+                    <latitude>-6.473015</latitude>
+                    <longitude>108.306306</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>11:14</datang>
-                <pergi>11:24</pergi>
+                <datang>05:25</datang>
+                <pergi>05:20</pergi>
                 <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>13:48</datang>
-                <pergi>13:50</pergi>
-                <stasiun>
-                    <namaS>bekasi</namaS>
-                    <latitude>-6.236138</latitude>
-                    <longitude>106.999422</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>14:06</datang>
-                <pergi>14:08</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
+                    <namaS>Jatinegara</namaS>
                     <latitude>-6.215287</latitude>
                     <longitude>106.870162</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>14:18</datang>
-                <pergi>X</pergi>
+                <datang>05:43</datang>
+                <pergi>-</pergi>
                 <stasiun>
-                    <namaS>jakarta ps senen</namaS>
-                    <latitude>-6.17495</latitude>
-                    <longitude>106.845401</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Argo Bromo Anggrek Pagi</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>08:00</pergi>
-                <stasiun>
-                    <namaS>sb.pasarturi</namaS>
-                    <latitude>-7.248174</latitude>
-                    <longitude>112.731132</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>11:20</datang>
-                <pergi>11:30</pergi>
-                <stasiun>
-                    <namaS>sm.tawang</namaS>
-                    <latitude>-6.964446</latitude>
-                    <longitude>110.427923</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>12:37</datang>
-                <pergi>12:40</pergi>
-                <stasiun>
-                    <namaS>pekalongan</namaS>
-                    <latitude>-6.889697</latitude>
-                    <longitude>109.66437</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>14:17</datang>
-                <pergi>14:23</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
+                    <namaS>Gambir</namaS>
                     <latitude>-6.705297</latitude>
                     <longitude>108.555402</longitude>
                 </stasiun>
             </jadwal>
-            <jadwal>
-                <datang>16:45</datang>
-                <pergi>16:47</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>17</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
-                </stasiun>
-            </jadwal>
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Sembrani</namaK>
+        <namaK>Argo Wilis</namaK>
         <jadwals>
             <jadwal>
-                <datang>X</datang>
-                <pergi>17:50</pergi>
+                <datang>-</datang>
+                <pergi>07:00</pergi>
                 <stasiun>
-                    <namaS>sb.pasarturi</namaS>
-                    <latitude>-7.248174</latitude>
-                    <longitude>112.731132</longitude>
+                    <namaS>Sb.Gubeng</namaS>
+                    <latitude>-7.265663</latitude>
+                    <longitude>112.752033</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>18:26</datang>
-                <pergi>18:29</pergi>
+                <datang>07:55</datang>
+                <pergi>07:57</pergi>
                 <stasiun>
-                    <namaS>lamongan</namaS>
-                    <latitude>-7.112458</latitude>
-                    <longitude>112.420288</longitude>
+                    <namaS>Jombang</namaS>
+                    <latitude>-7.558013</latitude>
+                    <longitude>112.233607</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>19:19</datang>
-                <pergi>19:22</pergi>
+                <datang>09:04</datang>
+                <pergi>09:09</pergi>
                 <stasiun>
-                    <namaS>bojonegoro</namaS>
-                    <latitude>-7.164248</latitude>
-                    <longitude>111.886684</longitude>
+                    <namaS>Madiun</namaS>
+                    <latitude>-7.618756</latitude>
+                    <longitude>111.524389</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>19:51</datang>
-                <pergi>19:57</pergi>
+                <datang>10:23</datang>
+                <pergi>10:30</pergi>
                 <stasiun>
-                    <namaS>cepu</namaS>
-                    <latitude>-7.141683</latitude>
-                    <longitude>111.59724</longitude>
+                    <namaS>Solo Balapan</namaS>
+                    <latitude>-7.556974</latitude>
+                    <longitude>110.821455</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>21:45</datang>
-                <pergi>22:00</pergi>
+                <datang>11:18</datang>
+                <pergi>11:25</pergi>
                 <stasiun>
-                    <namaS>sm.tawang</namaS>
-                    <latitude>-6.964446</latitude>
-                    <longitude>110.427923</longitude>
+                    <namaS>Yogyakarta</namaS>
+                    <latitude>-7.789159</latitude>
+                    <longitude>110.363491</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>23:13</datang>
-                <pergi>23:18</pergi>
+                <datang>12:18</datang>
+                <pergi>12:25</pergi>
                 <stasiun>
-                    <namaS>pekalongan</namaS>
-                    <latitude>-6.889697</latitude>
-                    <longitude>109.66437</longitude>
+                    <namaS>Kutoarjo</namaS>
+                    <latitude>-7.726036</latitude>
+                    <longitude>109.907187</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>00:05</datang>
-                <pergi>00:15</pergi>
+                <datang>13:30</datang>
+                <pergi>13:45</pergi>
                 <stasiun>
-                    <namaS>tegal</namaS>
-                    <latitude>-6.867314</latitude>
-                    <longitude>109.14269</longitude>
+                    <namaS>Kroya</namaS>
+                    <latitude>-7.630099</latitude>
+                    <longitude>109.253565</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>01:12</datang>
-                <pergi>01:20</pergi>
+                <datang>15:09</datang>
+                <pergi>15:20</pergi>
                 <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>03:57</datang>
-                <pergi>03:59</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>04:15</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>gambir</namaS>
-                    <latitude>-6.176768</latitude>
-                    <longitude>106.830637</longitude>
-                </stasiun>
-            </jadwal>
-        </jadwals>
-    </kereta>
-    <kereta>
-        <namaK>Gumarang</namaK>
-        <jadwals>
-            <jadwal>
-                <datang>X</datang>
-                <pergi>15:30</pergi>
-                <stasiun>
-                    <namaS>sb.pasarturi</namaS>
-                    <latitude>-7.248174</latitude>
-                    <longitude>112.731132</longitude>
+                    <namaS>Banjar</namaS>
+                    <latitude>-7.37628</latitude>
+                    <longitude>108.542422</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
                 <datang>16:07</datang>
-                <pergi>16:09</pergi>
+                <pergi>16:21</pergi>
                 <stasiun>
-                    <namaS>lamongan</namaS>
-                    <latitude>-7.112458</latitude>
-                    <longitude>112.420288</longitude>
+                    <namaS>Tasikmalaya</namaS>
+                    <latitude>-7.322344</latitude>
+                    <longitude>108.223812</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>16:33</datang>
-                <pergi>16:35</pergi>
+                <datang>17:07</datang>
+                <pergi>17:19</pergi>
                 <stasiun>
-                    <namaS>babat</namaS>
-                    <latitude>-7.106177</latitude>
-                    <longitude>112.168762</longitude>
+                    <namaS>Cipeundeuy</namaS>
+                    <latitude>-7.094597</latitude>
+                    <longitude>108.103213</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>17:04</datang>
-                <pergi>17:07</pergi>
+                <datang>19:06</datang>
+                <pergi>-</pergi>
                 <stasiun>
-                    <namaS>bojonegoro</namaS>
-                    <latitude>-7.164248</latitude>
-                    <longitude>111.886684</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>17:36</datang>
-                <pergi>17:43</pergi>
-                <stasiun>
-                    <namaS>cepu</namaS>
-                    <latitude>-7.141683</latitude>
-                    <longitude>111.59724</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>18:47</datang>
-                <pergi>18:50</pergi>
-                <stasiun>
-                    <namaS>ngrombo</namaS>
-                    <latitude>-7.145552</latitude>
-                    <longitude>110.900854</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>19:38</datang>
-                <pergi>19:55</pergi>
-                <stasiun>
-                    <namaS>sm.tawang</namaS>
-                    <latitude>-6.964446</latitude>
-                    <longitude>110.427923</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21:08</datang>
-                <pergi>21:13</pergi>
-                <stasiun>
-                    <namaS>pekalongan</namaS>
-                    <latitude>-6.889697</latitude>
-                    <longitude>109.66437</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>21:40</datang>
-                <pergi>21:45</pergi>
-                <stasiun>
-                    <namaS>pemalang</namaS>
-                    <latitude>-6.887228</latitude>
-                    <longitude>109.388262</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>22:10</datang>
-                <pergi>22:21</pergi>
-                <stasiun>
-                    <namaS>tegal</namaS>
-                    <latitude>-6.867314</latitude>
-                    <longitude>109.14269</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>23:21</datang>
-                <pergi>23:32</pergi>
-                <stasiun>
-                    <namaS>cirebon</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>00:04</datang>
-                <pergi>00:06</pergi>
-                <stasiun>
-                    <namaS>jatibarang</namaS>
-                    <latitude>-6.473083</latitude>
-                    <longitude>108.306334</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>2</datang>
-                <pergi>02:02</pergi>
-                <stasiun>
-                    <namaS>bekasi</namaS>
-                    <latitude>-6.236138</latitude>
-                    <longitude>106.999422</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>02:18</datang>
-                <pergi>02:21</pergi>
-                <stasiun>
-                    <namaS>jatinegara</namaS>
-                    <latitude>-6.215287</latitude>
-                    <longitude>106.870162</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>02:31</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>pasar senen</namaS>
-                    <latitude>-6.174951</latitude>
-                    <longitude>106.8454</longitude>
+                    <namaS>Bandung</namaS>
+                    <latitude>-6.914629</latitude>
+                    <longitude>107.602439</longitude>
                 </stasiun>
             </jadwal>
         </jadwals>
     </kereta>
     <kereta>
-        <namaK>Harina</namaK>
+        <namaK>Turangga</namaK>
         <jadwals>
             <jadwal>
-                <datang>X</datang>
+                <datang>-</datang>
                 <pergi>16:30</pergi>
                 <stasiun>
-                    <namaS>sb.pasarturi</namaS>
-                    <latitude>-7.248174</latitude>
-                    <longitude>112.731132</longitude>
+                    <namaS>Sb.Gubeng</namaS>
+                    <latitude>-7.265663</latitude>
+                    <longitude>112.752033</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
                 <datang>17:06</datang>
-                <pergi>17:09</pergi>
+                <pergi>17:10</pergi>
                 <stasiun>
-                    <namaS>lamongan</namaS>
-                    <latitude>-7.112458</latitude>
-                    <longitude>112.420288</longitude>
+                    <namaS>Mojokerto</namaS>
+                    <latitude>-7.472139</latitude>
+                    <longitude>112.434932</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
                 <datang>17:32</datang>
                 <pergi>17:35</pergi>
                 <stasiun>
-                    <namaS>babat</namaS>
-                    <latitude>-7.106177</latitude>
-                    <longitude>112.168762</longitude>
+                    <namaS>Jombang</namaS>
+                    <latitude>-7.558013</latitude>
+                    <longitude>112.233607</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>18:04</datang>
-                <pergi>18:07</pergi>
+                <datang>19:05</datang>
+                <pergi>19:12</pergi>
                 <stasiun>
-                    <namaS>bojonegoro</namaS>
-                    <latitude>-7.164248</latitude>
-                    <longitude>111.886684</longitude>
+                    <namaS>Madiun</namaS>
+                    <latitude>-7.618756</latitude>
+                    <longitude>111.524389</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>18:37</datang>
-                <pergi>18:43</pergi>
+                <datang>20:27</datang>
+                <pergi>20:32</pergi>
                 <stasiun>
-                    <namaS>cepu</namaS>
-                    <latitude>-7.141683</latitude>
-                    <longitude>111.59724</longitude>
+                    <namaS>Solo Balapan</namaS>
+                    <latitude>-7.556974</latitude>
+                    <longitude>110.821455</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>19:47</datang>
-                <pergi>19:50</pergi>
+                <datang>21:19</datang>
+                <pergi>21:25</pergi>
                 <stasiun>
-                    <namaS>ngrombo</namaS>
-                    <latitude>-7.145552</latitude>
-                    <longitude>110.900854</longitude>
+                    <namaS>Yogyakarta</namaS>
+                    <latitude>-7.789159</latitude>
+                    <longitude>110.363491</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>20:38</datang>
-                <pergi>20:57</pergi>
+                <datang>22:16</datang>
+                <pergi>22:19</pergi>
                 <stasiun>
-                    <namaS>sm.tawang</namaS>
+                    <namaS>Kutoarjo</namaS>
+                    <latitude>-7.726036</latitude>
+                    <longitude>109.907187</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>23:41</datang>
+                <pergi>23:56</pergi>
+                <stasiun>
+                    <namaS>Kroya</namaS>
+                    <latitude>-7.630099</latitude>
+                    <longitude>109.253565</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>01:20</datang>
+                <pergi>01:30</pergi>
+                <stasiun>
+                    <namaS>Banjar</namaS>
+                    <latitude>-7.37628</latitude>
+                    <longitude>108.542422</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>02:17</datang>
+                <pergi>02:22</pergi>
+                <stasiun>
+                    <namaS>Tasikmalaya</namaS>
+                    <latitude>-7.322344</latitude>
+                    <longitude>108.223812</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>03:08</datang>
+                <pergi>03:20</pergi>
+                <stasiun>
+                    <namaS>Cipeundeuy</namaS>
+                    <latitude>-7.094597</latitude>
+                    <longitude>108.103213</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>05:04</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Bandung</namaS>
+                    <latitude>-6.914629</latitude>
+                    <longitude>107.602439</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Mutiara Selatan</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>18:30</datang>
+                <pergi>19:00</pergi>
+                <stasiun>
+                    <namaS>sb.Gubeng</namaS>
+                    <latitude>-7.265663</latitude>
+                    <longitude>112.752033</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>19:36</datang>
+                <pergi>19:47</pergi>
+                <stasiun>
+                    <namaS>Mojokerto</namaS>
+                    <latitude>-7.472139</latitude>
+                    <longitude>112.434932</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>20:09</datang>
+                <pergi>20:12</pergi>
+                <stasiun>
+                    <namaS>Jombang</namaS>
+                    <latitude>-7.558013</latitude>
+                    <longitude>112.233607</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>20:27</datang>
+                <pergi>20:38</pergi>
+                <stasiun>
+                    <namaS>Kertosono</namaS>
+                    <latitude>-7.592019</latitude>
+                    <longitude>112.10062</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>20:59</datang>
+                <pergi>21:01</pergi>
+                <stasiun>
+                    <namaS>Nganjuk</namaS>
+                    <latitude>-7.600199</latitude>
+                    <longitude>111.902736</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>21:40</datang>
+                <pergi>21:53</pergi>
+                <stasiun>
+                    <namaS>Madiun</namaS>
+                    <latitude>-7.618756</latitude>
+                    <longitude>111.524389</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>23:08</datang>
+                <pergi>23:13</pergi>
+                <stasiun>
+                    <namaS>Solo Balapan</namaS>
+                    <latitude>-7.556974</latitude>
+                    <longitude>110.821455</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>00:00</datang>
+                <pergi>00:15</pergi>
+                <stasiun>
+                    <namaS>Yogyakarta</namaS>
+                    <latitude>-7.789159</latitude>
+                    <longitude>110.363491</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>01:08</datang>
+                <pergi>01:18</pergi>
+                <stasiun>
+                    <namaS>Kutoarjo</namaS>
+                    <latitude>-7.726036</latitude>
+                    <longitude>109.907187</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>01:43</datang>
+                <pergi>01:47</pergi>
+                <stasiun>
+                    <namaS>Kebumen</namaS>
+                    <latitude>-7.681834</latitude>
+                    <longitude>109.662139</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>02:06</datang>
+                <pergi>02:15</pergi>
+                <stasiun>
+                    <namaS>Gombong</namaS>
+                    <latitude>-7.61091</latitude>
+                    <longitude>109.507773</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>02:51</datang>
+                <pergi>03:06</pergi>
+                <stasiun>
+                    <namaS>Kroya</namaS>
+                    <latitude>-7.630099</latitude>
+                    <longitude>109.253565</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>03:20</datang>
+                <pergi>03:20</pergi>
+                <stasiun>
+                    <namaS>Maos</namaS>
+                    <latitude>-7.618954</latitude>
+                    <longitude>109.1395</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>04:33</datang>
+                <pergi>04:40</pergi>
+                <stasiun>
+                    <namaS>Banjar</namaS>
+                    <latitude>-7.37628</latitude>
+                    <longitude>108.542422</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>05:05</datang>
+                <pergi>05:07</pergi>
+                <stasiun>
+                    <namaS>Ciamis</namaS>
+                    <latitude>-7.329132</latitude>
+                    <longitude>108.356003</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>05:31</datang>
+                <pergi>05:37</pergi>
+                <stasiun>
+                    <namaS>Tasikmalaya</namaS>
+                    <latitude>-7.322344</latitude>
+                    <longitude>108.223812</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>06:23</datang>
+                <pergi>06:33</pergi>
+                <stasiun>
+                    <namaS>Cipeundeuy</namaS>
+                    <latitude>-7.094597</latitude>
+                    <longitude>108.103213</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>08:21</datang>
+                <pergi>08:23</pergi>
+                <stasiun>
+                    <namaS>Kiaracondong</namaS>
+                    <latitude>-6.924952</latitude>
+                    <longitude>107.646302</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>08:33</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Bandung</namaS>
+                    <latitude>-6.914629</latitude>
+                    <longitude>107.602439</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Sancaka</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>07:30</pergi>
+                <stasiun>
+                    <namaS>Sb.Gubeng</namaS>
+                    <latitude>-7.265663</latitude>
+                    <longitude>112.752033</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>08:17</datang>
+                <pergi>08:20</pergi>
+                <stasiun>
+                    <namaS>Mojokerto</namaS>
+                    <latitude>-7.472139</latitude>
+                    <longitude>112.434932</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>08:41</datang>
+                <pergi>08:43</pergi>
+                <stasiun>
+                    <namaS>Jombang</namaS>
+                    <latitude>-7.558013</latitude>
+                    <longitude>112.233607</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>09:16</datang>
+                <pergi>09:18</pergi>
+                <stasiun>
+                    <namaS>Nganjuk</namaS>
+                    <latitude>-7.600199</latitude>
+                    <longitude>111.902736</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>10:06</datang>
+                <pergi>10:30</pergi>
+                <stasiun>
+                    <namaS>Madiun</namaS>
+                    <latitude>-7.618756</latitude>
+                    <longitude>111.524389</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>11:47</datang>
+                <pergi>11:53</pergi>
+                <stasiun>
+                    <namaS>Solo Balapan</namaS>
+                    <latitude>-7.556974</latitude>
+                    <longitude>110.821455</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>12:18</datang>
+                <pergi>12:20</pergi>
+                <stasiun>
+                    <namaS>Klaten</namaS>
+                    <latitude>-7.71234</latitude>
+                    <longitude>110.603024</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>12:45</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Yogyakarta</namaS>
+                    <latitude>-7.789159</latitude>
+                    <longitude>110.363491</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Mutiara Timur</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>09:00</pergi>
+                <stasiun>
+                    <namaS>Sb.Gubeng</namaS>
+                    <latitude>-7.265663</latitude>
+                    <longitude>112.752033</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>09:23</datang>
+                <pergi>09:26</pergi>
+                <stasiun>
+                    <namaS>sidoarjo</namaS>
+                    <latitude>-7.457406</latitude>
+                    <longitude>112.713952</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>09:47</datang>
+                <pergi>09:54</pergi>
+                <stasiun>
+                    <namaS>Bangil</namaS>
+                    <latitude>-7.598884</latitude>
+                    <longitude>112.778315</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>10:56</datang>
+                <pergi>11:04</pergi>
+                <stasiun>
+                    <namaS>Probolinggo</namaS>
+                    <latitude>-7.742783</latitude>
+                    <longitude>113.216009</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>12:09</datang>
+                <pergi>12:13</pergi>
+                <stasiun>
+                    <namaS>Tanggul</namaS>
+                    <latitude>-8.162857</latitude>
+                    <longitude>113.44838</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>12:34</datang>
+                <pergi>12:36</pergi>
+                <stasiun>
+                    <namaS>Rambipuji</namaS>
+                    <latitude>-8.203394</latitude>
+                    <longitude>113.614407</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>12:49</datang>
+                <pergi>12:57</pergi>
+                <stasiun>
+                    <namaS>Jember</namaS>
+                    <latitude>-8.164785</latitude>
+                    <longitude>113.703605</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>13:16</datang>
+                <pergi>13:18</pergi>
+                <stasiun>
+                    <namaS>Kalisat</namaS>
+                    <latitude>-8.126866</latitude>
+                    <longitude>113.812324</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>14:03</datang>
+                <pergi>14:05</pergi>
+                <stasiun>
+                    <namaS>Kalibaru</namaS>
+                    <latitude>-8.288854</latitude>
+                    <longitude>113.984387</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>14:23</datang>
+                <pergi>14:25</pergi>
+                <stasiun>
+                    <namaS>Kalisetail</namaS>
+                    <latitude>-8.302851</latitude>
+                    <longitude>114.139769</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>14:35</datang>
+                <pergi>14:37</pergi>
+                <stasiun>
+                    <namaS>Temuguruh</namaS>
+                    <latitude>-8.309786</latitude>
+                    <longitude>114.201962</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>14:49</datang>
+                <pergi>14:51</pergi>
+                <stasiun>
+                    <namaS>Rogojampi</namaS>
+                    <latitude>-8.304499</latitude>
+                    <longitude>114.292583</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>15:04</datang>
+                <pergi>15:06</pergi>
+                <stasiun>
+                    <namaS>Karangasem</namaS>
+                    <latitude>-8.222873</latitude>
+                    <longitude>114.340794</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>15:20</datang>
+                <pergi>-</pergi>
+                <stasiun>
+                    <namaS>Banyuwangi</namaS>
+                    <latitude>-8.141264</latitude>
+                    <longitude>114.39729</longitude>
+                </stasiun>
+            </jadwal>
+        </jadwals>
+    </kereta>
+    <kereta>
+        <namaK>Bangunkarta</namaK>
+        <jadwals>
+            <jadwal>
+                <datang>-</datang>
+                <pergi>16:00</pergi>
+                <stasiun>
+                    <namaS>Sb.Gubeng</namaS>
+                    <latitude>-7.265663</latitude>
+                    <longitude>112.752033</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>16:36</datang>
+                <pergi>16:39</pergi>
+                <stasiun>
+                    <namaS>Mojokerto</namaS>
+                    <latitude>-7.472139</latitude>
+                    <longitude>112.434932</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>17:01</datang>
+                <pergi>17:04</pergi>
+                <stasiun>
+                    <namaS>Jombang</namaS>
+                    <latitude>-7.558013</latitude>
+                    <longitude>112.233607</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>17:19</datang>
+                <pergi>17:22</pergi>
+                <stasiun>
+                    <namaS>Kertosono</namaS>
+                    <latitude>-7.592019</latitude>
+                    <longitude>112.10062</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>17:43</datang>
+                <pergi>17:45</pergi>
+                <stasiun>
+                    <namaS>Nganjuk</namaS>
+                    <latitude>-7.600199</latitude>
+                    <longitude>111.902736</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>18:13</datang>
+                <pergi>18:25</pergi>
+                <stasiun>
+                    <namaS>Caruban</namaS>
+                    <latitude>-7.551134</latitude>
+                    <longitude>111.654806</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>18:39</datang>
+                <pergi>18:44</pergi>
+                <stasiun>
+                    <namaS>Madiun</namaS>
+                    <latitude>-7.618756</latitude>
+                    <longitude>111.524389</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>19:06</datang>
+                <pergi>19:08</pergi>
+                <stasiun>
+                    <namaS>Paron</namaS>
+                    <latitude>-7.442035</latitude>
+                    <longitude>111.386413</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>20:00</datang>
+                <pergi>20:05</pergi>
+                <stasiun>
+                    <namaS>Solojebres</namaS>
+                    <latitude>-7.562164</latitude>
+                    <longitude>110.839514</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>22:28</datang>
+                <pergi>22:39</pergi>
+                <stasiun>
+                    <namaS>Sm.Tawang</namaS>
                     <latitude>-6.964446</latitude>
                     <longitude>110.427923</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>22:10</datang>
-                <pergi>22:14</pergi>
+                <datang>23:53</datang>
+                <pergi>23:57</pergi>
                 <stasiun>
-                    <namaS>pekalongan</namaS>
+                    <namaS>Pekalongan</namaS>
                     <latitude>-6.889697</latitude>
                     <longitude>109.66437</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>23:01</datang>
-                <pergi>23:07</pergi>
+                <datang>00:23</datang>
+                <pergi>00:26</pergi>
                 <stasiun>
-                    <namaS>tegal</namaS>
+                    <namaS>Pemalang</namaS>
+                    <latitude>-6.887228</latitude>
+                    <longitude>109.388262</longitude>
+                </stasiun>
+            </jadwal>
+            <jadwal>
+                <datang>00:49</datang>
+                <pergi>00:55</pergi>
+                <stasiun>
+                    <namaS>Tegal</namaS>
                     <latitude>-6.867314</latitude>
                     <longitude>109.14269</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>00:06</datang>
-                <pergi>00:16</pergi>
+                <datang>01:52</datang>
+                <pergi>01:59</pergi>
                 <stasiun>
-                    <namaS>cirebon</namaS>
+                    <namaS>Cirebon</namaS>
                     <latitude>-6.705297</latitude>
                     <longitude>108.555402</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>01:55</datang>
-                <pergi>02:15</pergi>
+                <datang>04:33</datang>
+                <pergi>04:35</pergi>
                 <stasiun>
-                    <namaS>cikampek</namaS>
-                    <latitude>-6.406374</latitude>
-                    <longitude>107.458952</longitude>
+                    <namaS>Jatinegara</namaS>
+                    <latitude>-6.215287</latitude>
+                    <longitude>106.870162</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>02:34</datang>
-                <pergi>02:36</pergi>
+                <datang>04:51</datang>
+                <pergi>-</pergi>
                 <stasiun>
-                    <namaS>purwakarta</namaS>
-                    <latitude>-6.552773</latitude>
-                    <longitude>107.446474</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>03:59</datang>
-                <pergi>04:01</pergi>
-                <stasiun>
-                    <namaS>cimahi</namaS>
-                    <latitude>-6.88573</latitude>
-                    <longitude>107.536122</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
-                <datang>04:11</datang>
-                <pergi>X</pergi>
-                <stasiun>
-                    <namaS>bandung</namaS>
-                    <latitude>-6.914629</latitude>
-                    <longitude>107.602439</longitude>
+                    <namaS>Gambir</namaS>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
                 </stasiun>
             </jadwal>
         </jadwals>
