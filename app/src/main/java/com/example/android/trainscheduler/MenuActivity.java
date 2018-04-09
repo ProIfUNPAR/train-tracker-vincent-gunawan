@@ -321,6 +321,26 @@ public class MenuActivity extends FragmentActivity
                     latCurr = loc.getLatitude();
                     langCurr = loc.getLongitude();
                     jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
+                    LatLng latLngCur = new LatLng(latCurr, langCurr);
+                    LatLng latLngNxt = new LatLng(latNext, langNext);
+                    GoogleDirection.withServerKey(getString(R.string.google_direction_api)).
+                            from(latLngCur).
+                            to(latLngNxt).
+                            transitMode(TransitMode.RAIL).
+                            transportMode(TransportMode.TRANSIT).
+                            execute(new DirectionCallback() {
+                                @Override
+                                public void onDirectionSuccess(Direction direction, String rawBody) {
+                                    Route route = direction.getRouteList().get(0);
+                                    Leg leg = route.getLegList().get(0);
+                                    jarak = Double.parseDouble(leg.getDistance().getValue());
+                                }
+
+                                @Override
+                                public void onDirectionFailure(Throwable t) {
+
+                                }
+                            });
                     tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
 
                     int[] waktu = hitungWaktu(jarak,KECEPATAN_DEFAULT);
