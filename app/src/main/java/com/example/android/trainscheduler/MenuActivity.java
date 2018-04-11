@@ -326,8 +326,8 @@ public class MenuActivity extends FragmentActivity
                     GoogleDirection.withServerKey(getString(R.string.google_direction_api)).
                             from(latLngCur).
                             to(latLngNxt).
-                            transitMode(TransitMode.RAIL).
-                            transportMode(TransportMode.TRANSIT).
+                            transitMode(TransitMode.BUS).
+                            transportMode(TransportMode.DRIVING).
                             execute(new DirectionCallback() {
                                 @Override
                                 public void onDirectionSuccess(Direction direction, String rawBody) {
