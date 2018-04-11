@@ -332,8 +332,18 @@ public class MenuActivity extends FragmentActivity
                                 @Override
                                 public void onDirectionSuccess(Direction direction, String rawBody) {
                                     Route route = direction.getRouteList().get(0);
+                                    ArrayList<LatLng> directionList;
                                     Leg leg = route.getLegList().get(0);
-                                    jarak = Double.parseDouble(leg.getDistance().getValue());
+                                    directionList = leg.getDirectionPoint();
+                                    for (int j = 0; j < directionList.size(); j++){
+                                        langNext = directionList.get(j).longitude;
+                                        latNext = directionList.get(j).latitude;
+                                        jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext).getJarak());
+                                        latCurr = latNext;
+                                        langCurr = langNext;
+                                    }
+//                                    }
+                                    jarak = Double.parseDouble(leg.getDistance().getText().substring(0, leg.getDistance().getText().length()-3));
                                 }
 
                                 @Override
