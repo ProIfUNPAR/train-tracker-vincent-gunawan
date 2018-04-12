@@ -333,50 +333,17 @@ public class MenuActivity extends FragmentActivity
                     latCurr = loc.getLatitude();
                     langCurr = loc.getLongitude();
                     jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
-                    LatLng latLngCur = new LatLng(latCurr, langCurr);
-                    LatLng latLngNxt = new LatLng(latNext, langNext);
 
-                    GoogleDirection.withServerKey(getString(R.string.google_direction_api)).
-                            from(latLngCur).
-                            to(latLngNxt).
-                            transitMode(TransitMode.RAIL).
-                            transportMode(TransportMode.TRANSIT).
-                            execute(new DirectionCallback() {
-                                @Override
-                                public void onDirectionSuccess(Direction direction, String rawBody) {
-                                    Route route = direction.getRouteList().get(0);
-                                    ArrayList<LatLng> directionList;
-                                    Leg leg = route.getLegList().get(0);
-                                    directionList = leg.getDirectionPoint();
-//                                    for (int j = 0; j < directionList.size(); j++){
-//                                        langNext = directionList.get(j).longitude;
-//                                        latNext = directionList.get(j).latitude;
-//                                        jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext).getJarak());
-//                                        latCurr = latNext;
-//                                        langCurr = langNext;
-//                                    }
-//                                    }
-                                    jarak = Double.parseDouble(leg.getDistance().getText().substring(0, leg.getDistance().getText().length()-3));
-                                }
-                                @Override
-                                public void onDirectionFailure(Throwable t) {
-                                    Toast toast = Toast.makeText(MenuActivity.getInstance(),"Direction Failed",Toast.LENGTH_LONG);
-                                    toast.show();
-                                }
-                            });
-<<<<<<< HEAD
                     tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
-                    int[] waktu = hitungWaktu(jarak,KECEPATAN_DEFAULT);
-                    tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
+                    int[] waktu = presenter.hitungWaktu(jarak,KECEPATAN_DEFAULT);
+                    tvWaktu.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
 
                     setAllMarkerAndLine(selectedKereta);
-=======
                     tvJarak.setText(new DecimalFormat("#.##").format(jarak) + " km");
 
-                    int[] waktu = presenter.hitungWaktu(jarak, KECEPATAN_DEFAULT);
+                    waktu = presenter.hitungWaktu(jarak, KECEPATAN_DEFAULT);
                     tvWaktu.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
 //                    setAllMarkerAndLine(selectedKereta);
->>>>>>> 5f0523f994a22add9ac28d485c15aa3733bbb424
                 }
             }
 
