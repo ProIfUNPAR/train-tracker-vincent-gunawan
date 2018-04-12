@@ -273,7 +273,8 @@ public class MenuActivity extends FragmentActivity
         }
         spinnerKereta = findViewById(R.id.spinnerKereta);
         ArrayAdapter<String> adapterKereta = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, namaKereta);
-        spinnerKereta.setAdapter(adapterKereta);
+        ListAdapter la = new ListAdapter(this, R.layout.support_simple_spinner_dropdown_item,namaKereta);
+        spinnerKereta.setAdapter(la);
 
         spinnerKereta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -293,7 +294,6 @@ public class MenuActivity extends FragmentActivity
                             MenuActivity.getInstance(),R.layout.support_simple_spinner_dropdown_item,namaJadwal
                     ));
                 }
-
                 LatLng ll = new LatLng(jadwals.get(0).getStasiun().getLatitude(), jadwals.get(0).getStasiun().getLongtitude());
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(ll)      // Sets the center of the map to location user
@@ -326,8 +326,8 @@ public class MenuActivity extends FragmentActivity
                     GoogleDirection.withServerKey(getString(R.string.google_direction_api)).
                             from(latLngCur).
                             to(latLngNxt).
-                            transitMode(TransitMode.BUS).
-                            transportMode(TransportMode.DRIVING).
+                            transitMode(TransitMode.RAIL).
+                            transportMode(TransportMode.TRANSIT).
                             execute(new DirectionCallback() {
                                 @Override
                                 public void onDirectionSuccess(Direction direction, String rawBody) {
@@ -335,13 +335,13 @@ public class MenuActivity extends FragmentActivity
                                     ArrayList<LatLng> directionList;
                                     Leg leg = route.getLegList().get(0);
                                     directionList = leg.getDirectionPoint();
-                                    for (int j = 0; j < directionList.size(); j++){
-                                        langNext = directionList.get(j).longitude;
-                                        latNext = directionList.get(j).latitude;
-                                        jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext).getJarak());
-                                        latCurr = latNext;
-                                        langCurr = langNext;
-                                    }
+//                                    for (int j = 0; j < directionList.size(); j++){
+//                                        langNext = directionList.get(j).longitude;
+//                                        latNext = directionList.get(j).latitude;
+//                                        jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext).getJarak());
+//                                        latCurr = latNext;
+//                                        langCurr = langNext;
+//                                    }
 //                                    }
                                     jarak = Double.parseDouble(leg.getDistance().getText().substring(0, leg.getDistance().getText().length()-3));
                                 }
@@ -352,7 +352,6 @@ public class MenuActivity extends FragmentActivity
                                 }
                             });
                     tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
-
                     int[] waktu = hitungWaktu(jarak,KECEPATAN_DEFAULT);
                     tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
 
