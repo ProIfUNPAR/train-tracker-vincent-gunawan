@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.GoogleDirection;
@@ -53,8 +54,7 @@ public class MenuActivity extends FragmentActivity
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        DirectionCallback
-{
+        DirectionCallback {
     public static double KECEPATAN_DEFAULT = 40.0;
 
     private GoogleMap mMap;
@@ -65,13 +65,17 @@ public class MenuActivity extends FragmentActivity
     private Spinner spinnerKereta, spinnerStasiun;
     private static MenuActivity instance;
     private int idxKereta = -1;
-    private TextView tvJarak,tvSpeed,tvWaktu;
-    private double langNext,langCurr,latNext,latCurr,jarak;
+    private TextView tvJarak, tvSpeed, tvWaktu;
+    private double langNext, langCurr, latNext, latCurr, jarak;
     private int stationPos;
     private float speed;
     private ArrayList<String> namaKereta;
     private ArrayList<String> namaJadwal;
     private ArrayList<LatLng> directionList;
+    private ArrayList<PolylineOptions> alPO;
+    private MainPresenter presenter;
+    private int banyakPolyline;
+    private double jarakTotal;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -89,9 +93,15 @@ public class MenuActivity extends FragmentActivity
         this.latCurr = 0;
         this.instance = this;
 
+        this.jarakTotal = 0;
+        this.banyakPolyline = 0;
+
         this.namaKereta = new ArrayList<>();
         this.namaJadwal = new ArrayList<>();
+        this.alPO = new ArrayList<>();
         this.setAllSpinner();
+
+        this.presenter = new MainPresenter();
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -104,7 +114,7 @@ public class MenuActivity extends FragmentActivity
             mGoogleApiClient.connect();
         }
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        locationListener  = new LocationListener() {
+        locationListener = new LocationListener() {
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
@@ -112,40 +122,39 @@ public class MenuActivity extends FragmentActivity
 
                 latCurr = loc.getLatitude();
                 langCurr = loc.getLongitude();
-                jarak = (new DistanceCalculation(latCurr,latNext,langCurr,langNext)).getJarak();
-                tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
+                jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
+                tvJarak.setText(new DecimalFormat("#.##").format(jarak) + " km");
 
-                speed = loc.getSpeed()*3.6f;
+                speed = loc.getSpeed() * 3.6f;
                 tvSpeed.setText(String.format("%.2f km/jam", (speed)));
-                android.util.Log.d("speed", speed+"");
-                int[] waktu = hitungWaktu(jarak,speed);
-                tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
+                android.util.Log.d("speed", speed + "");
+                int[] waktu = presenter.hitungWaktu(jarak, speed);
+                tvWaktu.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
 
 
                 stationPos = spinnerStasiun.getSelectedItemPosition();
-                if (jarak<=0.1){
+                if (jarak <= 0.1) {
                     stationPos++;
-                    if (stationPos < spinnerStasiun.getCount()){
+                    if (stationPos < spinnerStasiun.getCount()) {
                         makeNotif(spinnerStasiun.getSelectedItem().toString());
                         spinnerStasiun.setSelection(stationPos);
-                    }
-                    else {
+                    } else {
                         makeNotif("terakhir kereta ini!");
                     }
                 }
 
             }
+
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
 
             }
+
             @Override
             //waktu GPS on
             public void onProviderEnabled(String s) {
                 mMap.setMyLocationEnabled(true);
-//                loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//                Log.d("loclocloc",""+(loc==null));
                 if (loc != null) {
                     LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                     CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -157,6 +166,7 @@ public class MenuActivity extends FragmentActivity
                     mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 }
             }
+
             @Override
             //waktu GPS off
             public void onProviderDisabled(String s) {
@@ -168,6 +178,7 @@ public class MenuActivity extends FragmentActivity
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
         loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
+
     @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -188,13 +199,9 @@ public class MenuActivity extends FragmentActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
-//                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//                Log.d("loclocloc",""+(loc==null));
                 LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(ll)      // Sets the center of the map to location user
@@ -262,14 +269,13 @@ public class MenuActivity extends FragmentActivity
 
     }
 
-    public static MenuActivity getInstance(){
+    public static MenuActivity getInstance() {
         return instance;
     }
 
-    public void setAllSpinner(){
-
-        for(Kereta k : LoadingActivity.getInstance().getKereta()){
-            namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(0).getStasiun().getNamaStasiun()+" - "+k.getJadwals().get(k.getJadwals().size()-1).getStasiun().getNamaStasiun()+")");
+    public void setAllSpinner() {
+        for (Kereta k : LoadingActivity.getInstance().getKereta()) {
+            namaKereta.add(k.getNamaKereta() + " (Tujuan:" + k.getJadwals().get(k.getJadwals().size() - 1).getStasiun().getNamaStasiun() + ")");
         }
         spinnerKereta = findViewById(R.id.spinnerKereta);
         ArrayAdapter<String> adapterKereta = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, namaKereta);
@@ -279,18 +285,22 @@ public class MenuActivity extends FragmentActivity
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                alPO = new ArrayList<>();
+                banyakPolyline = 0;
+                presenter.resetResult();
+
                 MenuActivity.getInstance().namaJadwal.clear();
                 MenuActivity.getInstance().idxKereta = i;
                 Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(i);
                 ArrayList<Jadwal> jadwals = selectedKereta.getJadwals();
-                for(Jadwal j : jadwals){
+                for (Jadwal j : jadwals) {
                     Stasiun s = j.getStasiun();
                     String namaStasiun = s.getNamaStasiun();
                     String jamDatang = j.getJamDatang();
                     String jamPergi = j.getJamPergi();
-                    MenuActivity.getInstance().namaJadwal.add(namaStasiun+" (datang:"+jamDatang+", pergi:"+jamPergi+")");
+                    MenuActivity.getInstance().namaJadwal.add(namaStasiun + " (datang:" + jamDatang + ", pergi:" + jamPergi + ")");
                     MenuActivity.getInstance().spinnerStasiun.setAdapter(new ArrayAdapter<String>(
-                            MenuActivity.getInstance(),R.layout.support_simple_spinner_dropdown_item,namaJadwal
+                            MenuActivity.getInstance(), R.layout.support_simple_spinner_dropdown_item, namaJadwal
                     ));
                 }
 
@@ -302,7 +312,9 @@ public class MenuActivity extends FragmentActivity
                         .tilt(0)                   // Sets the tilt of the camera
                         .build();                   // Creates a CameraPosition from the builder
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                setAllMarkerAndLine(selectedKereta);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -313,7 +325,7 @@ public class MenuActivity extends FragmentActivity
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 //                Log.d("onItemSelected","dipanggil teru/s");
-                if(loc != null) {
+                if (loc != null) {
                     Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(MenuActivity.getInstance().idxKereta);
                     Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
                     latNext = selectedJadwal.getStasiun().getLatitude();
@@ -323,6 +335,7 @@ public class MenuActivity extends FragmentActivity
                     jarak = (new DistanceCalculation(latCurr, latNext, langCurr, langNext)).getJarak();
                     LatLng latLngCur = new LatLng(latCurr, langCurr);
                     LatLng latLngNxt = new LatLng(latNext, langNext);
+
                     GoogleDirection.withServerKey(getString(R.string.google_direction_api)).
                             from(latLngCur).
                             to(latLngNxt).
@@ -335,90 +348,70 @@ public class MenuActivity extends FragmentActivity
                                     Leg leg = route.getLegList().get(0);
                                     jarak = Double.parseDouble(leg.getDistance().getValue());
                                 }
-
                                 @Override
                                 public void onDirectionFailure(Throwable t) {
-
+                                    Toast toast = Toast.makeText(MenuActivity.getInstance(),"Direction Failed",Toast.LENGTH_LONG);
+                                    toast.show();
                                 }
                             });
-                    tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
+                    tvJarak.setText(new DecimalFormat("#.##").format(jarak) + " km");
 
-                    int[] waktu = hitungWaktu(jarak,KECEPATAN_DEFAULT);
-                    tvWaktu.setText(formatWaktu(waktu[0],waktu[1],waktu[2]));
-
-                    setAllMarkerAndLine(selectedKereta);
+                    int[] waktu = presenter.hitungWaktu(jarak, KECEPATAN_DEFAULT);
+                    tvWaktu.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
+//                    setAllMarkerAndLine(selectedKereta);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
     }
-    @Override
-    public void onBackPressed() { }
 
-    public void makeNotif(String station){
+    @Override
+    public void onBackPressed() {
+    }
+
+    public void makeNotif(String station) {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.train_icon_black)
                         .setContentTitle("Perhatian")
                         .setTimeoutAfter(3000)
-                        .setVibrate(new long[] {1000,1000})
+                        .setVibrate(new long[]{1000, 1000})
                         .setContentText("Anda Telah tiba di stasiun " + station);
         int mNotificationId = 1;
         NotificationManager mNotifyMgr =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotifyMgr.notify(mNotificationId,mBuilder.build());
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 
-    public String formatWaktu(int jam, int menit,int detik){
-        String sJam = (jam < 10)? "0"+jam : jam+"";
-        String sMenit = (menit < 10)? "0"+menit : (""+menit).substring(0,2);
-        String sDetik = (detik < 10)? "0"+detik : (""+detik).substring(0,2);
-        return sJam+":"+sMenit+":"+sDetik;
-    }
-
-    public int[] hitungWaktu(double jarak,double kecepatan){
-        int[] array = new int[3];
-        if (kecepatan == 0){
-            kecepatan = KECEPATAN_DEFAULT;
-        }
-        double temp = (jarak/kecepatan);
-        int jam = (int) Math.floor(temp);
-        int menit = (int) ((temp % 1) * 60);
-        int detik = (int)((((temp % 1) * 60)%1)*60);
-
-        array[0] = jam;
-        array[1] = menit;
-        array[2] = detik;
-        return array;
-    }
-
-    private void setAllMarkerAndLine(Kereta selectedKereta){
+    private void setAllMarkerAndLine(Kereta selectedKereta) {
         mMap.clear();
-        Bitmap blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
+
+        Bitmap blackIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
         blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);
-        Bitmap redIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
+        Bitmap redIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
         redIcon = Bitmap.createScaledBitmap(redIcon, 120, 120, false);
-        Bitmap greenIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
+        Bitmap greenIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
         greenIcon = Bitmap.createScaledBitmap(greenIcon, 120, 120, false);
         ArrayList<Stasiun> listOfStasiun = new ArrayList();
-        ArrayList<Jadwal>  tempJadwals = selectedKereta.getJadwals();
-        for(int j=0;j<tempJadwals.size();j++){
+        ArrayList<Jadwal> tempJadwals = selectedKereta.getJadwals();
+        for (int j = 0; j < tempJadwals.size(); j++) {
             listOfStasiun.add(tempJadwals.get(j).getStasiun());
-            LatLng llStasiun = new LatLng(tempJadwals.get(j).getStasiun().getLatitude(),tempJadwals.get(j).getStasiun().getLongtitude());
-            if(j==0) {
+            LatLng llStasiun = new LatLng(tempJadwals.get(j).getStasiun().getLatitude(), tempJadwals.get(j).getStasiun().getLongtitude());
+            if (j == 0) {
                 mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(greenIcon)));
-            }else if(j==tempJadwals.size()-1){
+            } else if (j == tempJadwals.size() - 1) {
                 mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(redIcon)));
-            }else{
+            } else {
                 mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(blackIcon)));
             }
         }
-        for(int j = 0;j<listOfStasiun.size()-1;j++){
-            LatLng currLatLng = new LatLng(listOfStasiun.get(j).getLatitude(),listOfStasiun.get(j).getLongtitude());
-            LatLng nextLatLng = new LatLng(listOfStasiun.get(j+1).getLatitude(),listOfStasiun.get(j+1).getLongtitude());
+        for (int j = 0; j < listOfStasiun.size() - 1; j++) {
+            LatLng currLatLng = new LatLng(listOfStasiun.get(j).getLatitude(), listOfStasiun.get(j).getLongtitude());
+            LatLng nextLatLng = new LatLng(listOfStasiun.get(j + 1).getLatitude(), listOfStasiun.get(j + 1).getLongtitude());
             GoogleDirection.withServerKey(getString(R.string.google_direction_api)).
                     from(currLatLng).
                     to(nextLatLng).
@@ -433,12 +426,29 @@ public class MenuActivity extends FragmentActivity
         Route route = direction.getRouteList().get(0);
         Leg leg = route.getLegList().get(0);
         directionList = leg.getDirectionPoint();
-        PolylineOptions po = DirectionConverter.createPolyline(this,directionList,5,Color.RED);
+        PolylineOptions po = DirectionConverter.createPolyline(this, directionList, 3, Color.RED);
         mMap.addPolyline(po);
+
+        alPO.add(po);
+        banyakPolyline++;
+        Kereta currentKereta = LoadingActivity.getInstance().getKereta().get(spinnerKereta.getSelectedItemPosition());
+        if (banyakPolyline == currentKereta.getJadwals().size() - 1) {
+            presenter.checkNearbyPolyline(alPO, loc);
+
+            //DI LUAR POLYLINE
+            if (presenter.getNearbyIndex() == -1) {
+
+            }
+            //DI DALAM POLYLINE
+            else {
+
+            }
+        }
     }
 
     @Override
     public void onDirectionFailure(Throwable t) {
-
+        Toast toast = Toast.makeText(MenuActivity.getInstance(),"Direction Failed",Toast.LENGTH_LONG);
+        toast.show();
     }
 }
