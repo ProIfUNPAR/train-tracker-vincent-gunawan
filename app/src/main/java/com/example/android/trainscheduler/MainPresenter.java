@@ -10,11 +10,10 @@ import java.util.ArrayList;
 
 public class MainPresenter {
     private ArrayList<Boolean> resultPolyline;
-    private ArrayList<Double> routeLength;
+    private PolylineOptions[] pos;
 
     public MainPresenter() {
         resultPolyline = new ArrayList<>();
-        routeLength = new ArrayList<>();
     }
 
     public int[] hitungWaktu(double jarak, double kecepatan) {
@@ -40,8 +39,17 @@ public class MainPresenter {
         return sJam + ":" + sMenit + ":" + sDetik;
     }
 
-    public boolean checkNearbyPolyline(ArrayList<PolylineOptions> polyline, Location currentLocation) {
-        for (PolylineOptions po : polyline) {
+    public double getJarak(double latAwal, double latAkhir, double longAwal, double longAkhir) {
+        double dlat = Math.toRadians(latAkhir - latAwal);
+        double dlong = Math.toRadians(longAkhir - longAwal);
+
+        double a = Math.sin(dlat / 2) * Math.sin(dlat / 2) + (Math.cos(latAwal) * Math.cos(latAkhir)) * (Math.sin(dlong / 2) * Math.sin(dlong / 2));
+        return 6371 * 2 * (Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+    }
+
+    public void isPolylineNearby(Location currentLocation) {
+        for (PolylineOptions po : pos) {
+            int flag = 0;
             for (LatLng llPo : po.getPoints()) {
                 float[] result = new float[1];
                 Location.distanceBetween(currentLocation.getLatitude(), currentLocation.getLongitude(),
@@ -50,35 +58,45 @@ public class MainPresenter {
                 if (result[0] < 1000) {
                     // If distance is less than 100 meters, this is your polyline
                     resultPolyline.add(true);
-                    return true;
+                    flag = 1;
+                    break;
                 }
             }
+            if (flag == 0) {
+                resultPolyline.add(false);
+            }
         }
-        resultPolyline.add(false);
-        return false;
+//        return false;
     }
 
-    public int getNearbyIndex() {
-        for(int i=0;i<resultPolyline.size();i++){
-            if(resultPolyline.get(i)){
+    public int getNearestStasiun() {
+        for (int i = 0; i < resultPolyline.size(); i++) {
+            if (resultPolyline.get(i)) {
                 return i;
             }
         }
         return -1;
     }
-    public void resetResult(){
-        resultPolyline = new ArrayList<>();
-        routeLength = new ArrayList<>();
+
+    public int getNearestStasiun(ArrayList<Stasiun> stasiun, Location current) {
+        int idx = -1;
+        double jarak = Integer.MAX_VALUE;
+        for (int i = 0; i < stasiun.size(); i++) {
+            double temp = getJarak(current.getLatitude(), stasiun.get(i).getLatitude(), current.getLongitude(), stasiun.get(i).getLongtitude());
+            if (temp < jarak) {
+                jarak = temp;
+                idx = i;
+            }
+        }
+        return idx;
     }
 
-    public void addRouteLength(double length){
-        routeLength.add(length);
+    public void resetResult(int banyakStasiun) {
+        resultPolyline = new ArrayList<>();
+        this.pos = new PolylineOptions[banyakStasiun - 1];
     }
-    public void printRoute(){
-        String temp = "";
-        for(double d : routeLength){
-            temp += d+"\n";
-        }
-        Log.d("ROUTELENGTH",temp);
+
+    public void setPanjangRute(int indeks, PolylineOptions po) {
+        pos[indeks] = po;
     }
 }

@@ -13,15 +13,6 @@
                 </stasiun>
             </jadwal>
             <jadwal>
-                <datang>55:55</datang>
-                <pergi>55:55</pergi>
-                <stasiun>
-                    <namaS>DATA DUMMY</namaS>
-                    <latitude>-6.874649</latitude>
-                    <longitude>107.604852</longitude>
-                </stasiun>
-            </jadwal>
-            <jadwal>
                 <datang>12:09</datang>
                 <pergi>12:15</pergi>
                 <stasiun>
