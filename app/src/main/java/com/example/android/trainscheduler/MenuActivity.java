@@ -308,7 +308,7 @@ public class MenuActivity extends FragmentActivity
                 MenuActivity.getInstance().idxKereta = i;
                 Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(i);
 
-                presenter.resetResult(selectedKereta.getJadwals().size());
+                presenter.resetResult();
 
                 ArrayList<Jadwal> jadwals = selectedKereta.getJadwals();
                 for (Jadwal j : jadwals) {
