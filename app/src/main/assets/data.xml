@@ -856,8 +856,8 @@
                 <pergi>16:30</pergi>
                 <stasiun>
                     <namaS>Gambir</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
@@ -987,8 +987,8 @@
                 <pergi>17:40</pergi>
                 <stasiun>
                     <namaS>Gambir</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
@@ -1136,8 +1136,8 @@
                 <pergi>22:05</pergi>
                 <stasiun>
                     <namaS>Gambir</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
@@ -1195,8 +1195,8 @@
                 <pergi>05:00</pergi>
                 <stasiun>
                     <namaS>Gambir</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
                 </stasiun>
             </jadwal>
             <jadwal>
@@ -1344,8 +1344,8 @@
                 <pergi>-</pergi>
                 <stasiun>
                     <namaS>Gambir</namaS>
-                    <latitude>-6.705297</latitude>
-                    <longitude>108.555402</longitude>
+                    <latitude>-6.176768</latitude>
+                    <longitude>106.830637</longitude>
                 </stasiun>
             </jadwal>
         </jadwals>
