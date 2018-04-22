@@ -33,6 +33,7 @@ public class LoadingActivity extends AppCompatActivity {
 //    private Thread t;
 
     public double speed = -1;
+    private Thread t;
     private int TIME_OUT = 4000;
 
     @Override
