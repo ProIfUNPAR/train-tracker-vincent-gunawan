@@ -118,10 +118,6 @@ public class MenuActivity extends FragmentActivity
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
                 loc = location;
-                if(loc != null) {
-                    loc.setLatitude(-6.184792);
-                    loc.setLongitude(106.832429);
-                }
 
                 latCurr = loc.getLatitude();
                 langCurr = loc.getLongitude();
@@ -158,10 +154,6 @@ public class MenuActivity extends FragmentActivity
             public void onProviderEnabled(String s) {
                 mMap.setMyLocationEnabled(true);
                 loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                if(loc != null) {
-                    loc.setLatitude(-6.184792);
-                    loc.setLongitude(106.832429);
-                }
                 if (loc != null) {
                     LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                     CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -185,10 +177,6 @@ public class MenuActivity extends FragmentActivity
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
         loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         tvHereToSelected.setText("Dari sini ke Stasiun "+LoadingActivity.getInstance().getKereta().get(0).getJadwals().get(0).getStasiun().getNamaStasiun());
-        if(loc != null) {
-            loc.setLatitude(-6.184792);
-            loc.setLongitude(106.832429);
-        }
     }
 
     @SuppressLint("MissingPermission")
@@ -259,10 +247,6 @@ public class MenuActivity extends FragmentActivity
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        if(loc != null) {
-            loc.setLatitude(-6.184792);
-            loc.setLongitude(106.832429);
-        }
         if (loc != null && mMap != null) {
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
             CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -357,43 +341,6 @@ public class MenuActivity extends FragmentActivity
 
                     tvHereToSelected.setText("Dari sini ke Stasiun "+selectedJadwal.getStasiun().getNamaStasiun());
                 }
-
-//                if(loc != null){
-//                    int idx = presenter.getNearestStasiun();
-//                    Kereta currentKereta = LoadingActivity.getInstance().getKereta().get(spinnerKereta.getSelectedItemPosition());
-//                    Jadwal selectedJadwal = currentKereta.getJadwals().get(i);
-//                    tvHereToSelected.setText("Dari sini ke Stasiun "+selectedJadwal.getStasiun().getNamaStasiun());
-//                    //diluar polyline
-//                    if(idx == -1){
-//                        idx = presenter.getNearestStasiun(listStasiunCurrentTrain,loc);
-//                        Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
-//
-//                        jarak = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
-//                        for(int j = idx; j < listStasiunCurrentTrain.size()-1 ; i++){
-//                            Stasiun s1 = listStasiunCurrentTrain.get(j);
-//                            Stasiun s2 = listStasiunCurrentTrain.get(j+1);
-//                            jarak += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
-//                        }
-//                        tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
-//                        int[] waktu = presenter.hitungWaktu(jarak,KECEPATAN_DEFAULT);
-//                        tvWaktu.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
-//
-//                    }
-//                    //di dalam polyline
-//                    else{
-//                        idx++;
-//                        Stasiun currentStasiun = currentKereta.getJadwals().get(idx).getStasiun();
-//                        jarak = presenter.getJarak(loc.getLatitude(),currentStasiun.getLatitude(),loc.getLongitude(),currentStasiun.getLongtitude());
-//                        for(int j = idx;j < currentKereta.getJadwals().size()-1;j++){
-//                            Stasiun s1 = currentKereta.getJadwals().get(j).getStasiun();
-//                            Stasiun s2 = currentKereta.getJadwals().get(j+1).getStasiun();
-//                            jarak += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
-//                        }
-//                        tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
-//                        int[] waktu = presenter.hitungWaktu(jarak,KECEPATAN_DEFAULT);
-//                        tvWaktu.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
-//                    }
-//                }
             }
 
             @Override
@@ -423,6 +370,7 @@ public class MenuActivity extends FragmentActivity
 
     private void setAllMarkerAndLine(Kereta selectedKereta) {
         mMap.clear();
+        listStasiunCurrentTrain.clear();
 
         Bitmap blackIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
         blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);

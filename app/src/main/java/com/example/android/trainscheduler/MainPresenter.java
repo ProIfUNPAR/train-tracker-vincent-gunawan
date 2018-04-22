@@ -50,20 +50,21 @@ public class MainPresenter {
     public void isPolylineNearby(Location currentLocation) {
         for (PolylineOptions po : pos) {
             int flag = 0;
-            for (LatLng llPo : po.getPoints()) {
-                float[] result = new float[1];
-                Location.distanceBetween(currentLocation.getLatitude(), currentLocation.getLongitude(),
-                        llPo.latitude, llPo.longitude, result);
+            if (po != null) {
+                for (LatLng llPo : po.getPoints()) {
+                    float[] result = new float[1];
+                    Location.distanceBetween(currentLocation.getLatitude(), currentLocation.getLongitude(),
+                            llPo.latitude, llPo.longitude, result);
 
-                if (result[0] < 1000) {
-                    // If distance is less than 100 meters, this is your polyline
-                    resultPolyline.add(true);
-                    flag = 1;
-                    break;
+                    if (result[0] < 1000) {
+                        // If distance is less than 100 meters, this is your polyline
+                        resultPolyline.add(true);
+                        break;
+                    }
                 }
-            }
-            if (flag == 0) {
                 resultPolyline.add(false);
+            }else{
+                break;
             }
         }
 //        return false;
@@ -93,7 +94,7 @@ public class MainPresenter {
 
     public void resetResult(int banyakStasiun) {
         resultPolyline = new ArrayList<>();
-        this.pos = new PolylineOptions[banyakStasiun - 1];
+        this.pos = new PolylineOptions[1000];
     }
 
     public void setPanjangRute(int indeks, PolylineOptions po) {
