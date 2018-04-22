@@ -17,15 +17,24 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.akexorcist.googledirection.DirectionCallback;
+import com.akexorcist.googledirection.GoogleDirection;
+import com.akexorcist.googledirection.constant.TransitMode;
+import com.akexorcist.googledirection.constant.TransportMode;
+import com.akexorcist.googledirection.model.Direction;
+import com.akexorcist.googledirection.model.Leg;
+import com.akexorcist.googledirection.model.Route;
+import com.akexorcist.googledirection.util.DirectionConverter;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -41,14 +50,11 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import static com.google.android.gms.location.LocationRequest.PRIORITY_NO_POWER;
-
 public class MenuActivity extends FragmentActivity
         implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener
-{
+        GoogleApiClient.OnConnectionFailedListener{
     public static double KECEPATAN_DEFAULT = 40.0;
 
     private GoogleMap mMap;
@@ -59,49 +65,42 @@ public class MenuActivity extends FragmentActivity
     private Spinner spinnerKereta, spinnerStasiun;
     private static MenuActivity instance;
     private int idxKereta = -1;
-    private TextView tvJarak,tvSpeed,tvWaktu;
-    private double langNext,langCurr,latNext,latCurr,jarak;
+    private TextView tvJarak, tvSpeed, tvWaktu;
+    private double langNext, langCurr, latNext, latCurr, jarak;
     private int stationPos;
     private float speed;
     private ArrayList<String> namaKereta;
     private ArrayList<String> namaJadwal;
+    private ArrayList<LatLng> directionList;
     private MainPresenter presenter;
+    private int banyakPolyline;
+    private TextView tvHereToSelected,tvJarakTotal,tvWaktuTotal;
+    private ArrayList<Stasiun> listStasiunCurrentTrain;
 
-    private Bitmap blackIcon, greenIcon, redIcon;
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_menu);
-//        req.setInterval(5*60*1000);
-//        req.setFastestInterval(60*1000);
-//        req.setMaxWaitTime(60*60*1000);
         this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvJarak = findViewById(R.id.tv_jarak);
         this.tvSpeed = findViewById(R.id.tv_kecepatan);
         this.tvWaktu = findViewById(R.id.tv_waktu);
-
-        this.presenter = new MainPresenter();
+        this.tvHereToSelected = findViewById(R.id.tv_here_to_selected);
+        this.tvJarakTotal = findViewById(R.id.tv_jarak_total);
+        this.tvWaktuTotal = findViewById(R.id.tv_waktu_total);
 
         this.langNext = 0;
         this.langCurr = 0;
         this.latNext = 0;
         this.latCurr = 0;
         this.instance = this;
-
-        this.blackIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
-        this.blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);
-        this.redIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
-        this.redIcon = Bitmap.createScaledBitmap(redIcon, 120, 120, false);
-        this.greenIcon=((BitmapDrawable)getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
-        this.greenIcon = Bitmap.createScaledBitmap(greenIcon, 120, 120, false);
-
-        LocationRequest req=new LocationRequest();
-        req.setPriority(PRIORITY_NO_POWER);
-
+        this.banyakPolyline = 0;
+        this.listStasiunCurrentTrain = new ArrayList<>();
         this.namaKereta = new ArrayList<>();
         this.namaJadwal = new ArrayList<>();
         this.setAllSpinner();
+        this.presenter = new MainPresenter();
 
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -114,7 +113,7 @@ public class MenuActivity extends FragmentActivity
             mGoogleApiClient.connect();
         }
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        locationListener  = new LocationListener() {
+        locationListener = new LocationListener() {
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
@@ -122,43 +121,51 @@ public class MenuActivity extends FragmentActivity
 
                 latCurr = loc.getLatitude();
                 langCurr = loc.getLongitude();
-                jarak = presenter.getJarak(latCurr,latNext,langCurr,langNext);
-                tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
+                jarak = presenter.getJarak(latCurr, latNext, langCurr, langNext);
+                tvJarak.setText(new DecimalFormat("#.##").format(jarak) + " km");
 
-                speed = location.getSpeed()*3.6f;
+                speed = loc.getSpeed() * 3.6f;
                 tvSpeed.setText(String.format("%.2f km/jam", (speed)));
-                int[] waktu = presenter.hitungWaktu(jarak,speed);
-                tvWaktu.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
+                android.util.Log.d("speed", speed + "");
+                int[] waktu = presenter.hitungWaktu(jarak, speed);
+                tvWaktu.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
+
 
                 stationPos = spinnerStasiun.getSelectedItemPosition();
-                if (jarak<=0.1){
+                if (jarak <= 0.1) {
                     stationPos++;
-                    if (stationPos < spinnerStasiun.getCount()){
+                    if (stationPos < spinnerStasiun.getCount()) {
                         makeNotif(spinnerStasiun.getSelectedItem().toString());
                         spinnerStasiun.setSelection(stationPos);
-                    }
-                    else {
+                    } else {
                         makeNotif("terakhir kereta ini!");
                     }
                 }
 
             }
+
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
 
             }
+
             @Override
             //waktu GPS on
             public void onProviderEnabled(String s) {
                 mMap.setMyLocationEnabled(true);
-                loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//                Log.d("loclocloc",""+(loc==null));
+                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                 if (loc != null) {
                     LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
-                    animateCamera(ll,17);
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(ll)      // Sets the center of the map to location user
+                            .zoom(17)                   // Sets the zoom
+                            .bearing(0)                // Sets the orientation of the camera
+                            .tilt(0)                   // Sets the tilt of the camera
+                            .build();                   // Creates a CameraPosition from the builder
+                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 }
             }
+
             @Override
             //waktu GPS off
             public void onProviderDisabled(String s) {
@@ -169,8 +176,9 @@ public class MenuActivity extends FragmentActivity
         mapFragment.getMapAsync(this);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
         loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        tvHereToSelected.setText("Dari sini ke Stasiun "+LoadingActivity.getInstance().getKereta().get(0).getJadwals().get(0).getStasiun().getNamaStasiun());
     }
+
     @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -191,18 +199,17 @@ public class MenuActivity extends FragmentActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        if(loc == null) {
-            loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
-
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
-                if(loc == null) {
-                    loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                }
                 LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
-                animateCamera(ll,17);
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(ll)      // Sets the center of the map to location user
+                        .zoom(17)                   // Sets the zoom
+                        .bearing(0)                // Sets the orientation of the camera
+                        .tilt(0)                   // Sets the tilt of the camera
+                        .build();                   // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 return true;
             }
         });
@@ -211,13 +218,25 @@ public class MenuActivity extends FragmentActivity
             //label.setText("");
             // label.append("\n " + loc.getLatitude() + " " + loc.getLongitude());
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
-            animateCamera(ll,17);
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(ll)      // Sets the center of the map to location user
+                    .zoom(17)                   // Sets the zoom
+                    .bearing(0)                // Sets the orientation of the camera
+                    .tilt(0)                   // Sets the tilt of the camera
+                    .build();                   // Creates a CameraPosition from the builder
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                LatLng ll = marker.getPosition();
-                animateCamera(ll,17);
+                LatLng posisi = marker.getPosition();
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(posisi)      // Sets the center of the map to location user
+                        .zoom(17)                   // Sets the zoom
+                        .bearing(0)                // Sets the orientation of the camera
+                        .tilt(0)                   // Sets the tilt of the camera
+                        .build();                   // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 return true;
             }
         });
@@ -227,10 +246,16 @@ public class MenuActivity extends FragmentActivity
     @SuppressLint("MissingPermission")
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         if (loc != null && mMap != null) {
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
-            animateCamera(ll,17);
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(ll)      // Sets the center of the map to location user
+                    .zoom(17)                   // Sets the zoom
+                    .bearing(0)                // Sets the orientation of the camera
+                    .tilt(0)                   // Sets the tilt of the camera
+                    .build();                   // Creates a CameraPosition from the builder
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
     }
 
@@ -244,41 +269,53 @@ public class MenuActivity extends FragmentActivity
 
     }
 
-    public static MenuActivity getInstance(){
+    public static MenuActivity getInstance() {
         return instance;
     }
 
-    public void setAllSpinner(){
-        for(Kereta k : LoadingActivity.getInstance().getKereta()){
-            namaKereta.add(k.getNamaKereta()+" ("+k.getJadwals().get(0).getStasiun().getNamaStasiun()+" - "+k.getJadwals().get(k.getJadwals().size()-1).getStasiun().getNamaStasiun()+")");
+    public void setAllSpinner() {
+        for (Kereta k : LoadingActivity.getInstance().getKereta()) {
+            namaKereta.add(k.getNamaKereta() + " (asal: "+k.getJadwals().get(0).getStasiun().getNamaStasiun() +" ,tujuan: " + k.getJadwals().get(k.getJadwals().size() - 1).getStasiun().getNamaStasiun() + ")");
         }
         spinnerKereta = findViewById(R.id.spinnerKereta);
         ArrayAdapter<String> adapterKereta = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, namaKereta);
-        spinnerKereta.setAdapter(adapterKereta);
+        ListAdapter la = new ListAdapter(this, R.layout.support_simple_spinner_dropdown_item,namaKereta);
+        spinnerKereta.setAdapter(la);
 
         spinnerKereta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                banyakPolyline = 0;
+
                 MenuActivity.getInstance().namaJadwal.clear();
                 MenuActivity.getInstance().idxKereta = i;
                 Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(i);
+
+                presenter.resetResult(selectedKereta.getJadwals().size());
+
                 ArrayList<Jadwal> jadwals = selectedKereta.getJadwals();
-                for(Jadwal j : jadwals){
+                for (Jadwal j : jadwals) {
                     Stasiun s = j.getStasiun();
                     String namaStasiun = s.getNamaStasiun();
                     String jamDatang = j.getJamDatang();
                     String jamPergi = j.getJamPergi();
-                    MenuActivity.getInstance().namaJadwal.add(namaStasiun+" (datang:"+jamDatang+", pergi:"+jamPergi+")");
+                    MenuActivity.getInstance().namaJadwal.add(namaStasiun + " (datang: " + jamDatang + " ,pergi: " + jamPergi + ")");
                     MenuActivity.getInstance().spinnerStasiun.setAdapter(new ArrayAdapter<String>(
-                            MenuActivity.getInstance(),R.layout.support_simple_spinner_dropdown_item,namaJadwal
+                            MenuActivity.getInstance(), R.layout.support_simple_spinner_dropdown_item, namaJadwal
                     ));
                 }
-                if(loc != null){
-                    LatLng ll = new LatLng(jadwals.get(0).getStasiun().getLatitude(),jadwals.get(0).getStasiun().getLongtitude());
-                    animateCamera(ll,6);
-                }
+                LatLng ll = new LatLng(jadwals.get(0).getStasiun().getLatitude(), jadwals.get(0).getStasiun().getLongtitude());
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(ll)      // Sets the center of the map to location user
+                        .zoom(8)                   // Sets the zoom
+                        .bearing(0)                // Sets the orientation of the camera
+                        .tilt(0)                   // Sets the tilt of the camera
+                        .build();                   // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                setAllMarkerAndLine(selectedKereta);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -288,8 +325,8 @@ public class MenuActivity extends FragmentActivity
         spinnerStasiun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                Log.d("onItemSelected","dipanggil teru/s");
-                if(loc != null) {
+                Log.d("onItemSelected","dipanggil teru/s");
+                if (loc != null) {
                     Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(MenuActivity.getInstance().idxKereta);
                     Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
                     latNext = selectedJadwal.getStasiun().getLatitude();
@@ -302,75 +339,124 @@ public class MenuActivity extends FragmentActivity
                     int[] waktu = presenter.hitungWaktu(jarak,KECEPATAN_DEFAULT);
                     tvWaktu.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
 
-                    setAllMarkerAndLine(selectedKereta);
+                    tvHereToSelected.setText("Dari sini ke Stasiun "+selectedJadwal.getStasiun().getNamaStasiun());
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
     }
-    @Override
-    public void onBackPressed() { }
 
-    public void makeNotif(String station){
+    @Override
+    public void onBackPressed() {
+    }
+
+    public void makeNotif(String station) {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.train_icon_black)
                         .setContentTitle("Perhatian")
                         .setTimeoutAfter(3000)
-                        .setVibrate(new long[] {1000,1000})
+                        .setVibrate(new long[]{1000, 1000})
                         .setContentText("Anda Telah tiba di stasiun " + station);
         int mNotificationId = 1;
         NotificationManager mNotifyMgr =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotifyMgr.notify(mNotificationId,mBuilder.build());
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 
-    private void setAllMarkerAndLine(Kereta selectedKereta){
+    private void setAllMarkerAndLine(Kereta selectedKereta) {
         mMap.clear();
-        ArrayList<Stasiun> listOfStasiun = new ArrayList();
-        ArrayList<Jadwal>  tempJadwals = selectedKereta.getJadwals();
-        for(int j=0;j<tempJadwals.size();j++){
-            listOfStasiun.add(tempJadwals.get(j).getStasiun());
-            LatLng llStasiun = new LatLng(tempJadwals.get(j).getStasiun().getLatitude(),tempJadwals.get(j).getStasiun().getLongtitude());
-            if(j==0) {
-                mMap.addMarker(new MarkerOptions()
-                        .position(llStasiun)
-                        .title(tempJadwals.get(j).getStasiun().getNamaStasiun())
-                        .icon(BitmapDescriptorFactory.fromBitmap(greenIcon))
-                        .alpha(1f));
-            }else if(j==tempJadwals.size()-1){
-                mMap.addMarker(new MarkerOptions()
-                        .position(llStasiun)
-                        .title(tempJadwals.get(j).getStasiun().getNamaStasiun())
-                        .icon(BitmapDescriptorFactory.fromBitmap(redIcon))
-                        .alpha(0.8f));
-            }else{
-                mMap.addMarker(new MarkerOptions()
-                        .position(llStasiun)
-                        .title(tempJadwals.get(j).getStasiun().getNamaStasiun())
-                        .icon(BitmapDescriptorFactory.fromBitmap(blackIcon))
-                        .alpha(1f));
+        listStasiunCurrentTrain.clear();
+
+        Bitmap blackIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.train_icon_black)).getBitmap();
+        blackIcon = Bitmap.createScaledBitmap(blackIcon, 80, 80, false);
+        Bitmap redIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.train_icon_red)).getBitmap();
+        redIcon = Bitmap.createScaledBitmap(redIcon, 120, 120, false);
+        Bitmap greenIcon = ((BitmapDrawable) getResources().getDrawable(R.drawable.train_icon_green)).getBitmap();
+        greenIcon = Bitmap.createScaledBitmap(greenIcon, 120, 120, false);
+        ArrayList<Jadwal> tempJadwals = selectedKereta.getJadwals();
+        for (int j = 0; j < tempJadwals.size(); j++) {
+            listStasiunCurrentTrain.add(tempJadwals.get(j).getStasiun());
+            LatLng llStasiun = new LatLng(tempJadwals.get(j).getStasiun().getLatitude(), tempJadwals.get(j).getStasiun().getLongtitude());
+            if (j == 0) {
+                mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(greenIcon)));
+            } else if (j == tempJadwals.size() - 1) {
+                mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(redIcon)));
+            } else {
+                mMap.addMarker(new MarkerOptions().position(llStasiun).title(tempJadwals.get(j).getStasiun().getNamaStasiun()).icon(BitmapDescriptorFactory.fromBitmap(blackIcon)));
             }
         }
-        for(int j = 0;j<listOfStasiun.size()-1;j++){
-            LatLng currLatLng = new LatLng(listOfStasiun.get(j).getLatitude(),listOfStasiun.get(j).getLongtitude());
-            LatLng nextLatLng = new LatLng(listOfStasiun.get(j+1).getLatitude(),listOfStasiun.get(j+1).getLongtitude());
-            mMap.addPolyline(new PolylineOptions()
-                    .add(currLatLng, nextLatLng)
-                    .width(5)
-                    .color(Color.RED));
+        for (int j = 0; j < listStasiunCurrentTrain.size() - 1; j++) {
+            LatLng currLatLng = new LatLng(listStasiunCurrentTrain.get(j).getLatitude(), listStasiunCurrentTrain.get(j).getLongtitude());
+            LatLng nextLatLng = new LatLng(listStasiunCurrentTrain.get(j + 1).getLatitude(), listStasiunCurrentTrain.get(j + 1).getLongtitude());
+            final int finalJ = j;
+            GoogleDirection.withServerKey(getString(R.string.google_direction_api)).
+                    from(currLatLng).
+                    to(nextLatLng).
+                    transportMode(TransportMode.TRANSIT).
+                    transitMode(TransitMode.RAIL).
+                    alternativeRoute(false).
+                    execute(new DirectionCallback() {
+                        @Override
+                        public void onDirectionSuccess(Direction direction, String rawBody) {
+                            Route route = direction.getRouteList().get(0);
+                            Leg leg = route.getLegList().get(0);
+                            directionList = leg.getDirectionPoint();
+                            PolylineOptions po = DirectionConverter.createPolyline(MenuActivity.getInstance(), directionList, 3, Color.RED);
+                            mMap.addPolyline(po);
+
+                            presenter.setPanjangRute(finalJ,po);
+                            banyakPolyline++;
+
+                            if (banyakPolyline == listStasiunCurrentTrain.size() - 1) {
+                                presenter.isPolylineNearby(loc);
+                                int idx = presenter.getNearestStasiun();
+                                //DI LUAR POLYLINE
+                                if (idx == -1) {
+                                    idx = presenter.getNearestStasiun(listStasiunCurrentTrain,loc);
+                                    Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
+                                    double jarakTotal = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
+                                    for(int i = idx; i < listStasiunCurrentTrain.size()-1; i++){
+                                        Stasiun s1 = listStasiunCurrentTrain.get(i);
+                                        Stasiun s2 = listStasiunCurrentTrain.get(i+1);
+                                        jarakTotal += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
+                                        Log.d("JARAK",""+jarakTotal);
+                                    }
+                                    tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
+
+                                    int[] waktu = presenter.hitungWaktu(jarakTotal,KECEPATAN_DEFAULT);
+                                    tvWaktuTotal.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
+                                }
+                                //DI DALAM POLYLINE
+                                else {
+                                    idx += 1;
+                                    Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
+                                    double jarakTotal = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
+                                    Log.d("JARAK",""+jarakTotal);
+                                    for(int i = idx; i < listStasiunCurrentTrain.size()-1; i++){
+                                        Stasiun s1 = listStasiunCurrentTrain.get(i);
+                                        Stasiun s2 = listStasiunCurrentTrain.get(i+1);
+                                        jarakTotal += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
+                                        Log.d("JARAK",""+jarakTotal);
+                                    }
+                                    tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
+
+                                    int[] waktu = presenter.hitungWaktu(jarakTotal,KECEPATAN_DEFAULT);
+                                    tvWaktuTotal.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onDirectionFailure(Throwable t) {
+                            Toast toast = Toast.makeText(MenuActivity.getInstance(),"Direction Failed",Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    });
         }
-    }
-    private void animateCamera(LatLng ll, int zoom){
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(ll)      // Sets the center of the map to location user
-                .zoom(zoom)                   // Sets the zoom
-                .bearing(0)                // Sets the orientation of the camera
-                .tilt(0)                   // Sets the tilt of the camera
-                .build();                   // Creates a CameraPosition from the builder
-        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 }
