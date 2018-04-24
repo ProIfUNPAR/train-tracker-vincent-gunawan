@@ -23,14 +23,8 @@ public class LoadingActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private static LoadingActivity instance;
 
-//    public MainPresenter dc;
-
     private ArrayList<Kereta> keretas;
     private HashMap<String, Stasiun> stasiuns;
-
-//    private Context ctx;
-//    private TextView tvSpeed;
-//    private Thread t;
 
     public double speed = -1;
     private Thread t;
@@ -43,9 +37,6 @@ public class LoadingActivity extends AppCompatActivity {
         this.keretas = new ArrayList<>();
         this.stasiuns = new HashMap<>();
         this.instance = this;
-
-//        dc= new MainPresenter(-6.914430, -7.329102, 107.602447, 108.355991);
-//        Log.d("rStasiun", dc.count() + "");
 
         locationManager = (LocationManager) this.getSystemService(this.LOCATION_SERVICE);
         LocationListener ll = new LocationListener() {

@@ -49,6 +49,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MenuActivity extends FragmentActivity
         implements
@@ -153,7 +154,8 @@ public class MenuActivity extends FragmentActivity
             //waktu GPS on
             public void onProviderEnabled(String s) {
                 mMap.setMyLocationEnabled(true);
-                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+//                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                loc = getLastKnownLocation();
                 if (loc != null) {
                     LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                     CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -193,6 +195,25 @@ public class MenuActivity extends FragmentActivity
                     }
                 }
         }
+    }
+
+    public Location getLastKnownLocation() {
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            @SuppressLint("MissingPermission") Location l = locationManager.getLastKnownLocation(provider);
+
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                bestLocation = l;
+            }
+        }
+        if (bestLocation == null) {
+            return null;
+        }
+        return bestLocation;
     }
 
     @SuppressLint("MissingPermission")
@@ -246,7 +267,8 @@ public class MenuActivity extends FragmentActivity
     @SuppressLint("MissingPermission")
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+//        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        loc = getLastKnownLocation();
         if (loc != null && mMap != null) {
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
             CameraPosition cameraPosition = new CameraPosition.Builder()
