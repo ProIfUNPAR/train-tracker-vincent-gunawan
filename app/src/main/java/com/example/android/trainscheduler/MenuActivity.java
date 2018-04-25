@@ -143,6 +143,43 @@ public class MenuActivity extends FragmentActivity
                     }
                 }
 
+                if (banyakPolyline == listStasiunCurrentTrain.size() - 1) {
+                    presenter.isPolylineNearby(loc);
+                    int idx = presenter.getNearestStasiun();
+                    //DI LUAR POLYLINE
+                    if (idx == -1) {
+                        idx = presenter.getNearestStasiun(listStasiunCurrentTrain,loc);
+                        Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
+                        double jarakTotal = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
+                        for(int i = idx; i < listStasiunCurrentTrain.size()-1; i++){
+                            Stasiun s1 = listStasiunCurrentTrain.get(i);
+                            Stasiun s2 = listStasiunCurrentTrain.get(i+1);
+                            jarakTotal += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
+                            Log.d("JARAK",""+jarakTotal);
+                        }
+                        tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
+
+                        waktu = presenter.hitungWaktu(jarakTotal,KECEPATAN_DEFAULT);
+                        tvWaktuTotal.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
+                    }
+                    //DI DALAM POLYLINE
+                    else {
+                        idx += 1;
+                        Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
+                        double jarakTotal = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
+                        Log.d("JARAK",""+jarakTotal);
+                        for(int i = idx; i < listStasiunCurrentTrain.size()-1; i++){
+                            Stasiun s1 = listStasiunCurrentTrain.get(i);
+                            Stasiun s2 = listStasiunCurrentTrain.get(i+1);
+                            jarakTotal += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
+                            Log.d("JARAK",""+jarakTotal);
+                        }
+                        tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
+
+                        waktu = presenter.hitungWaktu(jarakTotal,KECEPATAN_DEFAULT);
+                        tvWaktuTotal.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
+                    }
+                }
             }
 
             @Override
