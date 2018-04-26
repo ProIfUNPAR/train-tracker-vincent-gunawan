@@ -477,6 +477,7 @@ public class MenuActivity extends FragmentActivity
                                 //DI LUAR POLYLINE
                                 if (idx == -1) {
                                     idx = presenter.getNearestStasiun(listStasiunCurrentTrain,loc);
+                                    Log.d("JARAK INDEX",idx+"");
                                     Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
                                     double jarakTotal = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
                                     for(int i = idx; i < listStasiunCurrentTrain.size()-1; i++){
