@@ -334,7 +334,7 @@ public class MenuActivity extends FragmentActivity
 
     public void setAllSpinner() {
         for (Kereta k : LoadingActivity.getInstance().getKereta()) {
-            namaKereta.add(k.getNamaKereta() + " (asal: "+k.getJadwals().get(0).getStasiun().getNamaStasiun() +" ,tujuan: " + k.getJadwals().get(k.getJadwals().size() - 1).getStasiun().getNamaStasiun() + ")");
+            namaKereta.add(k.getNamaKereta() + " ("+k.getJadwals().get(0).getStasiun().getNamaStasiun() +" - " + k.getJadwals().get(k.getJadwals().size() - 1).getStasiun().getNamaStasiun() + ")");
         }
         spinnerKereta = findViewById(R.id.spinnerKereta);
         ArrayAdapter<String> adapterKereta = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, namaKereta);
