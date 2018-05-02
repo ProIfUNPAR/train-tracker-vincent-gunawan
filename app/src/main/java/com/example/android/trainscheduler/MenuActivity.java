@@ -55,7 +55,7 @@ public class MenuActivity extends FragmentActivity
         implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener{
+        GoogleApiClient.OnConnectionFailedListener {
     public static double KECEPATAN_DEFAULT = 40.0;
 
     private GoogleMap mMap;
@@ -75,7 +75,7 @@ public class MenuActivity extends FragmentActivity
     private ArrayList<LatLng> directionList;
     private MainPresenter presenter;
     private int banyakPolyline;
-    private TextView tvHereToSelected,tvJarakTotal,tvWaktuTotal;
+    private TextView tvHereToSelected, tvJarakTotal, tvWaktuTotal;
     private ArrayList<Stasiun> listStasiunCurrentTrain;
 
     @SuppressLint("MissingPermission")
@@ -117,6 +117,7 @@ public class MenuActivity extends FragmentActivity
             @Override
             //waktu lokasinya pindah
             public void onLocationChanged(Location location) {
+                Log.d("LOCATION", "DIPANGGIL");
                 loc = location;
 
                 latCurr = loc.getLatitude();
@@ -147,36 +148,36 @@ public class MenuActivity extends FragmentActivity
                     int idx = presenter.getNearestStasiun();
                     //DI LUAR POLYLINE
                     if (idx == -1) {
-                        idx = presenter.getNearestStasiun(listStasiunCurrentTrain,loc);
+                        idx = presenter.getNearestStasiun(listStasiunCurrentTrain, loc);
                         Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
-                        double jarakTotal = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
-                        for(int i = idx; i < listStasiunCurrentTrain.size()-1; i++){
+                        double jarakTotal = presenter.getJarak(loc.getLatitude(), nextStasiun.getLatitude(), loc.getLongitude(), nextStasiun.getLongtitude());
+                        for (int i = idx; i < listStasiunCurrentTrain.size() - 1; i++) {
                             Stasiun s1 = listStasiunCurrentTrain.get(i);
-                            Stasiun s2 = listStasiunCurrentTrain.get(i+1);
-                            jarakTotal += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
-                            Log.d("JARAK",""+jarakTotal);
+                            Stasiun s2 = listStasiunCurrentTrain.get(i + 1);
+                            jarakTotal += presenter.getJarak(s1.getLatitude(), s2.getLatitude(), s1.getLongtitude(), s2.getLongtitude());
+                            Log.d("JARAK", "" + jarakTotal);
                         }
                         tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
 
-                        waktu = presenter.hitungWaktu(jarakTotal,KECEPATAN_DEFAULT);
-                        tvWaktuTotal.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
+                        waktu = presenter.hitungWaktu(jarakTotal, KECEPATAN_DEFAULT);
+                        tvWaktuTotal.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
                     }
                     //DI DALAM POLYLINE
                     else {
                         idx += 1;
                         Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
-                        double jarakTotal = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
-                        Log.d("JARAK",""+jarakTotal);
-                        for(int i = idx; i < listStasiunCurrentTrain.size()-1; i++){
+                        double jarakTotal = presenter.getJarak(loc.getLatitude(), nextStasiun.getLatitude(), loc.getLongitude(), nextStasiun.getLongtitude());
+                        Log.d("JARAK", "" + jarakTotal);
+                        for (int i = idx; i < listStasiunCurrentTrain.size() - 1; i++) {
                             Stasiun s1 = listStasiunCurrentTrain.get(i);
-                            Stasiun s2 = listStasiunCurrentTrain.get(i+1);
-                            jarakTotal += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
-                            Log.d("JARAK",""+jarakTotal);
+                            Stasiun s2 = listStasiunCurrentTrain.get(i + 1);
+                            jarakTotal += presenter.getJarak(s1.getLatitude(), s2.getLatitude(), s1.getLongtitude(), s2.getLongtitude());
+                            Log.d("JARAK", "" + jarakTotal);
                         }
                         tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
 
-                        waktu = presenter.hitungWaktu(jarakTotal,KECEPATAN_DEFAULT);
-                        tvWaktuTotal.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
+                        waktu = presenter.hitungWaktu(jarakTotal, KECEPATAN_DEFAULT);
+                        tvWaktuTotal.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
                     }
                 }
             }
@@ -189,8 +190,6 @@ public class MenuActivity extends FragmentActivity
             @Override
             //waktu GPS on
             public void onProviderEnabled(String s) {
-                mMap.setMyLocationEnabled(true);
-//                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                 getBestLocation();
                 if (loc != null) {
                     LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
@@ -215,7 +214,7 @@ public class MenuActivity extends FragmentActivity
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
 //        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         getBestLocation();
-        tvHereToSelected.setText("Dari sini ke Stasiun "+LoadingActivity.getInstance().getKereta().get(0).getJadwals().get(0).getStasiun().getNamaStasiun());
+        tvHereToSelected.setText("Dari sini ke Stasiun " + LoadingActivity.getInstance().getKereta().get(0).getJadwals().get(0).getStasiun().getNamaStasiun());
 
         this.setAllSpinner();
     }
@@ -235,7 +234,8 @@ public class MenuActivity extends FragmentActivity
                 }
         }
     }
-    public Location getLoc(){
+
+    public Location getLoc() {
         return this.loc;
     }
 
@@ -262,6 +262,7 @@ public class MenuActivity extends FragmentActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMyLocationEnabled(false);
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
             @Override
             public boolean onMyLocationButtonClick() {
@@ -276,7 +277,6 @@ public class MenuActivity extends FragmentActivity
                 return true;
             }
         });
-        mMap.setMyLocationEnabled(true);
         if (loc != null) {
             //label.setText("");
             // label.append("\n " + loc.getLatitude() + " " + loc.getLongitude());
@@ -340,11 +340,11 @@ public class MenuActivity extends FragmentActivity
 
     public void setAllSpinner() {
         for (Kereta k : LoadingActivity.getInstance().getKereta()) {
-            namaKereta.add(k.getNamaKereta() + " ("+k.getJadwals().get(0).getStasiun().getNamaStasiun() +" - " + k.getJadwals().get(k.getJadwals().size() - 1).getStasiun().getNamaStasiun() + ")");
+            namaKereta.add(k.getNamaKereta() + " (" + k.getJadwals().get(0).getStasiun().getNamaStasiun() + " - " + k.getJadwals().get(k.getJadwals().size() - 1).getStasiun().getNamaStasiun() + ")");
         }
         spinnerKereta = findViewById(R.id.spinnerKereta);
         ArrayAdapter<String> adapterKereta = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, namaKereta);
-        ListAdapter la = new ListAdapter(this, R.layout.support_simple_spinner_dropdown_item,namaKereta);
+        ListAdapter la = new ListAdapter(this, R.layout.support_simple_spinner_dropdown_item, namaKereta);
         spinnerKereta.setAdapter(la);
 
         spinnerKereta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -390,7 +390,7 @@ public class MenuActivity extends FragmentActivity
         spinnerStasiun.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("onItemSelected","dipanggil teru/s");
+                Log.d("onItemSelected", "dipanggil teru/s");
                 if (loc != null) {
                     Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(MenuActivity.getInstance().idxKereta);
                     Jadwal selectedJadwal = selectedKereta.getJadwals().get(i);
@@ -399,12 +399,12 @@ public class MenuActivity extends FragmentActivity
                     latCurr = loc.getLatitude();
                     langCurr = loc.getLongitude();
                     jarak = presenter.getJarak(latCurr, latNext, langCurr, langNext);
-                    tvJarak.setText(new DecimalFormat("#.##").format(jarak)+" km");
+                    tvJarak.setText(new DecimalFormat("#.##").format(jarak) + " km");
 
-                    int[] waktu = presenter.hitungWaktu(jarak,KECEPATAN_DEFAULT);
-                    tvWaktu.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
+                    int[] waktu = presenter.hitungWaktu(jarak, KECEPATAN_DEFAULT);
+                    tvWaktu.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
 
-                    tvHereToSelected.setText("Dari sini ke Stasiun "+selectedJadwal.getStasiun().getNamaStasiun());
+                    tvHereToSelected.setText("Dari sini ke Stasiun " + selectedJadwal.getStasiun().getNamaStasiun());
                 }
             }
 
@@ -436,14 +436,85 @@ public class MenuActivity extends FragmentActivity
     public void getBestLocation() {
         SingleShotLocationProvider.requestSingleUpdate(this,
                 new SingleShotLocationProvider.LocationCallback() {
+                    @SuppressLint("MissingPermission")
                     @Override
                     public void onNewLocationAvailable(SingleShotLocationProvider.GPSCoordinates location) {
-//                        Log.d("Location", "my location is " + location.toString());
-                        if(loc == null){
+                        mMap.setMyLocationEnabled(true);
+                        Log.d("Location", "my location is " + location.toString());
+                        if (loc == null) {
                             loc = new Location("");
                         }
                         loc.setLatitude(location.latitude);
                         loc.setLongitude(location.longitude);
+                    }
+                });
+    }
+
+    public void getBestLocation2() {
+        SingleShotLocationProvider.requestSingleUpdate(this,
+                new SingleShotLocationProvider.LocationCallback() {
+                    @SuppressLint("MissingPermission")
+                    @Override
+                    public void onNewLocationAvailable(SingleShotLocationProvider.GPSCoordinates location) {
+                        mMap.setMyLocationEnabled(true);
+                        Log.d("Location", "my location is " + location.toString());
+                        if (loc == null) {
+                            loc = new Location("");
+                        }
+                        loc.setLatitude(location.latitude);
+                        loc.setLongitude(location.longitude);
+
+                        Kereta selectedKereta = LoadingActivity.getInstance().getKereta().get(MenuActivity.getInstance().idxKereta);
+                        Jadwal selectedJadwal = selectedKereta.getJadwals().get(spinnerStasiun.getSelectedItemPosition());
+                        latNext = selectedJadwal.getStasiun().getLatitude();
+                        langNext = selectedJadwal.getStasiun().getLongtitude();
+                        latCurr = loc.getLatitude();
+                        langCurr = loc.getLongitude();
+                        jarak = presenter.getJarak(latCurr, latNext, langCurr, langNext);
+                        tvJarak.setText(new DecimalFormat("#.##").format(jarak) + " km");
+
+                        int[] waktu = presenter.hitungWaktu(jarak, KECEPATAN_DEFAULT);
+                        tvWaktu.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
+
+                        tvHereToSelected.setText("Dari sini ke Stasiun " + selectedJadwal.getStasiun().getNamaStasiun());
+
+
+                        presenter.isPolylineNearby(loc);
+                        int idx = presenter.getNearestStasiun();
+                        //DI LUAR POLYLINE
+                        if (idx == -1) {
+                            idx = presenter.getNearestStasiun(listStasiunCurrentTrain, loc);
+                            Log.d("JARAK INDEX", idx + "");
+                            Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
+                            double jarakTotal = presenter.getJarak(loc.getLatitude(), nextStasiun.getLatitude(), loc.getLongitude(), nextStasiun.getLongtitude());
+                            for (int i = idx; i < listStasiunCurrentTrain.size() - 1; i++) {
+                                Stasiun s1 = listStasiunCurrentTrain.get(i);
+                                Stasiun s2 = listStasiunCurrentTrain.get(i + 1);
+                                jarakTotal += presenter.getJarak(s1.getLatitude(), s2.getLatitude(), s1.getLongtitude(), s2.getLongtitude());
+                                Log.d("JARAK", "" + jarakTotal);
+                            }
+                            tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
+
+                            waktu = presenter.hitungWaktu(jarakTotal, KECEPATAN_DEFAULT);
+                            tvWaktuTotal.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
+                        }
+                        //DI DALAM POLYLINE
+                        else {
+                            idx += 1;
+                            Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
+                            double jarakTotal = presenter.getJarak(loc.getLatitude(), nextStasiun.getLatitude(), loc.getLongitude(), nextStasiun.getLongtitude());
+                            Log.d("JARAK", "" + jarakTotal);
+                            for (int i = idx; i < listStasiunCurrentTrain.size() - 1; i++) {
+                                Stasiun s1 = listStasiunCurrentTrain.get(i);
+                                Stasiun s2 = listStasiunCurrentTrain.get(i + 1);
+                                jarakTotal += presenter.getJarak(s1.getLatitude(), s2.getLatitude(), s1.getLongtitude(), s2.getLongtitude());
+                                Log.d("JARAK", "" + jarakTotal);
+                            }
+                            tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
+
+                            waktu = presenter.hitungWaktu(jarakTotal, KECEPATAN_DEFAULT);
+                            tvWaktuTotal.setText(presenter.formatWaktu(waktu[0], waktu[1], waktu[2]));
+                        }
                     }
                 });
     }
@@ -483,58 +554,23 @@ public class MenuActivity extends FragmentActivity
                     execute(new DirectionCallback() {
                         @Override
                         public void onDirectionSuccess(Direction direction, String rawBody) {
+                            Log.d("LOCATION", "DIPANGGIL1");
                             Route route = direction.getRouteList().get(0);
                             Leg leg = route.getLegList().get(0);
                             directionList = leg.getDirectionPoint();
                             PolylineOptions po = DirectionConverter.createPolyline(MenuActivity.getInstance(), directionList, 3, Color.RED);
                             mMap.addPolyline(po);
-
-                            presenter.setPanjangRute(finalJ,po);
+                            presenter.setPanjangRute(finalJ, po);
                             banyakPolyline++;
 
                             if (banyakPolyline == listStasiunCurrentTrain.size() - 1) {
-                                presenter.isPolylineNearby(loc);
-                                int idx = presenter.getNearestStasiun();
-                                //DI LUAR POLYLINE
-                                if (idx == -1) {
-                                    idx = presenter.getNearestStasiun(listStasiunCurrentTrain,loc);
-                                    Log.d("JARAK INDEX",idx+"");
-                                    Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
-                                    double jarakTotal = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
-                                    for(int i = idx; i < listStasiunCurrentTrain.size()-1; i++){
-                                        Stasiun s1 = listStasiunCurrentTrain.get(i);
-                                        Stasiun s2 = listStasiunCurrentTrain.get(i+1);
-                                        jarakTotal += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
-                                        Log.d("JARAK",""+jarakTotal);
-                                    }
-                                    tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
-
-                                    int[] waktu = presenter.hitungWaktu(jarakTotal,KECEPATAN_DEFAULT);
-                                    tvWaktuTotal.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
-                                }
-                                //DI DALAM POLYLINE
-                                else {
-                                    idx += 1;
-                                    Stasiun nextStasiun = listStasiunCurrentTrain.get(idx);
-                                    double jarakTotal = presenter.getJarak(loc.getLatitude(),nextStasiun.getLatitude(),loc.getLongitude(),nextStasiun.getLongtitude());
-                                    Log.d("JARAK",""+jarakTotal);
-                                    for(int i = idx; i < listStasiunCurrentTrain.size()-1; i++){
-                                        Stasiun s1 = listStasiunCurrentTrain.get(i);
-                                        Stasiun s2 = listStasiunCurrentTrain.get(i+1);
-                                        jarakTotal += presenter.getJarak(s1.getLatitude(),s2.getLatitude(),s1.getLongtitude(),s2.getLongtitude());
-                                        Log.d("JARAK",""+jarakTotal);
-                                    }
-                                    tvJarakTotal.setText(new DecimalFormat("#.##").format(jarakTotal) + " km");
-
-                                    int[] waktu = presenter.hitungWaktu(jarakTotal,KECEPATAN_DEFAULT);
-                                    tvWaktuTotal.setText(presenter.formatWaktu(waktu[0],waktu[1],waktu[2]));
-                                }
+                                getBestLocation2();
                             }
                         }
 
                         @Override
                         public void onDirectionFailure(Throwable t) {
-                            Toast toast = Toast.makeText(MenuActivity.getInstance(),"Direction Failed",Toast.LENGTH_LONG);
+                            Toast toast = Toast.makeText(MenuActivity.getInstance(), "Direction Failed", Toast.LENGTH_LONG);
                             toast.show();
                         }
                     });

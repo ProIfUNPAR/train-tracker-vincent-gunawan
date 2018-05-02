@@ -48,10 +48,9 @@ public class MainPresenter {
     }
 
     public void isPolylineNearby(Location currentLocation) {
-        if(currentLocation == null){
-            MenuActivity.getInstance().getBestLocation();
-            currentLocation = MenuActivity.getInstance().getLoc();
-        }
+        MenuActivity.getInstance().getBestLocation();
+        currentLocation = MenuActivity.getInstance().getLoc();
+
         for (PolylineOptions po : pos) {
             int flag = 0;
             if (po != null) {
