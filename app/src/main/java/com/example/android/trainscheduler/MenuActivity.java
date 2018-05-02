@@ -100,7 +100,6 @@ public class MenuActivity extends FragmentActivity
         this.listStasiunCurrentTrain = new ArrayList<>();
         this.namaKereta = new ArrayList<>();
         this.namaJadwal = new ArrayList<>();
-        this.setAllSpinner();
         this.presenter = new MainPresenter();
 
         if (mGoogleApiClient == null) {
@@ -192,7 +191,7 @@ public class MenuActivity extends FragmentActivity
             public void onProviderEnabled(String s) {
                 mMap.setMyLocationEnabled(true);
 //                loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-                loc = getLastKnownLocation();
+                getBestLocation();
                 if (loc != null) {
                     LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
                     CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -214,8 +213,11 @@ public class MenuActivity extends FragmentActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
-        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        getBestLocation();
         tvHereToSelected.setText("Dari sini ke Stasiun "+LoadingActivity.getInstance().getKereta().get(0).getJadwals().get(0).getStasiun().getNamaStasiun());
+
+        this.setAllSpinner();
     }
 
     @SuppressLint("MissingPermission")
@@ -232,6 +234,9 @@ public class MenuActivity extends FragmentActivity
                     }
                 }
         }
+    }
+    public Location getLoc(){
+        return this.loc;
     }
 
     public Location getLastKnownLocation() {
@@ -305,7 +310,8 @@ public class MenuActivity extends FragmentActivity
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 //        loc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        loc = getLastKnownLocation();
+//        loc = getLastKnownLocation();
+        getBestLocation();
         if (loc != null && mMap != null) {
             LatLng ll = new LatLng(loc.getLatitude(), loc.getLongitude());
             CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -425,6 +431,21 @@ public class MenuActivity extends FragmentActivity
         NotificationManager mNotifyMgr =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
+    }
+
+    public void getBestLocation() {
+        SingleShotLocationProvider.requestSingleUpdate(this,
+                new SingleShotLocationProvider.LocationCallback() {
+                    @Override
+                    public void onNewLocationAvailable(SingleShotLocationProvider.GPSCoordinates location) {
+//                        Log.d("Location", "my location is " + location.toString());
+                        if(loc == null){
+                            loc = new Location("");
+                        }
+                        loc.setLatitude(location.latitude);
+                        loc.setLongitude(location.longitude);
+                    }
+                });
     }
 
     private void setAllMarkerAndLine(Kereta selectedKereta) {
