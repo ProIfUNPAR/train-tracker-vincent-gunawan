@@ -18,7 +18,7 @@
         android:hardwareAccelerated="false"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoadingActivity">
+        <activity android:name=".LoadingActivity">android:screenOrientation="portrait"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_android_map_api_key" />
 
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".MenuActivity">android:screenOrientation="portrait"</activity>
 
     </application>
 
